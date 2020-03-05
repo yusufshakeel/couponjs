@@ -3,7 +3,8 @@
     "includePattern": ".+\\.js(doc|x)?$",
     // Only process file ending in .js, .jsdoc or .jsx
     "include": [
-      "index.js"
+      "index.js",
+      "app/."
     ],
     // Check all folders.
     "exclude": [
