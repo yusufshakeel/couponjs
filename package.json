@@ -4,7 +4,7 @@
   "description": "This is a simple coupon creation project using NodeJS.",
   "main": "index.js",
   "scripts": {
-    "test": "jest -c jest.config.js",
+    "test": "jest -c jest.config.json",
     "generate-docs": "npx jsdoc -c jsdocs.config.json",
     "precommit": "npm run test && npm run generate-docs"
   },
