@@ -4,7 +4,8 @@
   "description": "This is a simple coupon creation project using NodeJS.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-docs": "npx jsdoc -c jsdocs.config.json"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/yusufshakeel/couponjs#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "jsdoc": "^3.6.3"
   }
 }
