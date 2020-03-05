@@ -1,0 +1,24 @@
+{
+  "name": "couponjs",
+  "version": "0.0.1",
+  "description": "This is a simple coupon creation project using NodeJS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusufshakeel/couponjs.git"
+  },
+  "keywords": [
+    "coupon",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Yusuf Shakeel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yusufshakeel/couponjs/issues"
+  },
+  "homepage": "https://github.com/yusufshakeel/couponjs#readme"
+}
