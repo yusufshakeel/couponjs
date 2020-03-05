@@ -4,10 +4,10 @@
   "collectCoverage": true,
   "collectCoverageFrom": [
     "**/*.{js,jsx}",
-    "!**/node_modules/**",
+    "!**/coverage/**",
     "!**/docs/**",
-    "!**/tests/**",
-    "!**/coverage/**"
+    "!**/node_modules/**",
+    "!**/tests/**"
   ],
   "coverageThreshold": {
     "global": {
