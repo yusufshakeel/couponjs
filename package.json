@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest -c jest.config.json",
-    "generate-docs": "npx jsdoc -c jsdocs.config.json"
+    "generate-docs": "npx jsdoc -c jsdocs.config.json",
+    "precommit": "npm run test && npm run generate-docs"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
   "homepage": "https://github.com/yusufshakeel/couponjs#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
     "jest": "^25.1.0",
     "jsdoc": "^3.6.3"
   }

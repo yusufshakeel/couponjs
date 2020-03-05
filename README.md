@@ -6,7 +6,7 @@ This is a simple coupon creation project using NodeJS.
 # Getting Started
 Add this to your project using npm.
 ```
-$ npm i couponjs
+> npm i couponjs
 ```
 
 ## Tests
