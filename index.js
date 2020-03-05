@@ -4,11 +4,11 @@
  */
 const Coupon = function () {
   /**
-   * This will generate coupon based on the configuration provided.
-   * @param {object} config
+   * This will generate coupons.
+   * @returns {string}
    */
-  this.generate = function (config = {}) {
-    return config;
+  this.generate = function () {
+    return 'COUPONJS';
   };
 };
 
