@@ -4,7 +4,7 @@
   "description": "This is a simple coupon creation project using NodeJS.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest -c jest.config.json",
     "generate-docs": "npx jsdoc -c jsdocs.config.json"
   },
   "repository": {

@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "bail": 1,
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "functions": 80,
+      "lines": 80
+    }
+  }
+}
