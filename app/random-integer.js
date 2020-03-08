@@ -1,7 +1,7 @@
 /**
  * This will return an integer value between min and max both inclusive.
- * @param {number} min The minimum (starting) integer value.
- * @param {number} max The maximum (ending) integer value.
+ * @param {number} min The starting integer value.
+ * @param {number} max The ending integer value.
  * @returns {number} Random integer value between min and max both inclusive.
  */
 function randomInteger(min, max) {
