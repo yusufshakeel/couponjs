@@ -2,7 +2,7 @@
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.1.0-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.2.0-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 
 # Getting Started
@@ -20,6 +20,8 @@ Using the following for testing:
 ## Generate coupon
 Create an object of Coupon.
 ```javascript
+const Coupon = require('couponjs');
+
 const coupon = new Coupon();
 ```
 
@@ -29,6 +31,15 @@ const myCoupon = coupon.generate();
 ```
 
 By default, `generate` will return coupon code of length 6 using uppercase alphabet.
+
+### Coupon of length N
+To generate coupon of a given length we pass the following option to the `generate` method.
+```javascript
+const myCoupon = coupon.generate({
+  length: 8
+});
+```
+Where, 8 in the above code represent the total number of characters that will be present in the coupon.
 
 
 ## License

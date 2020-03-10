@@ -1,7 +1,7 @@
 /**
- * Constants
- * @type {{ALPHABET_UPPERCASE: string, ALPHABET_LOWERCASE: string, DIGIT: string}}
+ * @type {{DEFAULT_LENGTH: number, ALPHABET_UPPERCASE: string}}
  */
 module.exports = {
+  DEFAULT_LENGTH: 6,
   ALPHABET_UPPERCASE: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 };
