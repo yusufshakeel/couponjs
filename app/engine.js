@@ -1,10 +1,12 @@
+const { DEFAULT_LENGTH } = require('./constants.js');
 /**
  * Engine to produce coupon.
  * @param {string} characters This is the set of characters used to generate coupon.
  * @param {function} randomInteger This is the function that will generate random integer value.
+ * @param {number} length This is the length of the coupon.
  * @constructor
  */
-const Engine = function (characters, randomInteger) {
+const Engine = function (characters, randomInteger, length = DEFAULT_LENGTH) {
 
   function characterSet() {
     return characters.split('');
@@ -13,9 +15,9 @@ const Engine = function (characters, randomInteger) {
   function generateCoupon() {
     const generatedCouponCharacters = [];
     const charSet = characterSet();
-    for(let i = 0; i < 6; i++) {
+    for(let i = 0; i < length; i++) {
       generatedCouponCharacters.push(
-        charSet[randomInteger(0, 6)]
+        charSet[randomInteger(0, length - 1)]
       );
     }
     return generatedCouponCharacters.join('');
