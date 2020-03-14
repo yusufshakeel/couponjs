@@ -1,4 +1,20 @@
-const {ALPHABET_UPPERCASE, ALPHABET_LOWERCASE, DIGIT, CHARSET_DIGIT, CHARSET_ALPHA_LOWER, CHARSET_ALPHA, CHARSET_ALNUM} = require('../../app/constants.js');
+const {
+  ALPHABET_UPPERCASE,
+  ALPHABET_LOWERCASE,
+  DIGIT,
+  BINARY,
+  OCTAL,
+  HEX,
+  HEX_LOWER,
+  CHARSET_ALPHA,
+  CHARSET_ALPHA_LOWER,
+  CHARSET_DIGIT,
+  CHARSET_ALNUM,
+  CHARSET_BINARY,
+  CHARSET_OCTAL,
+  CHARSET_HEX,
+  CHARSET_HEX_LOWER
+} = require('../../app/constants.js');
 const characterSetBuilder = require('../../app/character-set-builder.js');
 const defaultOptions = require('../../app/option.js');
 
@@ -9,7 +25,7 @@ test('Should throw error if invalid builtIn option provided', () => {
     };
     const chars = characterSetBuilder(option);
     throw new Error('Should have failed.');
-  }).toThrow('Invalid builtIn characterSet specified. Allowed values ["CHARSET_ALPHA", "CHARSET_ALPHA_LOWER", "CHARSET_DIGIT"]');
+  }).toThrow('Invalid builtIn characterSet specified. Allowed values: CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT, CHARSET_ALNUM, CHARSET_BINARY, CHARSET_OCTAL, CHARSET_HEX, CHARSET_HEX_LOWER');
 });
 
 test('Should return uppercase alphabet A-Z when using default options', () => {
@@ -67,4 +83,20 @@ test('Should return unique characters when option has duplicate characters', () 
 
 test('Should return uppercase, lowercase alphabet and digit when using builtIn "CHARSET_ALNUM" option', () => {
   expect(characterSetBuilder({builtIn: [CHARSET_ALNUM]})).toBe(`${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`);
+});
+
+test('Should return binary characters when using builtIn "CHARSET_BINARY" option', () => {
+  expect(characterSetBuilder({builtIn: [CHARSET_BINARY]})).toBe(BINARY);
+});
+
+test('Should return octal characters when using builtIn "CHARSET_OCTAL" option', () => {
+  expect(characterSetBuilder({builtIn: [CHARSET_OCTAL]})).toBe(OCTAL);
+});
+
+test('Should return hex characters when using builtIn "CHARSET_HEX" option', () => {
+  expect(characterSetBuilder({builtIn: [CHARSET_HEX]})).toBe(HEX);
+});
+
+test('Should return hex lowercase characters when using builtIn "CHARSET_HEX_LOWER" option', () => {
+  expect(characterSetBuilder({builtIn: [CHARSET_HEX_LOWER]})).toBe(HEX_LOWER);
 });
