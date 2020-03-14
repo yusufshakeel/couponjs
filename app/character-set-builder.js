@@ -1,4 +1,4 @@
-const { CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT, ALPHABET_UPPERCASE, ALPHABET_LOWERCASE, DIGIT} = require('./constants.js');
+const { CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT, CHARSET_ALNUM, ALPHABET_UPPERCASE, ALPHABET_LOWERCASE, DIGIT} = require('./constants.js');
 
 /**
  * This will return the characters based on the character set name.
@@ -10,6 +10,7 @@ function characters (charSet) {
     case CHARSET_ALPHA: return ALPHABET_UPPERCASE;
     case CHARSET_ALPHA_LOWER: return ALPHABET_LOWERCASE;
     case CHARSET_DIGIT: return DIGIT;
+    case CHARSET_ALNUM: return `${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`;
     default: throw new Error(`Invalid builtIn characterSet specified. Allowed values ["${CHARSET_ALPHA}", "${CHARSET_ALPHA_LOWER}", "${CHARSET_DIGIT}"]`);
   }
 }

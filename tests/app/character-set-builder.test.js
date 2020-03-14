@@ -1,4 +1,4 @@
-const {ALPHABET_UPPERCASE, ALPHABET_LOWERCASE, DIGIT, CHARSET_DIGIT, CHARSET_ALPHA_LOWER, CHARSET_ALPHA} = require('../../app/constants.js');
+const {ALPHABET_UPPERCASE, ALPHABET_LOWERCASE, DIGIT, CHARSET_DIGIT, CHARSET_ALPHA_LOWER, CHARSET_ALPHA, CHARSET_ALNUM} = require('../../app/constants.js');
 const characterSetBuilder = require('../../app/character-set-builder.js');
 const defaultOptions = require('../../app/option.js');
 
@@ -63,4 +63,8 @@ test('Should return unique characters when option has duplicate characters', () 
     custom: ['ABC', 'abc', 'BCD', 'xyz', '123']
   };
   expect(characterSetBuilder(option)).toBe(`${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`);
+});
+
+test('Should return uppercase, lowercase alphabet and digit when using builtIn "CHARSET_ALNUM" option', () => {
+  expect(characterSetBuilder({builtIn: [CHARSET_ALNUM]})).toBe(`${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`);
 });
