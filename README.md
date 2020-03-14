@@ -102,6 +102,7 @@ Where, `charSetName` is any one of the following names.
 - `CHARSET_ALPHA` -- which consists of uppercase alphabet characters A-Z
 - `CHARSET_ALPHA_LOWER` -- which consists of lowercase alphabet characters a-z
 - `CHARSET_DIGIT` -- which consists of digits 0-9
+- `CHARSET_ALNUM` -- which consists of uppercase alphabet A-Z, lowercase alphabet a-z and digit 0-9
 
 Example: If we want uppercase and digit we can pass the following.
 ```javascript
