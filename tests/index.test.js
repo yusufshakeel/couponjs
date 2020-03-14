@@ -174,3 +174,13 @@ test('Should generate coupon code of length 8 with prefix and suffix and using c
   });
   expect(/^SUPER[A-Za-z0-9@$&]{8}AWESOME$/.test(myCoupon)).toBeTruthy();
 });
+
+test('Should generate coupon code using characterSet builtIn CHARSET_ALNUM option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALNUM']
+    }
+  });
+  expect(/^[A-Za-z0-9]{6}$/.test(myCoupon)).toBeTruthy();
+});
