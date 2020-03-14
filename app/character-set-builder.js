@@ -47,7 +47,17 @@ function characterSetBuilder(characterSetOptions) {
       case CHARSET_HEX_LOWER:
         return `${HEX_LOWER}`;
       default:
-        throw new Error(`Invalid builtIn characterSet specified. Allowed values ["${CHARSET_ALPHA}", "${CHARSET_ALPHA_LOWER}", "${CHARSET_DIGIT}"]`);
+        const validCharSets = [
+          CHARSET_ALPHA,
+          CHARSET_ALPHA_LOWER,
+          CHARSET_DIGIT,
+          CHARSET_ALNUM,
+          CHARSET_BINARY,
+          CHARSET_OCTAL,
+          CHARSET_HEX,
+          CHARSET_HEX_LOWER
+        ];
+        throw new Error(`Invalid builtIn characterSet specified. Allowed values: ${validCharSets.join(', ')}`);
     }
   }
 

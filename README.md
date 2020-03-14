@@ -2,7 +2,7 @@
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.5.0-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.6.0-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 
 # Getting Started
@@ -97,12 +97,16 @@ const myCoupon = coupon.generate({
   }
 });
 ```
-Where, `charSetName` is any one of the following names.
+Where, `charSetName` is any one of the following
 
-- `CHARSET_ALPHA` -- which consists of uppercase alphabet characters A-Z
-- `CHARSET_ALPHA_LOWER` -- which consists of lowercase alphabet characters a-z
-- `CHARSET_DIGIT` -- which consists of digits 0-9
-- `CHARSET_ALNUM` -- which consists of uppercase alphabet A-Z, lowercase alphabet a-z and digit 0-9
+- `CHARSET_ALPHA` -- consists of uppercase alphabet characters A-Z
+- `CHARSET_ALPHA_LOWER` -- consists of lowercase alphabet characters a-z
+- `CHARSET_DIGIT` -- consists of digits 0-9
+- `CHARSET_ALNUM` -- consists of uppercase alphabet A-Z, lowercase alphabet a-z and digit 0-9
+- `CHARSET_BINARY` -- consists of characters `01`
+- `CHARSET_OCTAL` -- consists of characters `01234567`
+- `CHARSET_HEX` -- consists of characters `0-9` and `A-F`
+- `CHARSET_HEX_LOWER` -- consists of characters `0-9` and `a-f`
 
 Example: If we want uppercase and digit we can pass the following.
 ```javascript

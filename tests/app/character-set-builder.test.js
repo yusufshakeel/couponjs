@@ -25,7 +25,7 @@ test('Should throw error if invalid builtIn option provided', () => {
     };
     const chars = characterSetBuilder(option);
     throw new Error('Should have failed.');
-  }).toThrow('Invalid builtIn characterSet specified. Allowed values ["CHARSET_ALPHA", "CHARSET_ALPHA_LOWER", "CHARSET_DIGIT"]');
+  }).toThrow('Invalid builtIn characterSet specified. Allowed values: CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT, CHARSET_ALNUM, CHARSET_BINARY, CHARSET_OCTAL, CHARSET_HEX, CHARSET_HEX_LOWER');
 });
 
 test('Should return uppercase alphabet A-Z when using default options', () => {
