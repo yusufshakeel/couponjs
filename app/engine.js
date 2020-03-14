@@ -34,7 +34,7 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
         characters[randomInteger(0, charactersLength - 1)]
       );
     }
-    return generatedCouponCharacters.join('');
+    return `${prefix}${generatedCouponCharacters.join('')}${suffix}`;
   }
 
   /**
@@ -43,7 +43,7 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
    */
   this.run = function () {
     validate({length});
-    return `${prefix}${generateCoupon()}${suffix}`;
+    return generateCoupon();
   };
 };
 
