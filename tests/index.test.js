@@ -69,3 +69,108 @@ test('Should generate coupon code using uppercase alphabet A-Z of length 6,7,8,9
   expect(/^[A-Z]{9}AWESOME$/.test(coupon.generate({length: 9, suffix: 'AWESOME'}))).toBeTruthy();
   expect(/^[A-Z]{10}AWESOME$/.test(coupon.generate({length: 10, suffix: 'AWESOME'}))).toBeTruthy();
 });
+
+test('Should generate coupon code using characterSet builtIn uppercase alphabet option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALPHA']
+    }
+  });
+  expect(/^[A-Z]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet builtIn lowercase alphabet option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALPHA_LOWER']
+    }
+  });
+  expect(/^[a-z]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet builtIn digit option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_DIGIT']
+    }
+  });
+  expect(/^[0-9]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet builtIn alphabet uppercase, lowercase and digit option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALPHA', 'CHARSET_ALPHA_LOWER', 'CHARSET_DIGIT']
+    }
+  });
+  expect(/^[A-Za-z0-9]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet custom uppercase alphabet option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      custom: ['ABC']
+    }
+  });
+  expect(/^[A-C]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet custom lowercase alphabet option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      custom: ['xyz']
+    }
+  });
+  expect(/^[x-z]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet custom digit option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      custom: ['123']
+    }
+  });
+  expect(/^[1-3]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet custom uppercase, lowercase alphabet, digit and symbol option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      custom: ['ABC', 'xyz', '123', '@$&']
+    }
+  });
+  expect(/^[A-Cx-z1-3@$&]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet builtIn and custom option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALPHA', 'CHARSET_ALPHA_LOWER', "CHARSET_DIGIT"],
+      custom: ['ABC', 'xyz', '123', '@$&']
+    }
+  });
+  expect(/^[A-Za-z0-9@$&]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code of length 8 with prefix and suffix and using characterSet builtIn and custom option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    length: 8,
+    prefix: 'SUPER',
+    suffix: 'AWESOME',
+    characterSet: {
+      builtIn: ['CHARSET_ALPHA', 'CHARSET_ALPHA_LOWER', "CHARSET_DIGIT"],
+      custom: ['ABC', 'xyz', '123', '@$&']
+    }
+  });
+  expect(/^SUPER[A-Za-z0-9@$&]{8}AWESOME$/.test(myCoupon)).toBeTruthy();
+});

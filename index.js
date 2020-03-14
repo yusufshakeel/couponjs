@@ -7,7 +7,6 @@ const randomInteger = require('./app/random-integer.js');
  * @constructor
  */
 const Coupon = function () {
-
   /**
    * This will generate coupons.
    *
@@ -15,8 +14,8 @@ const Coupon = function () {
    * @returns {string}
    */
   this.generate = function (option) {
-    const {length, characters, prefix, suffix} = Object.assign({}, defaultOptions, option);
-    const engine = new Engine(characters, randomInteger, length, prefix, suffix);
+    const {length, characterSet, prefix, suffix} = Object.assign({}, defaultOptions, option);
+    const engine = new Engine(characterSet, randomInteger, length, prefix, suffix);
     return engine.run();
   };
 };
