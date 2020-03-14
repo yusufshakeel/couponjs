@@ -184,3 +184,43 @@ test('Should generate coupon code using characterSet builtIn CHARSET_ALNUM optio
   });
   expect(/^[A-Za-z0-9]{6}$/.test(myCoupon)).toBeTruthy();
 });
+
+test('Should generate coupon code using characterSet builtIn CHARSET_BINARY option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_BINARY']
+    }
+  });
+  expect(/^[01]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet builtIn CHARSET_OCTAL option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_OCTAL']
+    }
+  });
+  expect(/^[0-7]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet builtIn CHARSET_HEX option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_HEX']
+    }
+  });
+  expect(/^[0-9A-F]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate coupon code using characterSet builtIn CHARSET_HEX_LOWER option', () => {
+  const coupon = new Coupon();
+  const myCoupon = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_HEX_LOWER']
+    }
+  });
+  expect(/^[0-9a-f]{6}$/.test(myCoupon)).toBeTruthy();
+});
