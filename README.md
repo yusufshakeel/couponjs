@@ -182,7 +182,7 @@ const myCoupons = coupon.generate({
 
 Sample output:
 ```
-['95TMY9JV', 'RZU6ZL0K', '1Q19NY19']
+['95TMY9JV', 'RZU6ZL0K', '1Q19N019']
 ```
 
 
