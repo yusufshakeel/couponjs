@@ -1,4 +1,4 @@
-const {DEFAULT_LENGTH, DEFAULT_PREFIX, DEFAULT_SUFFIX, ALPHABET_UPPERCASE, CHARSET_ALPHA} = require('./constants.js');
+const {DEFAULT_LENGTH, DEFAULT_PREFIX, DEFAULT_SUFFIX, CHARSET_ALPHA} = require('./constants.js');
 
 module.exports = {
   length: DEFAULT_LENGTH,
