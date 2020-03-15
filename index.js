@@ -14,8 +14,8 @@ const Coupon = function () {
    * @returns {string}
    */
   this.generate = function (option) {
-    const {length, characterSet, prefix, suffix} = Object.assign({}, defaultOptions, option);
-    const engine = new Engine(characterSet, randomInteger, length, prefix, suffix);
+    const {numberOfCoupons, length, characterSet, prefix, suffix} = Object.assign({}, defaultOptions, option);
+    const engine = new Engine(characterSet, randomInteger, length, prefix, suffix, numberOfCoupons);
     return engine.run();
   };
 };
