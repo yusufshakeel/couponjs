@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest -c jest.config.json",
     "generate-docs": "npx jsdoc -c jsdocs.config.json",
-    "precommit": "npm run test && npm run generate-docs"
+    "lint": "npx eslint -c .eslintrc.json ./index.js ./app",
+    "precommit": "npm run lint && npm run test && npm run generate-docs"
   },
   "repository": {
     "type": "git",
