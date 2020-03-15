@@ -154,7 +154,7 @@ test('Should generate coupon code using characterSet builtIn and custom option',
   const coupon = new Coupon();
   const myCoupon = coupon.generate({
     characterSet: {
-      builtIn: ['CHARSET_ALPHA', 'CHARSET_ALPHA_LOWER', "CHARSET_DIGIT"],
+      builtIn: ['CHARSET_ALPHA', 'CHARSET_ALPHA_LOWER', 'CHARSET_DIGIT'],
       custom: ['ABC', 'xyz', '123', '@$&']
     }
   });
@@ -168,7 +168,7 @@ test('Should generate coupon code of length 8 with prefix and suffix and using c
     prefix: 'SUPER',
     suffix: 'AWESOME',
     characterSet: {
-      builtIn: ['CHARSET_ALPHA', 'CHARSET_ALPHA_LOWER', "CHARSET_DIGIT"],
+      builtIn: ['CHARSET_ALPHA', 'CHARSET_ALPHA_LOWER', 'CHARSET_DIGIT'],
       custom: ['ABC', 'xyz', '123', '@$&']
     }
   });
@@ -223,4 +223,84 @@ test('Should generate coupon code using characterSet builtIn CHARSET_HEX_LOWER o
     }
   });
   expect(/^[0-9a-f]{6}$/.test(myCoupon)).toBeTruthy();
+});
+
+test('Should generate 100 unique coupons of length 8 using builtIn "CHARSET_ALNUM" option', () => {
+  const coupon = new Coupon();
+  const myCoupons = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALNUM']
+    },
+    length: 8,
+    numberOfCoupons: 100
+  });
+  const unqiueCoupons = [];
+  for (let myCoupon of myCoupons) {
+    expect(/^[A-Za-z0-9]{8}$/.test(myCoupon)).toBeTruthy();
+    if (unqiueCoupons.indexOf(myCoupon) === -1) {
+      unqiueCoupons.push(myCoupon);
+    }
+  }
+  expect(unqiueCoupons.length).toBe(myCoupons.length);
+});
+
+test('Should generate 100 unique coupons of length 8 using builtIn "CHARSET_ALNUM" option with prefix and suffix', () => {
+  const coupon = new Coupon();
+  const myCoupons = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALNUM']
+    },
+    length: 8,
+    prefix: 'SUPER',
+    suffix: 'AWESOME',
+    numberOfCoupons: 100
+  });
+  const unqiueCoupons = [];
+  for (let myCoupon of myCoupons) {
+    expect(/^SUPER[A-Za-z0-9]{8}AWESOME$/.test(myCoupon)).toBeTruthy();
+    if (unqiueCoupons.indexOf(myCoupon) === -1) {
+      unqiueCoupons.push(myCoupon);
+    }
+  }
+  expect(unqiueCoupons.length).toBe(myCoupons.length);
+});
+
+test('Should generate 100 unique coupons of length 128 using builtIn "CHARSET_ALNUM" option', () => {
+  const coupon = new Coupon();
+  const myCoupons = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALNUM']
+    },
+    length: 128,
+    numberOfCoupons: 100
+  });
+  const unqiueCoupons = [];
+  for (let myCoupon of myCoupons) {
+    expect(/^[A-Za-z0-9]{128}$/.test(myCoupon)).toBeTruthy();
+    if (unqiueCoupons.indexOf(myCoupon) === -1) {
+      unqiueCoupons.push(myCoupon);
+    }
+  }
+  expect(unqiueCoupons.length).toBe(myCoupons.length);
+});
+
+test('Should generate 100 unique coupons of length 128 using builtIn "CHARSET_ALNUM" option with prefix and suffix', () => {
+  const coupon = new Coupon();
+  const myCoupons = coupon.generate({
+    characterSet: {
+      builtIn: ['CHARSET_ALNUM']
+    },
+    length: 128,
+    prefix: 'SUPER',
+    suffix: 'AWESOME',
+    numberOfCoupons: 100
+  });
+  const unqiueCoupons = [];
+  for (let myCoupon of myCoupons) {
+    expect(/^SUPER[A-Za-z0-9]{128}AWESOME$/.test(myCoupon)).toBeTruthy();
+    if (unqiueCoupons.indexOf(myCoupon) === -1) {
+      unqiueCoupons.push(myCoupon);
+    }
+  }
+  expect(unqiueCoupons.length).toBe(myCoupons.length);
 });
