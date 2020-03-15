@@ -30,7 +30,7 @@ test('Should throw error if numberOfCoupons is greater than 100000', () => {
   }).toThrow('Minimum value for numberOfCoupons is 100000.');
 });
 
-test('Should throw error if numberOfCoupons is greater than total number of possible coupons', () => {
+test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons', () => {
   expect(() => {
     const characterSet = {
       custom: ['abc']
@@ -44,6 +44,118 @@ test('Should throw error if numberOfCoupons is greater than total number of poss
     engine.run();
     throw new Error('Should have failed.');
   }).toThrow('Total number of possible coupons that can be generated is 27.');
+});
+
+test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_ALPHA', () => {
+  expect(() => {
+    const characterSet = {
+      builtIn: ['CHARSET_ALPHA']
+    };
+    const mockRandomInteger = jest.fn((min, max) => {
+      return 0;
+    });
+    const prefix = defaultOption.prefix;
+    const suffix = defaultOption.suffix;
+    const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
+    engine.run();
+    throw new Error('Should have failed.');
+  }).toThrow('Total number of possible coupons that can be generated is 17576.');
+});
+
+test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_ALPHA_LOWER', () => {
+  expect(() => {
+    const characterSet = {
+      builtIn: ['CHARSET_ALPHA_LOWER']
+    };
+    const mockRandomInteger = jest.fn((min, max) => {
+      return 0;
+    });
+    const prefix = defaultOption.prefix;
+    const suffix = defaultOption.suffix;
+    const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
+    engine.run();
+    throw new Error('Should have failed.');
+  }).toThrow('Total number of possible coupons that can be generated is 17576.');
+});
+
+test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_DIGIT', () => {
+  expect(() => {
+    const characterSet = {
+      builtIn: ['CHARSET_DIGIT']
+    };
+    const mockRandomInteger = jest.fn((min, max) => {
+      return 0;
+    });
+    const prefix = defaultOption.prefix;
+    const suffix = defaultOption.suffix;
+    const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
+    engine.run();
+    throw new Error('Should have failed.');
+  }).toThrow('Total number of possible coupons that can be generated is 1000.');
+});
+
+test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_BINARY', () => {
+  expect(() => {
+    const characterSet = {
+      builtIn: ['CHARSET_BINARY']
+    };
+    const mockRandomInteger = jest.fn((min, max) => {
+      return 0;
+    });
+    const prefix = defaultOption.prefix;
+    const suffix = defaultOption.suffix;
+    const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
+    engine.run();
+    throw new Error('Should have failed.');
+  }).toThrow('Total number of possible coupons that can be generated is 8.');
+});
+
+test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_OCTAL', () => {
+  expect(() => {
+    const characterSet = {
+      builtIn: ['CHARSET_OCTAL']
+    };
+    const mockRandomInteger = jest.fn((min, max) => {
+      return 0;
+    });
+    const prefix = defaultOption.prefix;
+    const suffix = defaultOption.suffix;
+    const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
+    engine.run();
+    throw new Error('Should have failed.');
+  }).toThrow('Total number of possible coupons that can be generated is 512.');
+});
+
+test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_HEX', () => {
+  expect(() => {
+    const characterSet = {
+      builtIn: ['CHARSET_HEX']
+    };
+    const mockRandomInteger = jest.fn((min, max) => {
+      return 0;
+    });
+    const prefix = defaultOption.prefix;
+    const suffix = defaultOption.suffix;
+    const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
+    engine.run();
+    throw new Error('Should have failed.');
+  }).toThrow('Total number of possible coupons that can be generated is 4096.');
+});
+
+test('Should throw error if length is 2 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_ALNUM', () => {
+  expect(() => {
+    const characterSet = {
+      builtIn: ['CHARSET_ALNUM']
+    };
+    const mockRandomInteger = jest.fn((min, max) => {
+      return 0;
+    });
+    const prefix = defaultOption.prefix;
+    const suffix = defaultOption.suffix;
+    const engine = new Engine(characterSet, mockRandomInteger, 2, prefix, suffix, 100000);
+    engine.run();
+    throw new Error('Should have failed.');
+  }).toThrow('Total number of possible coupons that can be generated is 3844.');
 });
 
 test('Should throw error if length is less than 1', () => {

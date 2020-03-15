@@ -225,14 +225,14 @@ test('Should generate coupon code using characterSet builtIn CHARSET_HEX_LOWER o
   expect(/^[0-9a-f]{6}$/.test(myCoupon)).toBeTruthy();
 });
 
-test('Should generate 1000 unique coupons of length 8 using builtIn "CHARSET_ALNUM" option', () => {
+test('Should generate 100 unique coupons of length 8 using builtIn "CHARSET_ALNUM" option', () => {
   const coupon = new Coupon();
   const myCoupons = coupon.generate({
     characterSet: {
       builtIn: ['CHARSET_ALNUM']
     },
     length: 8,
-    numberOfCoupons: 1000
+    numberOfCoupons: 100
   });
   const unqiueCoupons = [];
   for (let myCoupon of myCoupons) {
@@ -244,7 +244,7 @@ test('Should generate 1000 unique coupons of length 8 using builtIn "CHARSET_ALN
   expect(unqiueCoupons.length).toBe(myCoupons.length);
 });
 
-test('Should generate 1000 unique coupons of length 8 using builtIn "CHARSET_ALNUM" option with prefix and suffix', () => {
+test('Should generate 100 unique coupons of length 8 using builtIn "CHARSET_ALNUM" option with prefix and suffix', () => {
   const coupon = new Coupon();
   const myCoupons = coupon.generate({
     characterSet: {
@@ -253,7 +253,7 @@ test('Should generate 1000 unique coupons of length 8 using builtIn "CHARSET_ALN
     length: 8,
     prefix: 'SUPER',
     suffix: 'AWESOME',
-    numberOfCoupons: 1000
+    numberOfCoupons: 100
   });
   const unqiueCoupons = [];
   for (let myCoupon of myCoupons) {
@@ -265,14 +265,14 @@ test('Should generate 1000 unique coupons of length 8 using builtIn "CHARSET_ALN
   expect(unqiueCoupons.length).toBe(myCoupons.length);
 });
 
-test('Should generate 1000 unique coupons of length 128 using builtIn "CHARSET_ALNUM" option', () => {
+test('Should generate 100 unique coupons of length 128 using builtIn "CHARSET_ALNUM" option', () => {
   const coupon = new Coupon();
   const myCoupons = coupon.generate({
     characterSet: {
       builtIn: ['CHARSET_ALNUM']
     },
     length: 128,
-    numberOfCoupons: 1000
+    numberOfCoupons: 100
   });
   const unqiueCoupons = [];
   for (let myCoupon of myCoupons) {
@@ -284,7 +284,7 @@ test('Should generate 1000 unique coupons of length 128 using builtIn "CHARSET_A
   expect(unqiueCoupons.length).toBe(myCoupons.length);
 });
 
-test('Should generate 1000 unique coupons of length 128 using builtIn "CHARSET_ALNUM" option with prefix and suffix', () => {
+test('Should generate 100 unique coupons of length 128 using builtIn "CHARSET_ALNUM" option with prefix and suffix', () => {
   const coupon = new Coupon();
   const myCoupons = coupon.generate({
     characterSet: {
@@ -293,7 +293,7 @@ test('Should generate 1000 unique coupons of length 128 using builtIn "CHARSET_A
     length: 128,
     prefix: 'SUPER',
     suffix: 'AWESOME',
-    numberOfCoupons: 1000
+    numberOfCoupons: 100
   });
   const unqiueCoupons = [];
   for (let myCoupon of myCoupons) {
