@@ -1,4 +1,10 @@
-const {DEFAULT_LENGTH, DEFAULT_PREFIX, DEFAULT_SUFFIX, CHARSET_ALPHA} = require('./constants.js');
+const {
+  DEFAULT_LENGTH,
+  DEFAULT_PREFIX,
+  DEFAULT_SUFFIX,
+  CHARSET_ALPHA,
+  DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE
+} = require('./constants.js');
 
 module.exports = {
   length: DEFAULT_LENGTH,
@@ -6,5 +12,6 @@ module.exports = {
   suffix: DEFAULT_SUFFIX,
   characterSet: {
     builtIn: [CHARSET_ALPHA]
-  }
+  },
+  numberOfCoupons: DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE
 };
