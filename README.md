@@ -11,11 +11,14 @@ Add this to your project using npm.
 > npm i couponjs
 ```
 
-## Generate coupon
-Create an object of Coupon.
+Next, require `couponjs`.
 ```javascript
 const Coupon = require('couponjs');
+```
 
+## Generate coupon
+Create an object.
+```javascript
 const coupon = new Coupon();
 ```
 
@@ -23,6 +26,7 @@ Now, call the `generate` method.
 ```javascript
 const myCoupon = coupon.generate();
 ```
+The above code will produce coupon like `ASDFGH`.
 
 By default, `generate` will return coupon code of length 6 using uppercase alphabet.
 
@@ -35,7 +39,7 @@ const myCoupon = coupon.generate({
 ```
 Where, 8 in the above code represent the total number of characters that will be present in the coupon.
 
-Range of `length`:
+Range of `length`
 * Min: 1
 * Max: 128
 
@@ -88,8 +92,8 @@ The above code will generate coupon like the following `SUPERZZZZZZAWESOME`.
 
 Note! The characters of the prefix and suffix is not considered. If length is not specified then default value of 6 is considered.
 
-## Coupon with builtIn characterSet
-To create coupon code with builtIn characterSet pass the following option.
+## Coupon with built in character set
+To create coupon code with built in character set pass the following option.
 ```javascript
 const myCoupon = coupon.generate({
   characterSet: {
@@ -97,12 +101,12 @@ const myCoupon = coupon.generate({
   }
 });
 ```
-Where, `charSetName` is any one of the following
+Where, `charSetName` is any of the following
 
-- `CHARSET_ALPHA` -- consists of uppercase alphabet characters A-Z
-- `CHARSET_ALPHA_LOWER` -- consists of lowercase alphabet characters a-z
-- `CHARSET_DIGIT` -- consists of digits 0-9
-- `CHARSET_ALNUM` -- consists of uppercase alphabet A-Z, lowercase alphabet a-z and digit 0-9
+- `CHARSET_ALPHA` -- consists of uppercase alphabet characters `A-Z`
+- `CHARSET_ALPHA_LOWER` -- consists of lowercase alphabet characters `a-z`
+- `CHARSET_DIGIT` -- consists of digits `0-9`
+- `CHARSET_ALNUM` -- consists of uppercase alphabet `A-Z`, lowercase alphabet `a-z` and digit `0-9`
 - `CHARSET_BINARY` -- consists of characters `01`
 - `CHARSET_OCTAL` -- consists of characters `01234567`
 - `CHARSET_HEX` -- consists of characters `0-9` and `A-F`
@@ -147,6 +151,40 @@ const myCoupon = coupon.generate({
   }
 });
 ```
+
+## Generate multiple unique coupons
+Pass the following to generate multiple unqiue coupons.
+```javascript
+const myCoupons = coupon.generate({
+  numberOfCoupons: number
+});
+```
+The above code will return an array of coupons.
+
+Where, `number` represents the total number of unique coupons to generate.
+
+Range of `numberOfCoupons`
+
+- Min 1
+- Max 100000
+
+Example:
+Following code will generate 3 unique coupons of length 8 using builtIn `CHARSET_ALPHA` and `CHARSET_DIGIT` option.
+```javascript
+const myCoupons = coupon.generate({
+  length: 8,
+  numberOfCoupons: 3,
+  characterSet: {
+    builtIn: ['CHARSET_ALPHA', 'CHARSET_DIGIT']
+  }
+});
+```
+
+Sample output:
+```
+['95TMY9JV', 'RZU6ZL0K', '1Q19NY19']
+```
+
 
 ## License
 It's free :smiley:
