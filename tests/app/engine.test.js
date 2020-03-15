@@ -27,7 +27,7 @@ test('Should throw error if numberOfCoupons is greater than 100000', () => {
     const engine = new Engine(characterSet, mockRandomInteger, 1, prefix, suffix, 100001);
     engine.run();
     throw new Error('Should have failed.');
-  }).toThrow('Minimum value for numberOfCoupons is 100000.');
+  }).toThrow('Maximum value for numberOfCoupons is 100000.');
 });
 
 test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons', () => {
