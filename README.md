@@ -2,7 +2,7 @@
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.6.1-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.7.0-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 
 # Getting Started
