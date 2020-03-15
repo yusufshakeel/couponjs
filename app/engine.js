@@ -1,4 +1,13 @@
-const {MAX_LENGTH, MIN_LENGTH, DEFAULT_LENGTH, DEFAULT_PREFIX, DEFAULT_SUFFIX} = require('./constants.js');
+const {
+  MAX_LENGTH,
+  MIN_LENGTH,
+  DEFAULT_LENGTH,
+  DEFAULT_PREFIX,
+  DEFAULT_SUFFIX,
+  MIN_NUMBER_OF_COUPONS_TO_GENERATE,
+  MAX_NUMBER_OF_COUPONS_TO_GENERATE,
+  DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE
+} = require('./constants.js');
 const characterSetBuilder = require('./character-set-builder.js');
 
 /**
@@ -8,17 +17,26 @@ const characterSetBuilder = require('./character-set-builder.js');
  * @param {number} length This is the length of the coupon excluding prefix and suffix characters if any.
  * @param {string} prefix This is the set of characters that is added at the start of the coupon.
  * @param {string} suffix This is the set of characters that is added at the end of the coupon.
+ * @param {number} numberOfCoupons Total number of coupons to generate.
  * @constructor
  */
-const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LENGTH, prefix = DEFAULT_PREFIX, suffix = DEFAULT_SUFFIX) {
+const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LENGTH, prefix = DEFAULT_PREFIX, suffix = DEFAULT_SUFFIX, numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE) {
+
+  const characters = characterSetBuilder(characterSetOption).split('');
+  const charactersLength = characters.length;
+  const totalNumberOfPossibleCoupons = Math.pow(charactersLength, length);
 
   /**
    * This will validate options
-   * @param length
+   * @param {number} length
+   * @param {number} numberOfCoupons
    */
-  const validate = function ({length}) {
-    if (length <= MIN_LENGTH) throw new Error(`Minimum value for "length" is ${MIN_LENGTH}.`);
-    if (length >= MAX_LENGTH) throw new Error(`Maximum value for "length" is ${MAX_LENGTH}.`);
+  const validate = function ({length, numberOfCoupons}) {
+    if (numberOfCoupons < MIN_NUMBER_OF_COUPONS_TO_GENERATE) throw new Error(`Minimum value for numberOfCoupons is ${MIN_NUMBER_OF_COUPONS_TO_GENERATE}.`);
+    if (numberOfCoupons > MAX_NUMBER_OF_COUPONS_TO_GENERATE) throw new Error(`Minimum value for numberOfCoupons is ${MAX_NUMBER_OF_COUPONS_TO_GENERATE}.`);
+    if (numberOfCoupons > totalNumberOfPossibleCoupons) throw new Error(`Total number of possible coupons that can be generated is ${totalNumberOfPossibleCoupons}.`);
+    if (length < MIN_LENGTH) throw new Error(`Minimum value for length is ${MIN_LENGTH}.`);
+    if (length > MAX_LENGTH) throw new Error(`Maximum value for length is ${MAX_LENGTH}.`);
   };
 
   /**
@@ -26,8 +44,6 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
    * @returns {string}
    */
   function generateCoupon() {
-    const characters = characterSetBuilder(characterSetOption).split('');
-    const charactersLength = characters.length;
     const generatedCouponCharacters = [];
     for (let i = 0; i < length; i++) {
       generatedCouponCharacters.push(
@@ -38,12 +54,37 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
   }
 
   /**
+   * This will generate single coupon.
+   * @returns {string}
+   */
+  function generateSingleCoupon() {
+    return generateCoupon();
+  }
+
+  /**
+   * This will generate multiple coupons.
+   * @returns {string[]}
+   */
+  function generateMultipleCoupons() {
+    const couponSet = new Set();
+    while(couponSet.size < numberOfCoupons) {
+      couponSet.add(generateCoupon());
+    }
+    let coupons = [];
+    couponSet.forEach(coupon => coupons.push(coupon));
+    return coupons;
+  }
+
+  /**
    * This will return coupon.
    * @returns {string}
    */
   this.run = function () {
-    validate({length});
-    return generateCoupon();
+    validate({length, numberOfCoupons});
+    if (numberOfCoupons === 1) {
+      return generateSingleCoupon();
+    }
+    return generateMultipleCoupons();
   };
 };
 
