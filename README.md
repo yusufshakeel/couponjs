@@ -141,7 +141,7 @@ const myCoupon = coupon.generate({
 });
 ```
 
-## Coupons using builtIn and custom characterSet
+## Coupons using built in and custom character set
 Example: Following option will use digit `0-9` and alphabet `ABC`.
 ```javascript
 const myCoupon = coupon.generate({
