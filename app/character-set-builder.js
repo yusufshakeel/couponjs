@@ -7,8 +7,7 @@ const characterSet = require('./character-set.js');
  */
 function characterSetBuilder(characterSetOptions) {
   const {builtIn = [], custom = []} = characterSetOptions;
-  const builtInCharacters = builtIn.map(charSetName => characterSet(charSetName));
-  return Array.from(new Set([...builtInCharacters, ...custom].join(''))).join('');
+  return Array.from(new Set([...builtIn.map(charSetName => characterSet(charSetName)), ...custom].join(''))).join('');
 }
 
 module.exports = characterSetBuilder;
