@@ -67,12 +67,10 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
    */
   function generateMultipleCoupons() {
     const couponSet = new Set();
-    while(couponSet.size < numberOfCoupons) {
+    while (couponSet.size < numberOfCoupons) {
       couponSet.add(generateCoupon());
     }
-    let coupons = [];
-    couponSet.forEach(coupon => coupons.push(coupon));
-    return coupons;
+    return [...couponSet];
   }
 
   /**
