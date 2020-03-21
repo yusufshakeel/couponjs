@@ -8,13 +8,9 @@ const characterSet = require('./character-set.js');
 function characterSetBuilder(characterSetOptions) {
   const {builtIn = [], custom = []} = characterSetOptions;
 
-  const builtInCharacters = builtIn.reduce((chars, charSet) => {
-    return `${chars}${characterSet(charSet)}`;
-  }, '');
+  const builtInCharacters = builtIn.reduce((chars, charSet) => `${chars}${characterSet(charSet)}`, '');
 
-  const customCharacters = custom.reduce((chars, charSet) => {
-    return `${chars}${charSet}`;
-  }, '');
+  const customCharacters = custom.reduce((chars, charSet) => `${chars}${charSet}`, '');
 
   const distinctCharacters = `${builtInCharacters}${customCharacters}`.split('').reduce((characters, character) => {
     return characters + (characters.indexOf(character) === -1 ? character : '');
