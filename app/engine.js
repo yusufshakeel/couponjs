@@ -46,9 +46,7 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
   function generateCoupon() {
     const generatedCouponCharacters = [];
     for (let i = 0; i < length; i++) {
-      generatedCouponCharacters.push(
-        characters[randomInteger(0, charactersLength - 1)]
-      );
+      generatedCouponCharacters.push(characters[randomInteger(0, charactersLength - 1)]);
     }
     return `${prefix}${generatedCouponCharacters.join('')}${suffix}`;
   }
@@ -67,12 +65,10 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
    */
   function generateMultipleCoupons() {
     const couponSet = new Set();
-    while(couponSet.size < numberOfCoupons) {
+    while (couponSet.size < numberOfCoupons) {
       couponSet.add(generateCoupon());
     }
-    let coupons = [];
-    couponSet.forEach(coupon => coupons.push(coupon));
-    return coupons;
+    return [...couponSet];
   }
 
   /**
