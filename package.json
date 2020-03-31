@@ -7,7 +7,9 @@
     "test": "jest -c jest.config.json",
     "generate-docs": "npx jsdoc -c jsdocs.config.json",
     "lint": "npx eslint -c .eslintrc.json ./index.js ./app",
-    "precommit": "npm run lint && npm run test && npm run generate-docs"
+    "search-circular-dependencies": "npx madge -c ./index.js ./app",
+    "search-duplicate-code": "npx jscpd ./index.js ./app",
+    "precommit": "npm run lint && npm run search-circular-dependencies && npm run search-duplicate-code && npm run test && npm run generate-docs"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,8 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "jest": "^25.1.0",
-    "jsdoc": "^3.6.3"
+    "jscpd": "^3.1.0",
+    "jsdoc": "^3.6.3",
+    "madge": "^3.8.0"
   }
 }
