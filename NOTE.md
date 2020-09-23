@@ -16,6 +16,18 @@ To generate JS Documentation run the following command.
 > npm run generate-docs
 ```
 
+### Madge
+To check for circular dependencies. If it exists then steps must be taken to fix it.
+```
+> npm run search-circular-dependencies
+```
+
+### JSCPD
+To check for duplicate code. If it exists then steps must be taken to fix it.
+```
+> npm run search-duplicate-code
+```
+
 ### Precommit
 Run the following command before making Git Commit.
 ```
