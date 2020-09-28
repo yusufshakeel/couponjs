@@ -255,3 +255,15 @@ test('Should return 2 unique coupon when character set is "abc", length is 3 and
   const engine = new Engine(characterSet, randomInteger, 3, defaultOption.prefix, defaultOption.suffix, 2);
   expect(engine.run().length).toBe(2);
 });
+
+test('Should return 2 unique coupon when character set is "abcdef" "123456" and omit "abc" "123", length is 3 and numberOfCoupons is 2', () => {
+  const characterSet = {
+    custom: ['abcdef', '123456']
+  };
+  const engine = new Engine(characterSet, randomInteger, 6, defaultOption.prefix, defaultOption.suffix, 2, ['abc', '123']);
+  const coupons = engine.run();
+  expect(coupons.length).toBe(2);
+  coupons.forEach(coupon => {
+    expect(/^[def456]{6}/.test(coupon)).toBeTruthy();
+  });
+});

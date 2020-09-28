@@ -100,3 +100,7 @@ test('Should return hex characters when using builtIn "CHARSET_HEX" option', () 
 test('Should return hex lowercase characters when using builtIn "CHARSET_HEX_LOWER" option', () => {
   expect(characterSetBuilder({builtIn: [CHARSET_HEX_LOWER]})).toBe(HEX_LOWER);
 });
+
+test('Should be able to omit characters', () => {
+  expect(characterSetBuilder({custom: ['ABCDEF', '123456']}, ['AB', '12'])).toBe('CDEF3456');
+});

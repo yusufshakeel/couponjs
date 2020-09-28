@@ -6,7 +6,8 @@ const {
   DEFAULT_SUFFIX,
   MIN_NUMBER_OF_COUPONS_TO_GENERATE,
   MAX_NUMBER_OF_COUPONS_TO_GENERATE,
-  DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE
+  DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
+  DEFAULT_OMIT_CHARACTERS
 } = require('./constants.js');
 const characterSetBuilder = require('./character-set-builder.js');
 
@@ -18,11 +19,12 @@ const characterSetBuilder = require('./character-set-builder.js');
  * @param {string} prefix This is the set of characters that is added at the start of the coupon.
  * @param {string} suffix This is the set of characters that is added at the end of the coupon.
  * @param {number} numberOfCoupons Total number of coupons to generate.
+ * @param {string[]} omitCharacters This is the array of characters that will be ignored.
  * @constructor
  */
-const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LENGTH, prefix = DEFAULT_PREFIX, suffix = DEFAULT_SUFFIX, numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE) {
+const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LENGTH, prefix = DEFAULT_PREFIX, suffix = DEFAULT_SUFFIX, numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE, omitCharacters = DEFAULT_OMIT_CHARACTERS) {
 
-  const characters = characterSetBuilder(characterSetOption).split('');
+  const characters = characterSetBuilder(characterSetOption, omitCharacters).split('');
   const charactersLength = characters.length;
   const totalNumberOfPossibleCoupons = Math.pow(charactersLength, length);
 
