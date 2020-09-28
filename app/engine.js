@@ -1,3 +1,5 @@
+'use strict';
+
 const {
   MAX_LENGTH,
   MIN_LENGTH,
@@ -22,7 +24,15 @@ const characterSetBuilder = require('./character-set-builder.js');
  * @param {string[]} omitCharacters This is the array of characters that will be ignored.
  * @constructor
  */
-const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LENGTH, prefix = DEFAULT_PREFIX, suffix = DEFAULT_SUFFIX, numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE, omitCharacters = DEFAULT_OMIT_CHARACTERS) {
+const Engine = function (
+  characterSetOption,
+  randomInteger,
+  length = DEFAULT_LENGTH,
+  prefix = DEFAULT_PREFIX,
+  suffix = DEFAULT_SUFFIX,
+  numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
+  omitCharacters = DEFAULT_OMIT_CHARACTERS
+) {
 
   const characters = characterSetBuilder(characterSetOption, omitCharacters).split('');
   const charactersLength = characters.length;
@@ -33,7 +43,7 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
    * @param {number} length
    * @param {number} numberOfCoupons
    */
-  const validate = function ({length, numberOfCoupons}) {
+  const validate = function ({ length, numberOfCoupons }) {
     if (numberOfCoupons < MIN_NUMBER_OF_COUPONS_TO_GENERATE) throw new Error(`Minimum value for numberOfCoupons is ${MIN_NUMBER_OF_COUPONS_TO_GENERATE}.`);
     if (numberOfCoupons > MAX_NUMBER_OF_COUPONS_TO_GENERATE) throw new Error(`Maximum value for numberOfCoupons is ${MAX_NUMBER_OF_COUPONS_TO_GENERATE}.`);
     if (numberOfCoupons > totalNumberOfPossibleCoupons) throw new Error(`Total number of possible coupons that can be generated is ${totalNumberOfPossibleCoupons}.`);
@@ -78,7 +88,7 @@ const Engine = function (characterSetOption, randomInteger, length = DEFAULT_LEN
    * @returns {string}
    */
   this.run = function () {
-    validate({length, numberOfCoupons});
+    validate({ length, numberOfCoupons });
     if (numberOfCoupons === 1) {
       return generateSingleCoupon();
     }

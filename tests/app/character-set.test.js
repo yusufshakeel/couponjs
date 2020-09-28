@@ -1,3 +1,5 @@
+'use strict';
+
 const characterSet = require('../../app/character-set.js');
 const {
   ALPHABET_UPPERCASE,

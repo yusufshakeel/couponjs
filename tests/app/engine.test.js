@@ -1,3 +1,5 @@
+'use strict';
+
 const Engine = require('../../app/engine.js');
 const defaultOption = require('../../app/option.js');
 const randomInteger = require('../../app/random-integer.js');

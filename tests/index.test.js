@@ -1,3 +1,5 @@
+'use strict';
+
 const Coupon = require('../index.js');
 
 test('Should generate coupon code using uppercase alphabet A-Z of length 6.', () => {

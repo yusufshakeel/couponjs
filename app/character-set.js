@@ -1,3 +1,5 @@
+'use strict';
+
 const {
   ALPHABET_UPPERCASE,
   ALPHABET_LOWERCASE,

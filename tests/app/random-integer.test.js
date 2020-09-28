@@ -1,3 +1,5 @@
+'use strict';
+
 const randomInteger = require('../../app/random-integer.js');
 
 test('Should return 0 when min and max is set to 0', () => {
