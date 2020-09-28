@@ -304,3 +304,9 @@ test('Should generate 100 unique coupons of length 128 using builtIn "CHARSET_AL
   }
   expect(unqiueCoupons.length).toBe(myCoupons.length);
 });
+
+test('Should generate coupon code using uppercase alphabet A-Z of length 6 and omit "ABCDEFGH".', () => {
+  const coupon = new Coupon();
+  const result = coupon.generate({ omitCharacters: ['ABC', 'XYZ'] });
+  expect(/^[D-W]{6}$/.test(result)).toBeTruthy();
+});

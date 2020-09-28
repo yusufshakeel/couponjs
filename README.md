@@ -186,6 +186,29 @@ Sample output:
 ['95TMY9JV', 'RZU6ZL0K', '1Q19N019']
 ```
 
+## Omit characters
+
+To omit characters from the generated coupon code we pass the following option.
+
+```javascript
+const myCoupons = coupon.generate({
+  omitCharacters: ['charToOmit']
+});
+```
+
+Where, `omitCharacters` is the field that will help in omitting the characters.
+
+`charToOmit` is a string of characters to omit from the generated coupon codes.
+
+Example:
+
+```javascript
+const myCoupons = coupon.generate({
+  omitCharacters: ['ABC', 'XYZ']
+});
+```
+
+The above code will generate coupons that will omit characters `A`, `B`, `C`, `X`, `Y` and `Z`.
 
 ## License
 It's free :smiley:
