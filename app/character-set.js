@@ -34,26 +34,23 @@ function characterSet(charSetName) {
     CHARSET_HEX,
     CHARSET_HEX_LOWER
   ];
-  switch (charSetName) {
-  case CHARSET_ALPHA:
-    return ALPHABET_UPPERCASE;
-  case CHARSET_ALPHA_LOWER:
-    return ALPHABET_LOWERCASE;
-  case CHARSET_DIGIT:
-    return DIGIT;
-  case CHARSET_ALNUM:
-    return `${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`;
-  case CHARSET_BINARY:
-    return `${BINARY}`;
-  case CHARSET_OCTAL:
-    return `${OCTAL}`;
-  case CHARSET_HEX:
-    return `${HEX}`;
-  case CHARSET_HEX_LOWER:
-    return `${HEX_LOWER}`;
-  default:
-    throw new Error(`Invalid builtIn characterSet specified. Allowed values: ${validCharSets.join(', ')}`);
+  const possibleCharecterSets = {
+    [CHARSET_ALPHA]: ALPHABET_UPPERCASE,
+    [CHARSET_ALPHA_LOWER]: ALPHABET_LOWERCASE,
+    [CHARSET_DIGIT]: DIGIT,
+    [CHARSET_ALNUM]: `${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`,
+    [CHARSET_BINARY]: BINARY,
+    [CHARSET_OCTAL]: OCTAL,
+    [CHARSET_HEX]: HEX,
+    [CHARSET_HEX_LOWER]: HEX_LOWER
+  };
+  const matchingCharacterSet = possibleCharecterSets[charSetName];
+  if (!matchingCharacterSet) {
+    throw new Error(
+      `Invalid builtIn characterSet specified. Allowed values: ${validCharSets.join(', ')}`
+    );
   }
+  return matchingCharacterSet;
 }
 
 module.exports = characterSet;

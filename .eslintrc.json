@@ -61,7 +61,7 @@
       "unix"
     ],
     "quotes": [
-      2,
+      "error",
       "single",
       {
         "allowTemplateLiterals": true,

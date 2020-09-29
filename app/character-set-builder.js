@@ -13,9 +13,9 @@ function characterSetBuilder(characterSetOptions, omitCharacters = DEFAULT_OMIT_
   const { builtIn = [], custom = [] } = characterSetOptions;
   const charactersToOmit = [...new Set(omitCharacters.join(''))];
   const charactersFromCharacterSetOptions = [
-    ...new Set([
-      ...builtIn.map(characterSetName => characterSet(characterSetName)), ...custom
-    ].join(''))
+    ...new Set(
+      [...builtIn.map(characterSetName => characterSet(characterSetName)), ...custom].join('')
+    )
   ];
   const charactersToUse = charactersFromCharacterSetOptions.filter(
     character => !charactersToOmit.includes(character)

@@ -33,7 +33,6 @@ const Engine = function (
   numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
   omitCharacters = DEFAULT_OMIT_CHARACTERS
 ) {
-
   const characters = characterSetBuilder(characterSetOption, omitCharacters).split('');
   const charactersLength = characters.length;
   const totalNumberOfPossibleCoupons = Math.pow(charactersLength, length);
@@ -44,9 +43,14 @@ const Engine = function (
    * @param {number} numberOfCoupons
    */
   const validate = function ({ length, numberOfCoupons }) {
-    if (numberOfCoupons < MIN_NUMBER_OF_COUPONS_TO_GENERATE) throw new Error(`Minimum value for numberOfCoupons is ${MIN_NUMBER_OF_COUPONS_TO_GENERATE}.`);
-    if (numberOfCoupons > MAX_NUMBER_OF_COUPONS_TO_GENERATE) throw new Error(`Maximum value for numberOfCoupons is ${MAX_NUMBER_OF_COUPONS_TO_GENERATE}.`);
-    if (numberOfCoupons > totalNumberOfPossibleCoupons) throw new Error(`Total number of possible coupons that can be generated is ${totalNumberOfPossibleCoupons}.`);
+    if (numberOfCoupons < MIN_NUMBER_OF_COUPONS_TO_GENERATE)
+      throw new Error(`Minimum value for numberOfCoupons is ${MIN_NUMBER_OF_COUPONS_TO_GENERATE}.`);
+    if (numberOfCoupons > MAX_NUMBER_OF_COUPONS_TO_GENERATE)
+      throw new Error(`Maximum value for numberOfCoupons is ${MAX_NUMBER_OF_COUPONS_TO_GENERATE}.`);
+    if (numberOfCoupons > totalNumberOfPossibleCoupons)
+      throw new Error(
+        `Total number of possible coupons that can be generated is ${totalNumberOfPossibleCoupons}.`
+      );
     if (length < MIN_LENGTH) throw new Error(`Minimum value for length is ${MIN_LENGTH}.`);
     if (length > MAX_LENGTH) throw new Error(`Maximum value for length is ${MAX_LENGTH}.`);
   };
