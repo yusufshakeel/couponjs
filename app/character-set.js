@@ -34,7 +34,7 @@ function characterSet(charSetName) {
     CHARSET_HEX,
     CHARSET_HEX_LOWER
   ];
-  const possibleCharecterSets = {
+  const possibleCharacterSets = {
     [CHARSET_ALPHA]: ALPHABET_UPPERCASE,
     [CHARSET_ALPHA_LOWER]: ALPHABET_LOWERCASE,
     [CHARSET_DIGIT]: DIGIT,
@@ -44,7 +44,7 @@ function characterSet(charSetName) {
     [CHARSET_HEX]: HEX,
     [CHARSET_HEX_LOWER]: HEX_LOWER
   };
-  const matchingCharacterSet = possibleCharecterSets[charSetName];
+  const matchingCharacterSet = possibleCharacterSets[charSetName];
   if (!matchingCharacterSet) {
     throw new Error(
       `Invalid builtIn characterSet specified. Allowed values: ${validCharSets.join(', ')}`
