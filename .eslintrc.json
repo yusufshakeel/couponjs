@@ -133,6 +133,9 @@
       "error",
       10
     ],
-    "curly": "off"
+    "valid-jsdoc": [
+      "off",
+      "always"
+    ]
   }
 }
