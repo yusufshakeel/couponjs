@@ -1,7 +1,7 @@
 'use strict';
 
 const {
-  hasValidCharacterInFormatRule,
+  hasValidCharacterInFormatRuleString,
   hasEqualSumOfGroupsAndCouponLength
 } = require('./validator/formatter-validator.js');
 
@@ -14,7 +14,7 @@ function validate(format) {
   if (formatType === 'undefined') {
     throw new Error('Format rule is not specified.');
   } else if (formatType === 'string') {
-    if (!hasValidCharacterInFormatRule(format)) {
+    if (!hasValidCharacterInFormatRuleString(format)) {
       throw new Error('Invalid characters used in the format rule. Only x and - are allowed.');
     }
     const groups = format.split('-').map(group => group.length);

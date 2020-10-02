@@ -1,6 +1,6 @@
 'use strict';
 
-function hasValidCharacterInFormatRule(ruleString) {
+function hasValidCharacterInFormatRuleString(ruleString) {
   return /^x([x-]*x)?$/g.test(ruleString);
 }
 
@@ -9,6 +9,6 @@ function hasEqualSumOfGroupsAndCouponLength(coupon, groupLength) {
 }
 
 module.exports = {
-  hasValidCharacterInFormatRule,
+  hasValidCharacterInFormatRuleString,
   hasEqualSumOfGroupsAndCouponLength
 };
