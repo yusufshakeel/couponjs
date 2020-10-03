@@ -4,6 +4,38 @@ function sumOfGroupsCharacters(groups) {
   return groups.reduce((sum, size) => sum + size, 0);
 }
 
+function getErrorsInGroups(groups) {
+  return groups.reduce((error, group, index) => {
+    if (typeof group === 'number' && Number.isInteger(group)) {
+      return error;
+    }
+    return [
+      ...error,
+      {
+        field: 'separators',
+        message: `Format object must only have integer elements in 'groups' array. Found error at index ${index}.`,
+        validation: 'error'
+      }
+    ];
+  }, []);
+}
+
+function getErrorsInSeparatos(separators) {
+  return separators.reduce((error, separator, index) => {
+    if (typeof separator !== 'string') {
+      return [
+        ...error,
+        {
+          field: 'separators',
+          message: `Format object must only have string elements in 'separators' array. Found error at index ${index}.`,
+          validation: 'error'
+        }
+      ];
+    }
+    return error;
+  }, []);
+}
+
 function validateFormatRuleString(ruleString) {
   const isValidFormatRuleString = /^([x]+-?[x]*)*?x$/g.test(ruleString);
   if (isValidFormatRuleString) {
@@ -29,6 +61,7 @@ function validateFormatRuleString(ruleString) {
 
 function validateFormatRuleObject(ruleObject) {
   const { separators, groups } = ruleObject;
+
   if (!Array.isArray(separators)) {
     return {
       validation: 'error',
@@ -36,6 +69,7 @@ function validateFormatRuleObject(ruleObject) {
       message: `Format object must have field 'separators' of type array.`
     };
   }
+
   if (Array.isArray(separators) && separators.length === 0) {
     return {
       validation: 'error',
@@ -43,6 +77,7 @@ function validateFormatRuleObject(ruleObject) {
       message: `Format object must have at least one element in the array field 'separators'.`
     };
   }
+
   if (!Array.isArray(groups)) {
     return {
       validation: 'error',
@@ -50,13 +85,15 @@ function validateFormatRuleObject(ruleObject) {
       message: `Format object must have field 'groups' of type array.`
     };
   }
-  if (Array.isArray(groups) && groups.length === 0) {
+
+  if (groups.length === 0) {
     return {
       validation: 'error',
       field: 'groups',
       message: `Format object must have at least one element in the array field 'groups'.`
     };
   }
+
   if (separators.length >= groups.length) {
     return {
       field: 'separators',
@@ -64,18 +101,32 @@ function validateFormatRuleObject(ruleObject) {
       validation: 'error'
     };
   }
+
   if (separators.length !== groups.length - 1) {
     return {
       field: 'separators',
-      message: `Format object must have ${groups.length - 1} elements in 'separators' array.`,
+      message: `Format object has ${groups.length} elements in 'groups' array so, it must have ${
+        groups.length - 1
+      } elements in 'separators' array.`,
       validation: 'error'
     };
   }
+
+  const separatorElementTypeError = getErrorsInSeparatos(separators);
+  if (separatorElementTypeError.length > 0) {
+    return separatorElementTypeError[0];
+  }
+
+  const groupsElementTypeError = getErrorsInGroups(groups);
+  if (groupsElementTypeError.length > 0) {
+    return groupsElementTypeError[0];
+  }
+
   return {
     validation: 'success',
     data: {
       separators,
-      groups,
+      groups: groups.map(group => parseInt(group)),
       totalCharactersInGroup: sumOfGroupsCharacters(groups)
     }
   };

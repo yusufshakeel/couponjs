@@ -143,7 +143,36 @@ test('Should return validation error if separators array has lesser number of el
     })
   ).toStrictEqual({
     field: 'separators',
-    message: "Format object must have 2 elements in 'separators' array.",
+    message:
+      "Format object has 3 elements in 'groups' array so, it must have 2 elements in 'separators' array.",
+    validation: 'error'
+  });
+});
+
+test('Should return validation error if separators array non-string type elements', () => {
+  expect(
+    validateFormatRuleObject({
+      separators: ['-', 123],
+      groups: [4, 4, 4]
+    })
+  ).toStrictEqual({
+    field: 'separators',
+    message:
+      "Format object must only have string elements in 'separators' array. Found error at index 1.",
+    validation: 'error'
+  });
+});
+
+test('Should return validation error if groups array non-integer type elements', () => {
+  expect(
+    validateFormatRuleObject({
+      separators: ['-', '-'],
+      groups: [4, '4', 4]
+    })
+  ).toStrictEqual({
+    field: 'separators',
+    message:
+      "Format object must only have integer elements in 'groups' array. Found error at index 1.",
     validation: 'error'
   });
 });

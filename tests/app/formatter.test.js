@@ -88,7 +88,9 @@ describe('Format rule of type object', () => {
     expect(() => {
       new Formatter({ separators: ['-'], groups: [4, 4, 4] });
       throw new Error('Should have failed!');
-    }).toThrow("Format object must have 2 elements in 'separators' array.");
+    }).toThrow(
+      "Format object has 3 elements in 'groups' array so, it must have 2 elements in 'separators' array."
+    );
   });
 
   test('Should return formatted coupon', () => {
