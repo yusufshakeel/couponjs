@@ -1,18 +1,18 @@
 'use strict';
 
 const Engine = require('../../app/engine.js');
-const defaultOption = require('../../app/option.js');
+const { defaultCouponGenerationOption } = require('../../app/option.js');
 const randomInteger = require('../../app/random-integer.js');
 
 test('Should throw error if numberOfCoupons is less than 1', () => {
   expect.assertions(3);
   try {
-    const characterSet = defaultOption.characterSet;
+    const characterSet = defaultCouponGenerationOption.characterSet;
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 1, prefix, suffix, 0);
     engine.run();
   } catch (e) {
@@ -31,12 +31,12 @@ test('Should throw error if numberOfCoupons is less than 1', () => {
 test('Should throw error if numberOfCoupons is greater than 100000', () => {
   expect.assertions(3);
   try {
-    const characterSet = defaultOption.characterSet;
+    const characterSet = defaultCouponGenerationOption.characterSet;
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 1, prefix, suffix, 100001);
     engine.run();
   } catch (e) {
@@ -61,8 +61,8 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100);
     engine.run();
   } catch (e) {
@@ -87,8 +87,8 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
   } catch (e) {
@@ -113,8 +113,8 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
   } catch (e) {
@@ -139,8 +139,8 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
   } catch (e) {
@@ -165,8 +165,8 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
   } catch (e) {
@@ -191,8 +191,8 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
   } catch (e) {
@@ -217,8 +217,8 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
   } catch (e) {
@@ -243,8 +243,8 @@ test('Should throw error if length is 2 and numberOfCoupons is greater than tota
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
-    const prefix = defaultOption.prefix;
-    const suffix = defaultOption.suffix;
+    const prefix = defaultCouponGenerationOption.prefix;
+    const suffix = defaultCouponGenerationOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 2, prefix, suffix, 100000);
     engine.run();
   } catch (e) {
@@ -263,7 +263,7 @@ test('Should throw error if length is 2 and numberOfCoupons is greater than tota
 test('Should throw error if length is less than 1', () => {
   expect.assertions(3);
   try {
-    const characterSet = defaultOption.characterSet;
+    const characterSet = defaultCouponGenerationOption.characterSet;
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
@@ -285,7 +285,7 @@ test('Should throw error if length is less than 1', () => {
 test('Should throw error if length is greater than 128', () => {
   expect.assertions(3);
   try {
-    const characterSet = defaultOption.characterSet;
+    const characterSet = defaultCouponGenerationOption.characterSet;
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
@@ -378,8 +378,8 @@ test('Should return 2 unique coupon when character set is "abc", length is 3 and
     characterSet,
     randomInteger,
     3,
-    defaultOption.prefix,
-    defaultOption.suffix,
+    defaultCouponGenerationOption.prefix,
+    defaultCouponGenerationOption.suffix,
     2
   );
   expect(engine.run().length).toBe(2);
@@ -393,8 +393,8 @@ test('Should return 2 unique coupon when character set is "abcdef" "123456" and 
     characterSet,
     randomInteger,
     6,
-    defaultOption.prefix,
-    defaultOption.suffix,
+    defaultCouponGenerationOption.prefix,
+    defaultCouponGenerationOption.suffix,
     2,
     ['abc', '123']
   );

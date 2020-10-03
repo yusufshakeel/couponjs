@@ -1,14 +1,17 @@
 'use strict';
 
 const Engine = require('./app/engine.js');
-const defaultOptions = require('./app/option.js');
+const { defaultCouponGenerationOption, defaultCouponEngineOption } = require('./app/option.js');
 const randomInteger = require('./app/random-integer.js');
 
 /**
  * The Coupon constructor.
+ * @param {object} config This is to configure the coupon engine.
  * @constructor
  */
-const Coupon = function () {
+const Coupon = function (config) {
+  const { verbose } = Object.assign({}, defaultCouponEngineOption, config);
+
   /**
    * This will generate coupons.
    *
@@ -24,18 +27,39 @@ const Coupon = function () {
       suffix,
       omitCharacters,
       format
-    } = Object.assign({}, defaultOptions, option);
-    const engine = new Engine(
-      characterSet,
-      randomInteger,
-      length,
-      prefix,
-      suffix,
-      numberOfCoupons,
-      omitCharacters,
-      format
-    );
-    return engine.run();
+    } = Object.assign({}, defaultCouponGenerationOption, option);
+    try {
+      const engine = new Engine(
+        characterSet,
+        randomInteger,
+        length,
+        prefix,
+        suffix,
+        numberOfCoupons,
+        omitCharacters,
+        format
+      );
+      const generatedCoupons = engine.run();
+      const verboseResult = {
+        numberOfCoupons,
+        status: 'success',
+        coupons: generatedCoupons
+      };
+      return verbose ? verboseResult : generatedCoupons;
+    } catch (e) {
+      if (verbose) {
+        return {
+          status: 'error',
+          error: {
+            message: e.message,
+            type: e.type,
+            errors: e.errors
+          }
+        };
+      } else {
+        throw e;
+      }
+    }
   };
 };
 
