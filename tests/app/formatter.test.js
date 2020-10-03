@@ -54,13 +54,6 @@ describe('Format rule of type object', () => {
     }).toThrow("Format object must have field 'separators' of type array.");
   });
 
-  test('Should throw error if required field separators is empty array', () => {
-    expect(() => {
-      new Formatter({ separators: [] });
-      throw new Error('Should have failed!');
-    }).toThrow("Format object must have at least one element in the array field 'separators'.");
-  });
-
   test('Should throw error if required field groups is not present', () => {
     expect(() => {
       new Formatter({ separators: ['-'] });

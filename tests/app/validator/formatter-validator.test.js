@@ -74,12 +74,6 @@ test('Should return validation error object if required fields is not present in
     validation: 'error'
   });
 
-  expect(validateFormatRuleObject({ separators: [] })).toStrictEqual({
-    field: 'separators',
-    message: "Format object must have at least one element in the array field 'separators'.",
-    validation: 'error'
-  });
-
   expect(validateFormatRuleObject({ separators: ['-'] })).toStrictEqual({
     field: 'groups',
     message: "Format object must have field 'groups' of type array.",
