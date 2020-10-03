@@ -1,5 +1,7 @@
 'use strict';
 
+const ValidationError = require('./error/validation-error.js');
+
 const {
   ALPHABET_UPPERCASE,
   ALPHABET_LOWERCASE,
@@ -46,9 +48,12 @@ function characterSet(charSetName) {
   };
   const matchingCharacterSet = possibleCharacterSets[charSetName];
   if (!matchingCharacterSet) {
-    throw new Error(
-      `Invalid builtIn characterSet specified. Allowed values: ${validCharSets.join(', ')}`
-    );
+    throw new ValidationError({
+      message: `Invalid builtIn characterSet specified. Allowed values: ${validCharSets.join(
+        ', '
+      )}`,
+      errors: [{ field: 'builtIn', context: `Invalid character set ${charSetName}` }]
+    });
   }
   return matchingCharacterSet;
 }
