@@ -1,12 +1,13 @@
 {
   "name": "couponjs",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "This is a simple coupon creation project using NodeJS.",
   "main": "index.js",
   "scripts": {
     "test": "jest -c jest.config.json",
     "generate-docs": "npx jsdoc -c jsdocs.config.json",
-    "lint": "npx eslint -c .eslintrc.json ./index.js ./app",
+    "lint": "npx eslint -c .eslintrc.json ./index.js ./app ./tests",
+    "lint:fix": "npx eslint --fix -c .eslintrc.json ./index.js ./app ./tests",
     "search-circular-dependencies": "npx madge -c ./index.js ./app",
     "search-duplicate-code": "npx jscpd ./index.js ./app",
     "precommit": "npm run lint && npm run search-circular-dependencies && npm run search-duplicate-code && npm run test && npm run generate-docs",
@@ -29,12 +30,14 @@
   "homepage": "https://github.com/yusufshakeel/couponjs#readme",
   "devDependencies": {
     "coveralls": "^3.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.1",
-    "jest": "^25.1.0",
-    "jscpd": "^3.1.0",
-    "jsdoc": "^3.6.3",
-    "madge": "^3.8.0"
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "jscpd": "^3.3.19",
+    "jsdoc": "^3.6.6",
+    "madge": "^3.10.0",
+    "prettier": "^2.1.2"
   }
 }

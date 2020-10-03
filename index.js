@@ -1,3 +1,5 @@
+'use strict';
+
 const Engine = require('./app/engine.js');
 const defaultOptions = require('./app/option.js');
 const randomInteger = require('./app/random-integer.js');
@@ -14,8 +16,25 @@ const Coupon = function () {
    * @returns {string}
    */
   this.generate = function (option) {
-    const {numberOfCoupons, length, characterSet, prefix, suffix, omitCharacters} = Object.assign({}, defaultOptions, option);
-    const engine = new Engine(characterSet, randomInteger, length, prefix, suffix, numberOfCoupons, omitCharacters);
+    const {
+      numberOfCoupons,
+      length,
+      characterSet,
+      prefix,
+      suffix,
+      omitCharacters,
+      format
+    } = Object.assign({}, defaultOptions, option);
+    const engine = new Engine(
+      characterSet,
+      randomInteger,
+      length,
+      prefix,
+      suffix,
+      numberOfCoupons,
+      omitCharacters,
+      format
+    );
     return engine.run();
   };
 };
