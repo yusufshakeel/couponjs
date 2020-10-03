@@ -375,3 +375,47 @@ describe('Generate coupon with string format rule', () => {
     result.forEach(code => expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(code)).toBeTruthy());
   });
 });
+
+describe('Generate coupon with object format rule', () => {
+  test('Should generate coupon code using object format rule', () => {
+    const coupon = new Coupon();
+    const result = coupon.generate({
+      length: 12,
+      format: { separators: ['-', '-'], groups: [4, 4, 4] }
+    });
+    expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(result)).toBeTruthy();
+  });
+
+  test('Should generate multiple coupon codes using object format rule', () => {
+    const coupon = new Coupon();
+    const result = coupon.generate({
+      length: 12,
+      numberOfCoupons: 3,
+      format: { separators: ['-', '-'], groups: [4, 4, 4] }
+    });
+    result.forEach(code => expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(code)).toBeTruthy());
+  });
+
+  test('Should generate coupon code using object format rule and prefix and suffix', () => {
+    const coupon = new Coupon();
+    const result = coupon.generate({
+      prefix: 'QWERT',
+      suffix: 'ZXCVB',
+      length: 6,
+      format: { separators: ['-', '~', '-'], groups: [4, 4, 4, 4] }
+    });
+    expect(/^[A-z]{4}-[A-z]{4}~[A-z]{4}-[A-z]{4}$/.test(result)).toBeTruthy();
+  });
+
+  test('Should generate multiple coupon code using object format rule and prefix and suffix', () => {
+    const coupon = new Coupon();
+    const result = coupon.generate({
+      prefix: 'QWERT',
+      suffix: 'ZXCVB',
+      length: 6,
+      numberOfCoupons: 3,
+      format: { separators: ['-', '~', '-'], groups: [4, 4, 4, 4] }
+    });
+    result.forEach(code => expect(/^[A-z]{4}-[A-z]{4}~[A-z]{4}-[A-z]{4}$/.test(code)).toBeTruthy());
+  });
+});
