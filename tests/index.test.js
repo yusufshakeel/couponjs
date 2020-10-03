@@ -333,8 +333,43 @@ test('Should generate 100 unique coupons of length 128 using builtIn "CHARSET_AL
   expect(unqiueCoupons.length).toBe(myCoupons.length);
 });
 
-test('Should generate coupon code using uppercase alphabet A-Z of length 6 and omit "ABCDEFGH".', () => {
+test('Should generate coupon code using uppercase alphabet A-Z of length 6 and omit "ABCDEFGH"', () => {
   const coupon = new Coupon();
   const result = coupon.generate({ omitCharacters: ['ABC', 'XYZ'] });
   expect(/^[D-W]{6}$/.test(result)).toBeTruthy();
+});
+
+test('Should generate coupon code using string format rule', () => {
+  const coupon = new Coupon();
+  const result = coupon.generate({ length: 12, format: 'xx-xxxx-xxxx-xx' });
+  expect(/^[A-z]{2}-[A-z]{4}-[A-z]{4}-[A-z]{2}$/.test(result)).toBeTruthy();
+});
+
+test('Should generate multiple coupon codes using string format rule', () => {
+  const coupon = new Coupon();
+  const result = coupon.generate({ length: 12, numberOfCoupons: 3, format: 'xx-xxxx-xxxx-xx' });
+  result.forEach(code => expect(/^[A-z]{2}-[A-z]{4}-[A-z]{4}-[A-z]{2}$/.test(code)).toBeTruthy());
+});
+
+test('Should generate coupon code using string format rule and prefix and suffix', () => {
+  const coupon = new Coupon();
+  const result = coupon.generate({
+    prefix: 'HELLO',
+    suffix: 'WORLD',
+    length: 6,
+    format: 'xxxx-xxxx-xxxx-xxxx'
+  });
+  expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(result)).toBeTruthy();
+});
+
+test('Should generate multiple coupon code usingsg string format rule and prefix and suffix', () => {
+  const coupon = new Coupon();
+  const result = coupon.generate({
+    prefix: 'HELLO',
+    suffix: 'WORLD',
+    length: 6,
+    numberOfCoupons: 3,
+    format: 'xxxx-xxxx-xxxx-xxxx'
+  });
+  result.forEach(code => expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(code)).toBeTruthy());
 });

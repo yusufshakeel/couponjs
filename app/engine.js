@@ -9,8 +9,10 @@ const {
   MIN_NUMBER_OF_COUPONS_TO_GENERATE,
   MAX_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
-  DEFAULT_OMIT_CHARACTERS
+  DEFAULT_OMIT_CHARACTERS,
+  UNDEFINED
 } = require('./constants.js');
+const Formatter = require('./formatter.js');
 const characterSetBuilder = require('./character-set-builder.js');
 
 /**
@@ -22,6 +24,7 @@ const characterSetBuilder = require('./character-set-builder.js');
  * @param {string} suffix This is the set of characters that is added at the end of the coupon.
  * @param {number} numberOfCoupons Total number of coupons to generate.
  * @param {string[]} omitCharacters This is the array of characters that will be ignored.
+ * @param {string|object} format This is the format rule that will be applied to the coupon.
  * @constructor
  */
 const Engine = function (
@@ -31,8 +34,11 @@ const Engine = function (
   prefix = DEFAULT_PREFIX,
   suffix = DEFAULT_SUFFIX,
   numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
-  omitCharacters = DEFAULT_OMIT_CHARACTERS
+  omitCharacters = DEFAULT_OMIT_CHARACTERS,
+  format = UNDEFINED
 ) {
+  const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
+
   const characters = characterSetBuilder(characterSetOption, omitCharacters).split('');
   const charactersLength = characters.length;
   const totalNumberOfPossibleCoupons = Math.pow(charactersLength, length);
@@ -64,7 +70,8 @@ const Engine = function (
     for (let i = 0; i < length; i++) {
       generatedCouponCharacters.push(characters[randomInteger(0, charactersLength - 1)]);
     }
-    return `${prefix}${generatedCouponCharacters.join('')}${suffix}`;
+    const coupon = `${prefix}${generatedCouponCharacters.join('')}${suffix}`;
+    return formatter.format(coupon);
   }
 
   /**
