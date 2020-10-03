@@ -29,7 +29,7 @@ describe('Format rule of type string', () => {
     expect(formatter.getConfig()).toStrictEqual({
       separators: ['-', '-'],
       groups: [1, 1, 1],
-      groupCount: 3
+      totalCharactersInGroup: 3
     });
   });
 

@@ -11,7 +11,7 @@ test('Should return true if format rule has valid characters x and -', () => {
     validation: 'success',
     data: {
       groups: [1],
-      groupCount: 1,
+      totalCharactersInGroup: 1,
       separators: []
     }
   });
@@ -19,7 +19,7 @@ test('Should return true if format rule has valid characters x and -', () => {
     validation: 'success',
     data: {
       groups: [1, 1],
-      groupCount: 2,
+      totalCharactersInGroup: 2,
       separators: ['-']
     }
   });
@@ -27,7 +27,7 @@ test('Should return true if format rule has valid characters x and -', () => {
     validation: 'success',
     data: {
       groups: [3, 3],
-      groupCount: 6,
+      totalCharactersInGroup: 6,
       separators: ['-']
     }
   });
@@ -117,7 +117,7 @@ test('Should return validation success if all required fields present in the for
     })
   ).toStrictEqual({
     validation: 'success',
-    data: { groups: [4, 4], groupCount: 2, separators: ['-'] }
+    data: { groups: [4, 4], totalCharactersInGroup: 8, separators: ['-'] }
   });
 });
 

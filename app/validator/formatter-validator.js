@@ -1,16 +1,20 @@
 'use strict';
 
+function sumOfGroupsCharacters(groups) {
+  return groups.reduce((sum, size) => sum + size, 0);
+}
+
 function validateFormatRuleString(ruleString) {
   const isValidFormatRuleString = /^([x]+-?[x]*)*?x$/g.test(ruleString);
   if (isValidFormatRuleString) {
     const groups = ruleString.split('-').map(group => group.length);
-    const groupCount = groups.reduce((sum, size) => sum + size, 0);
+    const totalCharactersInGroup = sumOfGroupsCharacters(groups);
     const separators = '-'.repeat(groups.length - 1).split('');
     return {
       validation: 'success',
       data: {
         groups,
-        groupCount,
+        totalCharactersInGroup,
         separators
       }
     };
@@ -65,13 +69,13 @@ function validateFormatRuleObject(ruleObject) {
     data: {
       separators,
       groups,
-      groupCount: groups.length
+      totalCharactersInGroup: sumOfGroupsCharacters(groups)
     }
   };
 }
 
-function hasEqualSumOfGroupsAndCouponLength(coupon, groupCount) {
-  return coupon.length === groupCount;
+function hasEqualSumOfGroupsAndCouponLength(coupon, totalCharactersInGroup) {
+  return coupon.length === totalCharactersInGroup;
 }
 
 module.exports = {

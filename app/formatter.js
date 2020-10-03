@@ -15,11 +15,11 @@ function validate(format) {
       throw new Error(result.message);
     }
     const {
-      data: { groups, groupCount, separators }
+      data: { groups, totalCharactersInGroup, separators }
     } = result;
     return {
       groups,
-      groupCount,
+      totalCharactersInGroup,
       separators
     };
   }
@@ -50,14 +50,14 @@ function getFormattedCoupon(couponChunks, separators) {
 }
 
 function Formatter(formatRule) {
-  const { separators, groups, groupCount } = validate(formatRule);
+  const { separators, groups, totalCharactersInGroup } = validate(formatRule);
 
   this.getConfig = function () {
-    return { separators, groups, groupCount };
+    return { separators, groups, totalCharactersInGroup };
   };
 
   this.format = function (coupon) {
-    if (!hasEqualSumOfGroupsAndCouponLength(coupon, groupCount)) {
+    if (!hasEqualSumOfGroupsAndCouponLength(coupon, totalCharactersInGroup)) {
       throw new Error('Coupon length is not equal to the sum of groups in the format.');
     }
     const { chunks } = getCouponInGroups(coupon, groups);
