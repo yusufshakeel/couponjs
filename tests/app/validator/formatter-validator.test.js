@@ -1,29 +1,56 @@
 'use strict';
 
 const {
-  hasValidCharacterInFormatRuleString,
-  hasValidPropertiesInFormatRuleObject,
+  validateFormatRuleString,
+  validateFormatRuleObject,
   hasEqualSumOfGroupsAndCouponLength
 } = require('../../../app/validator/formatter-validator.js');
 
 test('Should return true if format rule has valid characters x and -', () => {
-  expect(hasValidCharacterInFormatRuleString('x')).toBeTruthy();
-  expect(hasValidCharacterInFormatRuleString('x-x')).toBeTruthy();
-  expect(hasValidCharacterInFormatRuleString('xxx-xxx')).toBeTruthy();
-  expect(hasValidCharacterInFormatRuleString('xxx---xxx')).toBeTruthy();
+  expect(validateFormatRuleString('x')).toStrictEqual({
+    validation: 'success',
+    data: {
+      groups: [1],
+      groupCount: 1,
+      separators: []
+    }
+  });
+  expect(validateFormatRuleString('x-x')).toStrictEqual({
+    validation: 'success',
+    data: {
+      groups: [1, 1],
+      groupCount: 2,
+      separators: ['-']
+    }
+  });
+  expect(validateFormatRuleString('xxx-xxx')).toStrictEqual({
+    validation: 'success',
+    data: {
+      groups: [3, 3],
+      groupCount: 6,
+      separators: ['-']
+    }
+  });
 });
 
 test('Should return false if format rule has invalid characters or structure', () => {
-  expect(hasValidCharacterInFormatRuleString('a')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('-')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('#')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('x-')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('-x')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('x-a')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('x-xa')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('x-a-x')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('x-xa-x')).toBeFalsy();
-  expect(hasValidCharacterInFormatRuleString('X-xa-x')).toBeFalsy();
+  const error = {
+    validation: 'error',
+    field: 'format',
+    message:
+      'Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx.'
+  };
+  expect(validateFormatRuleString('a')).toStrictEqual(error);
+  expect(validateFormatRuleString('-')).toStrictEqual(error);
+  expect(validateFormatRuleString('#')).toStrictEqual(error);
+  expect(validateFormatRuleString('x-')).toStrictEqual(error);
+  expect(validateFormatRuleString('-x')).toStrictEqual(error);
+  expect(validateFormatRuleString('x-a')).toStrictEqual(error);
+  expect(validateFormatRuleString('x-xa')).toStrictEqual(error);
+  expect(validateFormatRuleString('x-a-x')).toStrictEqual(error);
+  expect(validateFormatRuleString('x-xa-x')).toStrictEqual(error);
+  expect(validateFormatRuleString('X-xa-x')).toStrictEqual(error);
+  expect(validateFormatRuleString('xxx---xxx')).toStrictEqual(error);
 });
 
 test('Should return true if sum of groups and coupon length are same', () => {
@@ -35,32 +62,32 @@ test('Should return false if sum of groups and coupon length are not equal', () 
 });
 
 test('Should return validation error object if required fields is not present in the format object', () => {
-  expect(hasValidPropertiesInFormatRuleObject({})).toStrictEqual({
+  expect(validateFormatRuleObject({})).toStrictEqual({
     field: 'separators',
     message: "Format object must have field 'separators' of type array.",
     validation: 'error'
   });
 
-  expect(hasValidPropertiesInFormatRuleObject({ separators: 'invalid' })).toStrictEqual({
+  expect(validateFormatRuleObject({ separators: 'invalid' })).toStrictEqual({
     field: 'separators',
     message: "Format object must have field 'separators' of type array.",
     validation: 'error'
   });
 
-  expect(hasValidPropertiesInFormatRuleObject({ separators: [] })).toStrictEqual({
+  expect(validateFormatRuleObject({ separators: [] })).toStrictEqual({
     field: 'separators',
     message: "Format object must have at least one element in the array field 'separators'.",
     validation: 'error'
   });
 
-  expect(hasValidPropertiesInFormatRuleObject({ separators: ['-'] })).toStrictEqual({
+  expect(validateFormatRuleObject({ separators: ['-'] })).toStrictEqual({
     field: 'groups',
     message: "Format object must have field 'groups' of type array.",
     validation: 'error'
   });
 
   expect(
-    hasValidPropertiesInFormatRuleObject({
+    validateFormatRuleObject({
       separators: ['-'],
       groups: 'invalid'
     })
@@ -71,7 +98,7 @@ test('Should return validation error object if required fields is not present in
   });
 
   expect(
-    hasValidPropertiesInFormatRuleObject({
+    validateFormatRuleObject({
       separators: ['-'],
       groups: []
     })
@@ -84,7 +111,7 @@ test('Should return validation error object if required fields is not present in
 
 test('Should return validation success if all required fields present in the format object', () => {
   expect(
-    hasValidPropertiesInFormatRuleObject({
+    validateFormatRuleObject({
       separators: ['-'],
       groups: [4, 4]
     })
@@ -96,7 +123,7 @@ test('Should return validation success if all required fields present in the for
 
 test('Should return validation error if separators array has equal to or more elements then groups array in format rule object', () => {
   expect(
-    hasValidPropertiesInFormatRuleObject({
+    validateFormatRuleObject({
       separators: ['-', '-', '-'],
       groups: [4, 4]
     })

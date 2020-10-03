@@ -1,10 +1,29 @@
 'use strict';
 
-function hasValidCharacterInFormatRuleString(ruleString) {
-  return /^x([x-]*x)?$/g.test(ruleString);
+function validateFormatRuleString(ruleString) {
+  const isValidFormatRuleString = /^([x]+-?[x]*)*?x$/g.test(ruleString);
+  if (isValidFormatRuleString) {
+    const groups = ruleString.split('-').map(group => group.length);
+    const groupCount = groups.reduce((sum, size) => sum + size, 0);
+    const separators = '-'.repeat(groups.length - 1).split('');
+    return {
+      validation: 'success',
+      data: {
+        groups,
+        groupCount,
+        separators
+      }
+    };
+  }
+  return {
+    validation: 'error',
+    field: 'format',
+    message:
+      'Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx.'
+  };
 }
 
-function hasValidPropertiesInFormatRuleObject(ruleObject) {
+function validateFormatRuleObject(ruleObject) {
   const { separators, groups } = ruleObject;
   if (!Array.isArray(separators)) {
     return {
@@ -56,7 +75,7 @@ function hasEqualSumOfGroupsAndCouponLength(coupon, groupCount) {
 }
 
 module.exports = {
-  hasValidCharacterInFormatRuleString,
-  hasValidPropertiesInFormatRuleObject,
+  validateFormatRuleString,
+  validateFormatRuleObject,
   hasEqualSumOfGroupsAndCouponLength
 };
