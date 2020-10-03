@@ -1,10 +1,10 @@
 'use strict';
 
-function sumOfGroupsCharacters(groups) {
+const sumOfGroupsCharacters = groups => {
   return groups.reduce((sum, size) => sum + size, 0);
-}
+};
 
-function getErrorsInGroups(groups) {
+const getErrorsInGroups = groups => {
   return groups.reduce((error, group, index) => {
     if (typeof group === 'number' && Number.isInteger(group)) {
       return error;
@@ -18,9 +18,9 @@ function getErrorsInGroups(groups) {
       }
     ];
   }, []);
-}
+};
 
-function getErrorsInSeparatos(separators) {
+const getErrorsInSeparatos = separators => {
   return separators.reduce((error, separator, index) => {
     if (typeof separator !== 'string') {
       return [
@@ -34,7 +34,7 @@ function getErrorsInSeparatos(separators) {
     }
     return error;
   }, []);
-}
+};
 
 function validateFormatRuleString(ruleString) {
   const isValidFormatRuleString = /^([x]+-?[x]*)*?x$/g.test(ruleString);
