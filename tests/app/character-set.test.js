@@ -20,12 +20,22 @@ const {
 } = require('../../app/constants.js');
 
 test('Should throw error if invalid charSetName provided', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     characterSet('UNKNOWN');
-    throw new Error('Should have failed.');
-  }).toThrow(
-    'Invalid builtIn characterSet specified. Allowed values: CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT, CHARSET_ALNUM, CHARSET_BINARY, CHARSET_OCTAL, CHARSET_HEX, CHARSET_HEX_LOWER'
-  );
+  } catch (e) {
+    expect(e.message).toBe(
+      'Invalid builtIn characterSet specified. Allowed values: CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT, CHARSET_ALNUM, CHARSET_BINARY, CHARSET_OCTAL, CHARSET_HEX, CHARSET_HEX_LOWER'
+    );
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        type: 'COUPONJS_CHARACTER_SET_ERROR',
+        field: 'builtIn',
+        message: 'Invalid character set UNKNOWN'
+      }
+    ]);
+  }
 });
 
 test('Should return uppercase alphabet A-Z when using charSetName "CHARSET_ALPHA"', () => {
