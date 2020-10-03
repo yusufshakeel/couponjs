@@ -8,7 +8,15 @@ describe('Coupon engine configuration', () => {
     const result = coupon.generate();
     expect(result.status).toBe('success');
     expect(result.numberOfCoupons).toBe(1);
-    expect(/^[A-Z]{6}$/.test(result.coupons)).toBeTruthy();
+    expect(/^[A-Z]{6}$/.test(result.coupons[0])).toBeTruthy();
+  });
+
+  test('Should return verbose response - multiple coupons', () => {
+    const coupon = new Coupon({ verbose: true });
+    const result = coupon.generate({ numberOfCoupons: 2 });
+    expect(result.status).toBe('success');
+    expect(result.numberOfCoupons).toBe(2);
+    result.coupons.forEach(c => expect(/^[A-Z]{6}$/.test(c)).toBeTruthy());
   });
 
   test('Should return verbose validation error', () => {

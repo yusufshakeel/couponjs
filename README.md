@@ -70,7 +70,7 @@ If set to `true` then success response will look like the following.
 {
   status: 'success', 
   numberOfCoupons: 1, 
-  coupons: 'IRKLLE'
+  coupons: ['QWERTY']
 }
 ```
 

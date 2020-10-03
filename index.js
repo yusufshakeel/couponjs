@@ -43,7 +43,7 @@ const Coupon = function (config) {
       const verboseResult = {
         numberOfCoupons,
         status: 'success',
-        coupons: generatedCoupons
+        coupons: numberOfCoupons === 1 ? [generatedCoupons] : generatedCoupons
       };
       return verbose ? verboseResult : generatedCoupons;
     } catch (e) {
