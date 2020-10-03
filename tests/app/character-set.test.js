@@ -31,17 +31,10 @@ test('Should throw error if invalid charSetName provided', () => {
     expect(e.errors).toStrictEqual([
       {
         field: 'builtIn',
-        context: 'Invalid character set UNKNOWN'
+        message: 'Invalid character set UNKNOWN'
       }
     ]);
   }
-  // expect(() => {
-  //   characterSet('UNKNOWN');
-  //   throw new Error('Should have failed.');
-  // }).toThrow(new ValidationError({
-  //   message: 'Invalid builtIn characterSet specified. Allowed values: CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT, CHARSET_ALNUM, CHARSET_BINARY, CHARSET_OCTAL, CHARSET_HEX, CHARSET_HEX_LOWER',
-  //   errors: []
-  // }));
 });
 
 test('Should return uppercase alphabet A-Z when using charSetName "CHARSET_ALPHA"', () => {

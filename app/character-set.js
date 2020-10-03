@@ -52,7 +52,7 @@ function characterSet(charSetName) {
       message: `Invalid builtIn characterSet specified. Allowed values: ${validCharSets.join(
         ', '
       )}`,
-      errors: [{ field: 'builtIn', context: `Invalid character set ${charSetName}` }]
+      errors: [{ field: 'builtIn', message: `Invalid character set ${charSetName}` }]
     });
   }
   return matchingCharacterSet;
