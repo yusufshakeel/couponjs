@@ -121,7 +121,7 @@ test('Should return validation success if all required fields present in the for
   });
 });
 
-test('Should return validation error if separators array has equal to or more elements then groups array in format rule object', () => {
+test('Should return validation error if separators array has equal to or more elements than groups array in format rule object', () => {
   expect(
     validateFormatRuleObject({
       separators: ['-', '-', '-'],
@@ -131,6 +131,19 @@ test('Should return validation error if separators array has equal to or more el
     field: 'separators',
     message:
       "Format object must not have 'separators' array with more elements than 'groups' array.",
+    validation: 'error'
+  });
+});
+
+test('Should return validation error if separators array has lesser number of elements than groups array in format rule object', () => {
+  expect(
+    validateFormatRuleObject({
+      separators: ['-'],
+      groups: [4, 4, 4]
+    })
+  ).toStrictEqual({
+    field: 'separators',
+    message: "Format object must have 2 elements in 'separators' array.",
     validation: 'error'
   });
 });

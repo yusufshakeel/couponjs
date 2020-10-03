@@ -2,6 +2,7 @@
 
 const {
   validateFormatRuleString,
+  validateFormatRuleObject,
   hasEqualSumOfGroupsAndCouponLength
 } = require('./validator/formatter-validator.js');
 
@@ -11,6 +12,19 @@ function validate(format) {
     throw new Error('Format rule is not specified.');
   } else if (formatType === 'string') {
     const result = validateFormatRuleString(format);
+    if (result.validation === 'error') {
+      throw new Error(result.message);
+    }
+    const {
+      data: { groups, totalCharactersInGroup, separators }
+    } = result;
+    return {
+      groups,
+      totalCharactersInGroup,
+      separators
+    };
+  } else if (formatType === 'object') {
+    const result = validateFormatRuleObject(format);
     if (result.validation === 'error') {
       throw new Error(result.message);
     }

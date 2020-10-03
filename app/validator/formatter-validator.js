@@ -64,6 +64,13 @@ function validateFormatRuleObject(ruleObject) {
       validation: 'error'
     };
   }
+  if (separators.length !== groups.length - 1) {
+    return {
+      field: 'separators',
+      message: `Format object must have ${groups.length - 1} elements in 'separators' array.`,
+      validation: 'error'
+    };
+  }
   return {
     validation: 'success',
     data: {

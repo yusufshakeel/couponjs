@@ -45,3 +45,54 @@ describe('Format rule of type string', () => {
     expect(formatter.format('QWERTY123456')).toBe('QWER-TY12-3456');
   });
 });
+
+describe('Format rule of type object', () => {
+  test('Should throw error if required field separators is not present', () => {
+    expect(() => {
+      new Formatter({});
+      throw new Error('Should have failed!');
+    }).toThrow("Format object must have field 'separators' of type array.");
+  });
+
+  test('Should throw error if required field separators is empty array', () => {
+    expect(() => {
+      new Formatter({ separators: [] });
+      throw new Error('Should have failed!');
+    }).toThrow("Format object must have at least one element in the array field 'separators'.");
+  });
+
+  test('Should throw error if required field groups is not present', () => {
+    expect(() => {
+      new Formatter({ separators: ['-'] });
+      throw new Error('Should have failed!');
+    }).toThrow("Format object must have field 'groups' of type array.");
+  });
+
+  test('Should throw error if required field groups is empty array', () => {
+    expect(() => {
+      new Formatter({ separators: ['-'], groups: [] });
+      throw new Error('Should have failed!');
+    }).toThrow("Format object must have at least one element in the array field 'groups'.");
+  });
+
+  test('Should throw error if elements in separators array is more than groups', () => {
+    expect(() => {
+      new Formatter({ separators: ['-', '-'], groups: [4] });
+      throw new Error('Should have failed!');
+    }).toThrow(
+      "Format object must not have 'separators' array with more elements than 'groups' array."
+    );
+  });
+
+  test('Should throw error if elements in separators array is lesser than groups', () => {
+    expect(() => {
+      new Formatter({ separators: ['-'], groups: [4, 4, 4] });
+      throw new Error('Should have failed!');
+    }).toThrow("Format object must have 2 elements in 'separators' array.");
+  });
+
+  test('Should return formatted coupon', () => {
+    const formatter = new Formatter({ separators: ['-', '-'], groups: [4, 4, 4] });
+    expect(formatter.format('QWERTY123456')).toBe('QWER-TY12-3456');
+  });
+});
