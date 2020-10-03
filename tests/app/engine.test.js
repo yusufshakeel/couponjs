@@ -5,7 +5,8 @@ const defaultOption = require('../../app/option.js');
 const randomInteger = require('../../app/random-integer.js');
 
 test('Should throw error if numberOfCoupons is less than 1', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = defaultOption.characterSet;
     const mockRandomInteger = jest.fn(() => {
       return 0;
@@ -14,12 +15,22 @@ test('Should throw error if numberOfCoupons is less than 1', () => {
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 1, prefix, suffix, 0);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Minimum value for numberOfCoupons is 1.');
+  } catch (e) {
+    expect(e.message).toBe('Minimum value for numberOfCoupons is 1.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Minimum value for numberOfCoupons is 1.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if numberOfCoupons is greater than 100000', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = defaultOption.characterSet;
     const mockRandomInteger = jest.fn(() => {
       return 0;
@@ -28,12 +39,22 @@ test('Should throw error if numberOfCoupons is greater than 100000', () => {
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 1, prefix, suffix, 100001);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Maximum value for numberOfCoupons is 100000.');
+  } catch (e) {
+    expect(e.message).toBe('Maximum value for numberOfCoupons is 100000.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Maximum value for numberOfCoupons is 100000.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = {
       custom: ['abc']
     };
@@ -44,12 +65,22 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Total number of possible coupons that can be generated is 27.');
+  } catch (e) {
+    expect(e.message).toBe('Total number of possible coupons that can be generated is 27.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Total number of possible coupons that can be generated is 27.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_ALPHA', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = {
       builtIn: ['CHARSET_ALPHA']
     };
@@ -60,12 +91,22 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Total number of possible coupons that can be generated is 17576.');
+  } catch (e) {
+    expect(e.message).toBe('Total number of possible coupons that can be generated is 17576.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Total number of possible coupons that can be generated is 17576.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_ALPHA_LOWER', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = {
       builtIn: ['CHARSET_ALPHA_LOWER']
     };
@@ -76,12 +117,22 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Total number of possible coupons that can be generated is 17576.');
+  } catch (e) {
+    expect(e.message).toBe('Total number of possible coupons that can be generated is 17576.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Total number of possible coupons that can be generated is 17576.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_DIGIT', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = {
       builtIn: ['CHARSET_DIGIT']
     };
@@ -92,12 +143,22 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Total number of possible coupons that can be generated is 1000.');
+  } catch (e) {
+    expect(e.message).toBe('Total number of possible coupons that can be generated is 1000.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Total number of possible coupons that can be generated is 1000.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_BINARY', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = {
       builtIn: ['CHARSET_BINARY']
     };
@@ -108,12 +169,22 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Total number of possible coupons that can be generated is 8.');
+  } catch (e) {
+    expect(e.message).toBe('Total number of possible coupons that can be generated is 8.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Total number of possible coupons that can be generated is 8.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_OCTAL', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = {
       builtIn: ['CHARSET_OCTAL']
     };
@@ -124,12 +195,22 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Total number of possible coupons that can be generated is 512.');
+  } catch (e) {
+    expect(e.message).toBe('Total number of possible coupons that can be generated is 512.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Total number of possible coupons that can be generated is 512.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is 3 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_HEX', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = {
       builtIn: ['CHARSET_HEX']
     };
@@ -140,12 +221,22 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 3, prefix, suffix, 100000);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Total number of possible coupons that can be generated is 4096.');
+  } catch (e) {
+    expect(e.message).toBe('Total number of possible coupons that can be generated is 4096.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Total number of possible coupons that can be generated is 4096.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is 2 and numberOfCoupons is greater than total number of possible coupons for builtIn CHARSET_ALNUM', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = {
       builtIn: ['CHARSET_ALNUM']
     };
@@ -156,32 +247,61 @@ test('Should throw error if length is 2 and numberOfCoupons is greater than tota
     const suffix = defaultOption.suffix;
     const engine = new Engine(characterSet, mockRandomInteger, 2, prefix, suffix, 100000);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Total number of possible coupons that can be generated is 3844.');
+  } catch (e) {
+    expect(e.message).toBe('Total number of possible coupons that can be generated is 3844.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'numberOfCoupons',
+        message: 'Total number of possible coupons that can be generated is 3844.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is less than 1', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = defaultOption.characterSet;
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
     const engine = new Engine(characterSet, mockRandomInteger, 0);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Minimum value for length is 1.');
+  } catch (e) {
+    expect(e.message).toBe('Minimum value for length is 1.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'length',
+        message: 'Minimum value for length is 1.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should throw error if length is greater than 128', () => {
-  expect(() => {
+  expect.assertions(3);
+  try {
     const characterSet = defaultOption.characterSet;
     const mockRandomInteger = jest.fn(() => {
       return 0;
     });
     const engine = new Engine(characterSet, mockRandomInteger, 129);
     engine.run();
-    throw new Error('Should have failed.');
-  }).toThrow('Maximum value for length is 128.');
+  } catch (e) {
+    expect(e.message).toBe('Maximum value for length is 128.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'length',
+        message: 'Maximum value for length is 128.',
+        type: 'COUPONJS_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
 });
 
 test('Should return AAAAAA as coupon when character set is "A" and randomInteger generates always 0', () => {

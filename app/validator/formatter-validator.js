@@ -1,5 +1,8 @@
 'use strict';
 
+const { ERROR_CONSTANTS } = require('../constants.js');
+const ValidationError = require('../error/validation-error.js');
+
 const sumOfGroupsCharacters = groups => {
   return groups.reduce((sum, size) => sum + size, 0);
 };
@@ -12,15 +15,15 @@ const getErrorsInGroups = groups => {
     return [
       ...error,
       {
-        field: 'separators',
+        field: 'groups',
         message: `Format object must only have integer elements in 'groups' array. Found error at index ${index}.`,
-        validation: 'error'
+        type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type
       }
     ];
   }, []);
 };
 
-const getErrorsInSeparatos = separators => {
+const getErrorsInSeparators = separators => {
   return separators.reduce((error, separator, index) => {
     if (typeof separator !== 'string') {
       return [
@@ -28,7 +31,7 @@ const getErrorsInSeparatos = separators => {
         {
           field: 'separators',
           message: `Format object must only have string elements in 'separators' array. Found error at index ${index}.`,
-          validation: 'error'
+          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type
         }
       ];
     }
@@ -36,6 +39,11 @@ const getErrorsInSeparatos = separators => {
   }, []);
 };
 
+/**
+ * This will validate the format rule string and will return the required properties needed to format coupon.
+ * @param {string} ruleString This is the format rule string.
+ * @returns {{groups: number[], totalCharactersInGroup: number, separators: string[]}}
+ */
 function validateFormatRuleString(ruleString) {
   const isValidFormatRuleString = /^([x]+-?[x]*)*?x$/g.test(ruleString);
   if (isValidFormatRuleString) {
@@ -43,87 +51,137 @@ function validateFormatRuleString(ruleString) {
     const totalCharactersInGroup = sumOfGroupsCharacters(groups);
     const separators = '-'.repeat(groups.length - 1).split('');
     return {
-      validation: 'success',
-      data: {
-        groups,
-        totalCharactersInGroup,
-        separators
-      }
+      groups,
+      totalCharactersInGroup,
+      separators
     };
   }
-  return {
-    validation: 'error',
-    field: 'format',
-    message:
-      'Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx.'
-  };
+  throw new ValidationError({
+    message: 'Invalid characters used in the format rule.',
+    errors: [
+      {
+        type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+        field: 'format',
+        message:
+          'Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx.'
+      }
+    ]
+  });
 }
 
+/**
+ * This will validate the format rule object and will return the required properties needed to format coupon.
+ * @param {object} ruleObject This is the format rule object.
+ * @returns {{groups: number[], totalCharactersInGroup: number, separators: string[]}}
+ */
 function validateFormatRuleObject(ruleObject) {
   const { separators, groups } = ruleObject;
 
   if (!Array.isArray(separators)) {
-    return {
-      validation: 'error',
-      field: 'separators',
-      message: `Format object must have field 'separators' of type array.`
-    };
+    const message = `Format object must have field 'separators' of type array.`;
+    throw new ValidationError({
+      message,
+      errors: [
+        {
+          message,
+          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+          field: 'separators'
+        }
+      ]
+    });
   }
 
   if (!Array.isArray(groups)) {
-    return {
-      validation: 'error',
-      field: 'groups',
-      message: `Format object must have field 'groups' of type array.`
-    };
+    const message = `Format object must have field 'groups' of type array.`;
+    throw new ValidationError({
+      message,
+      errors: [
+        {
+          message,
+          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+          field: 'groups'
+        }
+      ]
+    });
   }
 
   if (groups.length === 0) {
-    return {
-      validation: 'error',
-      field: 'groups',
-      message: `Format object must have at least one element in the array field 'groups'.`
-    };
+    const message = `Format object must have at least one element in the array field 'groups'.`;
+    throw new ValidationError({
+      message,
+      errors: [
+        {
+          message,
+          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+          field: 'groups'
+        }
+      ]
+    });
   }
 
   if (separators.length >= groups.length) {
-    return {
-      field: 'separators',
-      message: `Format object must not have 'separators' array with more elements than 'groups' array.`,
-      validation: 'error'
-    };
+    const message = `Format object must not have 'separators' array with more elements than 'groups' array.`;
+    throw new ValidationError({
+      message,
+      errors: [
+        {
+          message,
+          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+          field: 'separators'
+        }
+      ]
+    });
   }
 
   if (separators.length !== groups.length - 1) {
-    return {
-      field: 'separators',
-      message: `Format object has ${groups.length} elements in 'groups' array so, it must have ${
-        groups.length - 1
-      } elements in 'separators' array.`,
-      validation: 'error'
-    };
+    const message = `Format object has ${
+      groups.length
+    } elements in 'groups' array so, it must have ${
+      groups.length - 1
+    } elements in 'separators' array.`;
+    throw new ValidationError({
+      message,
+      errors: [
+        {
+          message,
+          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+          field: 'separators'
+        }
+      ]
+    });
   }
 
-  const separatorElementTypeError = getErrorsInSeparatos(separators);
-  if (separatorElementTypeError.length > 0) {
-    return separatorElementTypeError[0];
+  const separatorElementTypeErrors = getErrorsInSeparators(separators);
+  if (separatorElementTypeErrors.length > 0) {
+    const message = `Format object has errors in 'separators' field.`;
+    throw new ValidationError({
+      message,
+      errors: separatorElementTypeErrors
+    });
   }
 
-  const groupsElementTypeError = getErrorsInGroups(groups);
-  if (groupsElementTypeError.length > 0) {
-    return groupsElementTypeError[0];
+  const groupsElementTypeErrors = getErrorsInGroups(groups);
+  if (groupsElementTypeErrors.length > 0) {
+    const message = `Format object has errors in 'groups' field.`;
+    throw new ValidationError({
+      message,
+      errors: groupsElementTypeErrors
+    });
   }
 
   return {
-    validation: 'success',
-    data: {
-      separators,
-      groups: groups.map(group => parseInt(group)),
-      totalCharactersInGroup: sumOfGroupsCharacters(groups)
-    }
+    separators,
+    groups: groups.map(group => parseInt(group)),
+    totalCharactersInGroup: sumOfGroupsCharacters(groups)
   };
 }
 
+/**
+ * This will return true if total number of characters in the coupon is equal to the total number of characters present in the groups.
+ * @param {string} coupon This is the coupon string.
+ * @param {number} totalCharactersInGroup This is na integer value representing the total number of characters present in the groups.
+ * @returns {boolean}
+ */
 function hasEqualSumOfGroupsAndCouponLength(coupon, totalCharactersInGroup) {
   return coupon.length === totalCharactersInGroup;
 }

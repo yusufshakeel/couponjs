@@ -1,5 +1,8 @@
 'use strict';
 
+const { ERROR_CONSTANTS } = require('./constants.js');
+const ValidationError = require('./error/validation-error.js');
+
 const {
   validateFormatRuleString,
   validateFormatRuleObject,
@@ -8,16 +11,22 @@ const {
 
 function validate(format) {
   const formatType = typeof format;
+
   if (formatType === 'undefined') {
-    throw new Error('Format rule is not specified.');
+    const message = 'Format rule is not specified.';
+    throw new ValidationError({
+      message,
+      errors: [
+        {
+          message,
+          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+          field: 'format'
+        }
+      ]
+    });
   } else if (formatType === 'string') {
     const result = validateFormatRuleString(format);
-    if (result.validation === 'error') {
-      throw new Error(result.message);
-    }
-    const {
-      data: { groups, totalCharactersInGroup, separators }
-    } = result;
+    const { groups, totalCharactersInGroup, separators } = result;
     return {
       groups,
       totalCharactersInGroup,
@@ -25,19 +34,24 @@ function validate(format) {
     };
   } else if (formatType === 'object') {
     const result = validateFormatRuleObject(format);
-    if (result.validation === 'error') {
-      throw new Error(result.message);
-    }
-    const {
-      data: { groups, totalCharactersInGroup, separators }
-    } = result;
+    const { groups, totalCharactersInGroup, separators } = result;
     return {
       groups,
       totalCharactersInGroup,
       separators
     };
   }
-  throw new Error('Invalid format rule.');
+
+  throw new ValidationError({
+    message: 'Invalid format rule.',
+    errors: [
+      {
+        message: 'Invalid format rule.',
+        type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+        field: 'format'
+      }
+    ]
+  });
 }
 
 function getCouponInGroups(coupon, groups) {
@@ -72,7 +86,19 @@ function Formatter(formatRule) {
 
   this.format = function (coupon) {
     if (!hasEqualSumOfGroupsAndCouponLength(coupon, totalCharactersInGroup)) {
-      throw new Error('Coupon length is not equal to the sum of groups in the format.');
+      const message = 'Coupon length is not equal to the sum of groups in the format.';
+      throw new ValidationError({
+        message,
+        errors: [
+          {
+            message: `Coupon length: ${coupon.length} and sum of groups: ${groups.join(
+              '+'
+            )} = ${totalCharactersInGroup}`,
+            type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type,
+            field: 'format'
+          }
+        ]
+      });
     }
     const { chunks } = getCouponInGroups(coupon, groups);
     return getFormattedCoupon(chunks, separators);
