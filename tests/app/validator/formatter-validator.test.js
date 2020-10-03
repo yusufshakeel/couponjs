@@ -90,7 +90,7 @@ test('Should return validation success if all required fields present in the for
     })
   ).toStrictEqual({
     validation: 'success',
-    data: { groups: [4, 4], groupLength: 2, separators: ['-'] }
+    data: { groups: [4, 4], groupCount: 2, separators: ['-'] }
   });
 });
 

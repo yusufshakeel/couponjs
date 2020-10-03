@@ -46,13 +46,13 @@ function hasValidPropertiesInFormatRuleObject(ruleObject) {
     data: {
       separators,
       groups,
-      groupLength: groups.length
+      groupCount: groups.length
     }
   };
 }
 
-function hasEqualSumOfGroupsAndCouponLength(coupon, groupLength) {
-  return coupon.length === groupLength;
+function hasEqualSumOfGroupsAndCouponLength(coupon, groupCount) {
+  return coupon.length === groupCount;
 }
 
 module.exports = {

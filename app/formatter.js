@@ -5,10 +5,6 @@ const {
   hasEqualSumOfGroupsAndCouponLength
 } = require('./validator/formatter-validator.js');
 
-function lengthOfTheGroups(groups) {
-  return groups.reduce((sum, size) => sum + size, 0);
-}
-
 function validate(format) {
   const formatType = typeof format;
   if (formatType === 'undefined') {
@@ -18,11 +14,11 @@ function validate(format) {
       throw new Error('Invalid characters used in the format rule. Only x and - are allowed.');
     }
     const groups = format.split('-').map(group => group.length);
-    const groupLength = lengthOfTheGroups(groups);
+    const groupCount = groups.reduce((sum, size) => sum + size, 0);
     const separators = '-'.repeat(groups.length - 1).split('');
     return {
       groups,
-      groupLength,
+      groupCount,
       separators
     };
   }
@@ -53,14 +49,14 @@ function getFormattedCoupon(couponChunks, separators) {
 }
 
 function Formatter(formatRule) {
-  const { separators, groups, groupLength } = validate(formatRule);
+  const { separators, groups, groupCount } = validate(formatRule);
 
   this.getConfig = function () {
-    return { separators, groups, groupLength };
+    return { separators, groups, groupCount };
   };
 
   this.format = function (coupon) {
-    if (!hasEqualSumOfGroupsAndCouponLength(coupon, groupLength)) {
+    if (!hasEqualSumOfGroupsAndCouponLength(coupon, groupCount)) {
       throw new Error('Coupon length is not equal to the sum of groups in the format.');
     }
     const { chunks } = getCouponInGroups(coupon, groups);
