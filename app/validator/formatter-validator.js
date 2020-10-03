@@ -70,14 +70,6 @@ function validateFormatRuleObject(ruleObject) {
     };
   }
 
-  // if (separators.length === 0) {
-  //   return {
-  //     validation: 'error',
-  //     field: 'separators',
-  //     message: `Format object must have at least one element in the array field 'separators'.`
-  //   };
-  // }
-
   if (!Array.isArray(groups)) {
     return {
       validation: 'error',

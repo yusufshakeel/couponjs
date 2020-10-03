@@ -30,6 +30,7 @@ test('Should throw error if invalid charSetName provided', () => {
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
+        type: 'COUPONJS_CHARACTER_SET_ERROR',
         field: 'builtIn',
         message: 'Invalid character set UNKNOWN'
       }

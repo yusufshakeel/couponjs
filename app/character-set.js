@@ -1,5 +1,6 @@
 'use strict';
 
+const { ERROR_CONSTANTS } = require('./constants.js');
 const ValidationError = require('./error/validation-error.js');
 
 const {
@@ -52,7 +53,13 @@ function characterSet(charSetName) {
       message: `Invalid builtIn characterSet specified. Allowed values: ${validCharSets.join(
         ', '
       )}`,
-      errors: [{ field: 'builtIn', message: `Invalid character set ${charSetName}` }]
+      errors: [
+        {
+          type: ERROR_CONSTANTS.COUPONJS_CHARACTER_SET_ERROR.type,
+          field: 'builtIn',
+          message: `Invalid character set ${charSetName}`
+        }
+      ]
     });
   }
   return matchingCharacterSet;
