@@ -2,6 +2,54 @@
 
 const Coupon = require('../index.js');
 
+describe('Coupon engine configuration', () => {
+  test('Should return verbose response', () => {
+    const coupon = new Coupon({ verbose: true });
+    const result = coupon.generate();
+    expect(result.status).toBe('success');
+    expect(result.numberOfCoupons).toBe(1);
+    expect(/^[A-Z]{6}$/.test(result.coupons)).toBeTruthy();
+  });
+
+  test('Should return verbose validation error', () => {
+    const coupon = new Coupon({ verbose: true });
+    const result = coupon.generate({ format: 'abc-xyz' });
+    expect(result).toStrictEqual({
+      status: 'error',
+      error: {
+        type: 'COUPONJS_VALIDATION_ERROR',
+        message: 'Invalid characters used in the format rule.',
+        errors: [
+          {
+            field: 'format',
+            message:
+              'Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx.',
+            type: 'COUPONJS_FORMAT_ERROR'
+          }
+        ]
+      }
+    });
+  });
+});
+
+test('Should throw validation error', () => {
+  try {
+    const coupon = new Coupon();
+    coupon.generate({ format: 'abc-xyz' });
+  } catch (e) {
+    expect(e.message).toBe('Invalid characters used in the format rule.');
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        type: 'COUPONJS_FORMAT_ERROR',
+        field: 'format',
+        message:
+          'Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx.'
+      }
+    ]);
+  }
+});
+
 test('Should generate coupon code using uppercase alphabet A-Z of length 6.', () => {
   const coupon = new Coupon();
   const result = coupon.generate();

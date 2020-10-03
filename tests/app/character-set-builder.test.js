@@ -18,7 +18,7 @@ const {
   CHARSET_HEX_LOWER
 } = require('../../app/constants.js');
 const characterSetBuilder = require('../../app/character-set-builder.js');
-const defaultOptions = require('../../app/option.js');
+const { defaultCouponGenerationOption } = require('../../app/option.js');
 
 test('Should throw error if invalid builtIn option provided', () => {
   expect(() => {
@@ -33,7 +33,7 @@ test('Should throw error if invalid builtIn option provided', () => {
 });
 
 test('Should return uppercase alphabet A-Z when using default options', () => {
-  expect(characterSetBuilder(defaultOptions.characterSet)).toBe(ALPHABET_UPPERCASE);
+  expect(characterSetBuilder(defaultCouponGenerationOption.characterSet)).toBe(ALPHABET_UPPERCASE);
 });
 
 test('Should return uppercase alphabet A-Z when using builtIn "CHARSET_ALPHA" option', () => {

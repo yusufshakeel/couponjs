@@ -2,7 +2,7 @@
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.8.3-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.8.4-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 [![Coverage Status](https://coveralls.io/repos/github/yusufshakeel/couponjs/badge.svg?branch=master)](https://coveralls.io/github/yusufshakeel/couponjs?branch=master)
 
@@ -13,15 +13,18 @@ Add this to your project using npm.
 ```
 
 Next, require `couponjs`.
+
 ```javascript
-const Coupon = require('couponjs');
+const CouponJS = require('couponjs');
 ```
 
 ## Table of Contents
 
 * [Getting Started](#getting-started)
+* [Coupon engine configuration](#coupon-engine-configuration)
+  * [Verbose](#verbose)
 * [Generate coupon](#generate-coupon)
-* [Configurations](#configurations)
+* [Configuration to generate coupons](#configuration-to-generate-coupons)
   * [Coupon of length N](#coupon-of-length-n)
   * [Coupon with prefix](#coupon-with-prefix)
   * [Coupon with suffix](#coupon-with-suffix)
@@ -41,11 +44,60 @@ const Coupon = require('couponjs');
 * [Back this project](#back-this-project)
 * [Donate](#donate)
 
+## Coupon engine configuration
+
+We can configure the CouponJS engine to get reponse in a different format.
+
+The syntax looks like the following.
+
+```javascript
+const coupon = new CouponJS({ key: value });
+```
+
+### Verbose
+
+If we want verbose response (success/error) then we can set the field `verbose` to true.
+
+Default value: `false`
+
+```javascript
+const coupon = new CouponJS({ verbose: true });
+```
+
+If set to `true` then success response will look like the following.
+
+```
+{
+  status: 'success', 
+  numberOfCoupons: 1, 
+  coupons: 'IRKLLE'
+}
+```
+
+And error response will look like the following.
+
+```
+{
+  status: 'error',
+  error: {
+    type: 'COUPONJS_VALIDATION_ERROR',
+    message: 'Invalid characters used in the format rule.',
+    errors: [
+      {
+        field: 'format',
+        type: 'COUPONJS_FORMAT_ERROR',
+        message: 'Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx.'
+      }
+    ]
+  }
+}
+```
+
 
 ## Generate coupon
 Create an object.
 ```javascript
-const coupon = new Coupon();
+const coupon = new CouponJS();
 ```
 
 Now, call the `generate` method.
@@ -56,7 +108,7 @@ The above code will produce coupon like `ASDFGH`.
 
 By default, `generate` will return coupon code of length 6 using uppercase alphabet.
 
-## Configurations
+## Configuration to generate coupons
 
 We can pass different options to configure the engine to generate coupons as per our settings.
 
