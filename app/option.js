@@ -12,7 +12,8 @@ const {
 
 module.exports = {
   defaultCouponEngineOption: {
-    verbose: false
+    verbose: false,
+    logPerformance: false
   },
   defaultCouponGenerationOption: {
     length: DEFAULT_LENGTH,

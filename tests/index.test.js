@@ -3,28 +3,64 @@
 const Coupon = require('../index.js');
 
 describe('Coupon engine configuration', () => {
-  test('Should return verbose response', () => {
-    const coupon = new Coupon({ verbose: true });
-    const result = coupon.generate();
-    expect(result.status).toBe('success');
-    expect(result.numberOfCoupons).toBe(1);
-    expect(/^[A-Z]{6}$/.test(result.coupons[0])).toBeTruthy();
+  describe('verbose tests', () => {
+    test('Should return verbose response', () => {
+      const coupon = new Coupon({ verbose: true });
+      const result = coupon.generate();
+      expect(result.status).toBe('success');
+      expect(result.numberOfCoupons).toBe(1);
+      expect(/^[A-Z]{6}$/.test(result.coupons[0])).toBeTruthy();
+    });
+
+    test('Should return verbose response - multiple coupons', () => {
+      const coupon = new Coupon({ verbose: true });
+      const result = coupon.generate({ numberOfCoupons: 2 });
+      expect(result.status).toBe('success');
+      expect(result.numberOfCoupons).toBe(2);
+      result.coupons.forEach(c => expect(/^[A-Z]{6}$/.test(c)).toBeTruthy());
+    });
+
+    test('Should return verbose validation error', () => {
+      const coupon = new Coupon({ verbose: true });
+      const result = coupon.generate({ format: 'abc-xyz' });
+      expect(result).toStrictEqual({
+        status: 'error',
+        error: {
+          type: 'COUPONJS_VALIDATION_ERROR',
+          message: 'Invalid characters used in the format rule.',
+          errors: [
+            {
+              field: 'format',
+              message:
+                'Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx.',
+              type: 'COUPONJS_FORMAT_ERROR'
+            }
+          ]
+        }
+      });
+    });
   });
 
-  test('Should return verbose response - multiple coupons', () => {
-    const coupon = new Coupon({ verbose: true });
-    const result = coupon.generate({ numberOfCoupons: 2 });
-    expect(result.status).toBe('success');
-    expect(result.numberOfCoupons).toBe(2);
-    result.coupons.forEach(c => expect(/^[A-Z]{6}$/.test(c)).toBeTruthy());
-  });
+  describe('performance test', () => {
+    test('Should log performance', () => {
+      const coupon = new Coupon({ verbose: true, logPerformance: true });
+      const result = coupon.generate();
+      expect(result.status).toBe('success');
+      expect(result.numberOfCoupons).toBe(1);
+      expect(/^[A-Z]{6}$/.test(result.coupons[0])).toBeTruthy();
+      expect(result.performance).not.toBeUndefined();
+      expect(result.performance.duration).not.toBeUndefined();
+      expect(result.performance.duration.nano).not.toBeUndefined();
+      expect(result.performance.duration.micro).not.toBeUndefined();
+      expect(result.performance.duration.milli).not.toBeUndefined();
+      expect(result.performance.duration.second).not.toBeUndefined();
+    });
 
-  test('Should return verbose validation error', () => {
-    const coupon = new Coupon({ verbose: true });
-    const result = coupon.generate({ format: 'abc-xyz' });
-    expect(result).toStrictEqual({
-      status: 'error',
-      error: {
+    test('Should return verbose validation error and also log performance', () => {
+      const coupon = new Coupon({ verbose: true, logPerformance: true });
+      const result = coupon.generate({ format: 'abc-xyz' });
+      expect(result.status).toBe('error');
+      expect(result.error).toStrictEqual({
         type: 'COUPONJS_VALIDATION_ERROR',
         message: 'Invalid characters used in the format rule.',
         errors: [
@@ -35,7 +71,13 @@ describe('Coupon engine configuration', () => {
             type: 'COUPONJS_FORMAT_ERROR'
           }
         ]
-      }
+      });
+      expect(result.performance).not.toBeUndefined();
+      expect(result.performance.duration).not.toBeUndefined();
+      expect(result.performance.duration.nano).not.toBeUndefined();
+      expect(result.performance.duration.micro).not.toBeUndefined();
+      expect(result.performance.duration.milli).not.toBeUndefined();
+      expect(result.performance.duration.second).not.toBeUndefined();
     });
   });
 });

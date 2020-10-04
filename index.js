@@ -3,6 +3,7 @@
 const Engine = require('./app/engine.js');
 const { defaultCouponGenerationOption, defaultCouponEngineOption } = require('./app/option.js');
 const randomInteger = require('./app/random-integer.js');
+const Performance = require('./app/performance.js');
 
 /**
  * The Coupon constructor.
@@ -10,7 +11,8 @@ const randomInteger = require('./app/random-integer.js');
  * @constructor
  */
 const Coupon = function (config) {
-  const { verbose } = Object.assign({}, defaultCouponEngineOption, config);
+  const performance = new Performance();
+  const { verbose, logPerformance } = Object.assign({}, defaultCouponEngineOption, config);
 
   /**
    * This will generate coupons.
@@ -19,6 +21,7 @@ const Coupon = function (config) {
    * @returns {string}
    */
   this.generate = function (option) {
+    performance.startTimer();
     const {
       numberOfCoupons,
       length,
@@ -40,13 +43,18 @@ const Coupon = function (config) {
         format
       );
       const generatedCoupons = engine.run();
+      performance.stopTimer();
+      const performanceStats = logPerformance ? { performance: performance.stats() } : {};
       const verboseResult = {
+        ...performanceStats,
         numberOfCoupons,
         status: 'success',
         coupons: numberOfCoupons === 1 ? [generatedCoupons] : generatedCoupons
       };
       return verbose ? verboseResult : generatedCoupons;
     } catch (e) {
+      performance.stopTimer();
+      const performanceStats = logPerformance ? { performance: performance.stats() } : {};
       if (verbose) {
         return {
           status: 'error',
@@ -54,7 +62,8 @@ const Coupon = function (config) {
             message: e.message,
             type: e.type,
             errors: e.errors
-          }
+          },
+          ...performanceStats
         };
       } else {
         throw e;
