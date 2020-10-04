@@ -23,6 +23,7 @@ const CouponJS = require('couponjs');
 * [Getting Started](#getting-started)
 * [Coupon engine configuration](#coupon-engine-configuration)
   * [Verbose](#verbose)
+  * [Log Performance](#log-performance)
 * [Generate coupon](#generate-coupon)
 * [Configuration to generate coupons](#configuration-to-generate-coupons)
   * [Coupon of length N](#coupon-of-length-n)
@@ -93,6 +94,69 @@ And error response will look like the following.
 }
 ```
 
+### Log Performance
+
+To log the performance we have to set the option `logPerformance` to `true`.
+
+Default value: `false`
+
+Depends on: [verbose](#verbose) to be `true`.
+
+Syntax:
+
+```javascript
+const coupon = new CouponJS({ 
+  verbose: true,
+  logPerformance: true
+});
+```
+
+This will return success response like the following.
+
+```
+{
+  "status": "success",
+  "numberOfCoupons": 1,
+  "coupons": [
+    "QWERTY"
+  ],
+  "performance": {
+    "duration": {
+      "nano": 730779,
+      "micro": 730.779,
+      "milli": 0.730779,
+      "second": 0.000730779
+    }
+  }
+}
+```
+
+And error response like the following.
+
+```
+{
+  "status": "error",
+  "error": {
+    "message": "Invalid characters used in the format rule.",
+    "type": "COUPONJS_VALIDATION_ERROR",
+    "errors": [
+      {
+        "type": "COUPONJS_FORMAT_ERROR",
+        "field": "format",
+        "message": "Invalid characters used in the format rule. Only x and - are allowed. And only one - inbetween like xxx-xxx."
+      }
+    ]
+  },
+  "performance": {
+    "duration": {
+      "nano": 1313840,
+      "micro": 1313.84,
+      "milli": 1.31384,
+      "second": 0.00131384
+    }
+  }
+}
+```
 
 ## Generate coupon
 Create an object.
