@@ -29,7 +29,7 @@ test('Should throw error if numberOfCoupons is less than 1', () => {
       {
         field: 'numberOfCoupons',
         message: 'Minimum value for numberOfCoupons is 1.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -60,7 +60,7 @@ test('Should throw error if numberOfCoupons is greater than 100000', () => {
       {
         field: 'numberOfCoupons',
         message: 'Maximum value for numberOfCoupons is 100000.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -93,7 +93,7 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
       {
         field: 'numberOfCoupons',
         message: 'Total number of possible coupons that can be generated is 27.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -126,7 +126,7 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
       {
         field: 'numberOfCoupons',
         message: 'Total number of possible coupons that can be generated is 17576.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -159,7 +159,7 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
       {
         field: 'numberOfCoupons',
         message: 'Total number of possible coupons that can be generated is 17576.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -192,7 +192,7 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
       {
         field: 'numberOfCoupons',
         message: 'Total number of possible coupons that can be generated is 1000.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -225,7 +225,7 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
       {
         field: 'numberOfCoupons',
         message: 'Total number of possible coupons that can be generated is 8.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -258,7 +258,7 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
       {
         field: 'numberOfCoupons',
         message: 'Total number of possible coupons that can be generated is 512.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -291,7 +291,7 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
       {
         field: 'numberOfCoupons',
         message: 'Total number of possible coupons that can be generated is 4096.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -324,7 +324,7 @@ test('Should throw error if length is 2 and numberOfCoupons is greater than tota
       {
         field: 'numberOfCoupons',
         message: 'Total number of possible coupons that can be generated is 3844.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -350,7 +350,7 @@ test('Should throw error if length is less than 1', () => {
       {
         field: 'length',
         message: 'Minimum value for length is 1.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }
@@ -376,7 +376,7 @@ test('Should throw error if length is greater than 128', () => {
       {
         field: 'length',
         message: 'Maximum value for length is 128.',
-        type: 'COUPONJS_CONFIGURATION_ERROR'
+        type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
   }

@@ -25,7 +25,7 @@ const throwValidationError = ({ message, field }) => {
       {
         message,
         field,
-        type: ERROR_CONSTANTS.COUPONJS_CONFIGURATION_ERROR.type
+        type: ERROR_CONSTANTS.COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR.type
       }
     ]
   });
