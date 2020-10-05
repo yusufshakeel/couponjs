@@ -43,7 +43,7 @@ const throwValidationError = ({ message, field }) => {
  * @param {string|object} format This is the format rule that will be applied to the coupon.
  * @constructor
  */
-const Engine = function (
+const Engine = function ({
   characterSetOption,
   randomInteger,
   length = DEFAULT_LENGTH,
@@ -52,7 +52,7 @@ const Engine = function (
   numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
   omitCharacters = DEFAULT_OMIT_CHARACTERS,
   format = UNDEFINED
-) {
+}) {
   const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
 
   const characters = characterSetBuilder(characterSetOption, omitCharacters).split('');
