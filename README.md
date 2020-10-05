@@ -1,4 +1,5 @@
 # couponjs
+
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
@@ -6,8 +7,15 @@ This is a simple coupon creation project using NodeJS.
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 [![Coverage Status](https://coveralls.io/repos/github/yusufshakeel/couponjs/badge.svg?branch=master)](https://coveralls.io/github/yusufshakeel/couponjs?branch=master)
 
+
+> Generated 5,000,000 unique coupons of length 16 in average `15.693002507333334` seconds.
+> Logs in [PERFORMANCE.md](./PERFORMANCE.md) file.
+
+
 # Getting Started
+
 Add this to your project using npm.
+
 ```
 > npm i couponjs
 ```
@@ -181,15 +189,19 @@ const coupon = new CouponJS({
 ```
 
 ## Generate coupon
+
 Create an object.
+
 ```javascript
 const coupon = new CouponJS();
 ```
 
 Now, call the `generate` method.
+
 ```javascript
 const myCoupon = coupon.generate();
 ```
+
 The above code will produce coupon like `ASDFGH`.
 
 By default, `generate` will return coupon code of length 6 using uppercase alphabet.
@@ -209,12 +221,15 @@ const myCoupon = coupon.generate({
 Options that we can use are listed below.
 
 ## Coupon of length N
+
 To generate coupon of a given length we pass the following option to the `generate` method.
+
 ```javascript
 const myCoupon = coupon.generate({
   length: 8
 });
 ```
+
 Where, 8 in the above code represent the total number of characters that will be present in the coupon.
 
 Range of `length`
@@ -224,12 +239,15 @@ Range of `length`
 If length is not passed then default value of 6 is considered.
 
 ## Coupon with prefix
+
 To generate a coupon with a given prefix we pass the following option to the `generate` method.
+
 ```javascript
 const myCoupon = coupon.generate({
   prefix: 'SUPER'
 });
 ```
+
 The above code will generate coupon with prefix 'SUPER'. Default lenght of the coupon is 6. So, we will get coupon like the following.
 
 `SUPERAAAAAA`
@@ -237,28 +255,35 @@ The above code will generate coupon with prefix 'SUPER'. Default lenght of the c
 Note! Prefix characters are not counted.
 
 If we want to generate coupon of length 3 with prefix 'SUPER' then our option will look like the following.
+
 ```javascript
 const myCoupon = coupon.generate({
   length: 3,
   prefix: 'SUPER'
 });
 ```
+
 We will get coupon like the following `SUPERAAA`.
 
 ## Coupon with suffix
+
 To create coupon with suffix pass the following option.
+
 ```javascript
 const myCoupon = coupon.generate({
   length: 3,
   suffix: 'AWESOME'
 });
 ```
+
 The above code will generate coupon like the following `ZZZAWESOME`.
 
 Note! Characters of the suffix is not counted. If length is not specified then default value of 6 is considered as the length.
 
 ## Coupon with prefix and suffix
+
 To create coupon with prefix and suffix pass the following option.
+
 ```javascript
 const myCoupon = coupon.generate({
   length: 6,
@@ -266,12 +291,15 @@ const myCoupon = coupon.generate({
   suffix: 'AWESOME'
 });
 ```
+
 The above code will generate coupon like the following `SUPERZZZZZZAWESOME`.
 
 Note! The characters of the prefix and suffix is not considered. If length is not specified then default value of 6 is considered.
 
 ## Coupon with built in character set
+
 To create coupon code with built in character set pass the following option.
+
 ```javascript
 const myCoupon = coupon.generate({
   characterSet: {
@@ -279,6 +307,7 @@ const myCoupon = coupon.generate({
   }
 });
 ```
+
 Where, `charSetName` is any of the following
 
 - `CHARSET_ALPHA` -- consists of uppercase alphabet characters `A-Z`
@@ -291,6 +320,7 @@ Where, `charSetName` is any of the following
 - `CHARSET_HEX_LOWER` -- consists of characters `0-9` and `a-f`
 
 Example: If we want uppercase and digit we can pass the following.
+
 ```javascript
 const myCoupon = coupon.generate({
   characterSet: {
@@ -299,11 +329,14 @@ const myCoupon = coupon.generate({
 });
 ```
 
-Reference: 
+Reference:
+
 * [Possible number of coupons](#possible-number-of-coupons)
 
 ## Coupon with custom characterSet
+
 To use custom characters to generate coupons pass the following option.
+
 ```javascript
 const myCoupon = coupon.generate({
   characterSet: {
@@ -311,9 +344,11 @@ const myCoupon = coupon.generate({
   }
 });
 ```
+
 Where, `customChar` is any custom characters that you wish to use.
 
 Example: To use `ABC`, `xyz` and `01234` in coupon pass the following.
+
 ```javascript
 const myCoupon = coupon.generate({
   characterSet: {
@@ -323,7 +358,9 @@ const myCoupon = coupon.generate({
 ```
 
 ## Coupons using built in and custom character set
+
 Example: Following option will use digit `0-9` and alphabet `ABC`.
+
 ```javascript
 const myCoupon = coupon.generate({
   characterSet: {
@@ -334,12 +371,15 @@ const myCoupon = coupon.generate({
 ```
 
 ## Generate multiple unique coupons
+
 Pass the following to generate multiple unqiue coupons.
+
 ```javascript
 const myCoupons = coupon.generate({
   numberOfCoupons: number
 });
 ```
+
 The above code will return an array of coupons.
 
 Where, `number` represents the total number of unique coupons to generate.
@@ -350,7 +390,9 @@ Range of `numberOfCoupons`
 - Max 100000
 
 Example:
+
 Following code will generate 3 unique coupons of length 8 using builtIn `CHARSET_ALPHA` and `CHARSET_DIGIT` option.
+
 ```javascript
 const myCoupons = coupon.generate({
   length: 8,
@@ -362,11 +404,13 @@ const myCoupons = coupon.generate({
 ```
 
 Sample output:
+
 ```
 ['95TMY9JV', 'RZU6ZL0K', '1Q19N019']
 ```
 
 Reference: 
+
 * [Maximum number of coupons to generate](#maximum-number-of-coupons-to-generate)
 * [Possible number of coupons](#possible-number-of-coupons)
 
@@ -457,6 +501,7 @@ In the following example we are generating `3` coupons each having `12` characte
 We are formatting the coupons into `4 groups` having 2, 4, 4, and 2 characters in that order.
 
 And we are separating the
+
 * 1st and 2nd group with `-`
 * 2nd and 3rd group with `~`
 * 3rd and 4th group with `-`
@@ -495,11 +540,13 @@ const myCoupon = coupon.generate({
 ```
 
 On executing this we will get coupon code like
+
 ```
 QWERTOWLZJHZXCVB
 ```
 
 Note! Total number of characters in the generated coupon is `5+6+5`.
+
 ```
 QWERT = 5 characters (prefix)
 OWLZJH = 6 characters (generated coupon, as length is set to 6)
@@ -522,6 +569,7 @@ const myCoupon = coupon.generate({
 ```
 
 On executing this we will get coupon code like
+
 ```
 QWER-TOWL-ZJHZ-XCVB
 ```
@@ -546,6 +594,7 @@ const myCoupon = coupon.generate({
 We are formatting the coupon into `4 groups` having 2, 6, 6, and 2 characters in that order.
 
 And we are separating the
+
 * 1st and 2nd group with `-`
 * 2nd and 3rd group with `~`
 * 3rd and 4th group with `-`
@@ -553,6 +602,7 @@ And we are separating the
 And we can add the following `format` configuration to get formatted coupon.
 
 On executing this we will get coupon code like
+
 ```
 QW-ERTOWL~ZJHZXC-VB
 ```
@@ -572,7 +622,9 @@ This section estimates the possible number of coupons that can be generated usin
 |CHARSET_HEX         |0-9, A-F      |16                  |6             |16777216          |8             |4294967296        |12            |2.8147498e+14     |
 |CHARSET_HEX_LOWER   |0-9, a-f      |16                  |6             |16777216          |8             |4294967296        |12            |2.8147498e+14     |
 
+
 Points to note!
+
 * Repetition of characters considered in the above computation.
 * Prefix and Suffix not considered in the above computaion.
 * Omit characters is not set in the above computation.
@@ -609,6 +661,7 @@ Performance:
 ```
 
 ## License
+
 It's free :smiley:
 
 [MIT License](https://github.com/yusufshakeel/couponjs/blob/master/LICENSE) Copyright (c) 2020 Yusuf Shakeel
@@ -618,4 +671,5 @@ It's free :smiley:
 If you find this project useful and interesting then feel free to support it on [Patreon](https://www.patreon.com/yusufshakeel).
 
 ### Donate
+
 Feeling generous :smiley: [Donate via PayPal](https://www.paypal.me/yusufshakeel)

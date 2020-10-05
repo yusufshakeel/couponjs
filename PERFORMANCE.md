@@ -1,4 +1,4 @@
-## Performance
+# PERFORMANCE
 
 You can run the following command to see fresh logs on your machine.
 
@@ -6,7 +6,29 @@ You can run the following command to see fresh logs on your machine.
 > node performance/index.js 
 ```
 
-### Log:
+### Settings used:
+
+```javascript
+const coupon = new CouponJS({
+  verbose: true,
+  logPerformance: true,
+  maxNumberOfCouponsToGenerate: maxCoupon
+});
+
+const result = coupon.generate({
+  characterSet: { builtIn: ['CHARSET_ALNUM'] },
+  length: couponLength,
+  numberOfCoupons: maxCoupon
+});
+```
+
+More details in this file:
+
+```
+performance/index.js
+```
+
+### Logs:
 
 ```
 ➜  couponjs git:(dev) ✗ node performance/index.js
