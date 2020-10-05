@@ -467,13 +467,13 @@ describe('Generate coupon with string format rule', () => {
   test('Should generate coupon code using string format rule', () => {
     const coupon = new Coupon();
     const result = coupon.generate({ length: 12, format: 'xx-xxxx-xxxx-xx' });
-    expect(/^[A-z]{2}-[A-z]{4}-[A-z]{4}-[A-z]{2}$/.test(result)).toBeTruthy();
+    expect(/^[A-Z]{2}-[A-Z]{4}-[A-Z]{4}-[A-Z]{2}$/.test(result)).toBeTruthy();
   });
 
   test('Should generate multiple coupon codes using string format rule', () => {
     const coupon = new Coupon();
     const result = coupon.generate({ length: 12, numberOfCoupons: 3, format: 'xx-xxxx-xxxx-xx' });
-    result.forEach(code => expect(/^[A-z]{2}-[A-z]{4}-[A-z]{4}-[A-z]{2}$/.test(code)).toBeTruthy());
+    result.forEach(code => expect(/^[A-Z]{2}-[A-Z]{4}-[A-Z]{4}-[A-Z]{2}$/.test(code)).toBeTruthy());
   });
 
   test('Should generate coupon code using string format rule and prefix and suffix', () => {
@@ -484,7 +484,7 @@ describe('Generate coupon with string format rule', () => {
       length: 6,
       format: 'xxxx-xxxx-xxxx-xxxx'
     });
-    expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(result)).toBeTruthy();
+    expect(/^[A-Z]{4}-[A-Z]{4}-[A-Z]{4}-[A-Z]{4}$/.test(result)).toBeTruthy();
   });
 
   test('Should generate multiple coupon code using string format rule and prefix and suffix', () => {
@@ -496,7 +496,7 @@ describe('Generate coupon with string format rule', () => {
       numberOfCoupons: 3,
       format: 'xxxx-xxxx-xxxx-xxxx'
     });
-    result.forEach(code => expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(code)).toBeTruthy());
+    result.forEach(code => expect(/^[A-Z]{4}-[A-Z]{4}-[A-Z]{4}-[A-Z]{4}$/.test(code)).toBeTruthy());
   });
 });
 
@@ -507,7 +507,7 @@ describe('Generate coupon with object format rule', () => {
       length: 12,
       format: { separators: ['-', '-'], groups: [4, 4, 4] }
     });
-    expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(result)).toBeTruthy();
+    expect(/^[A-Z]{4}-[A-Z]{4}-[A-Z]{4}$/.test(result)).toBeTruthy();
   });
 
   test('Should generate multiple coupon codes using object format rule', () => {
@@ -517,7 +517,7 @@ describe('Generate coupon with object format rule', () => {
       numberOfCoupons: 3,
       format: { separators: ['-', '-'], groups: [4, 4, 4] }
     });
-    result.forEach(code => expect(/^[A-z]{4}-[A-z]{4}-[A-z]{4}$/.test(code)).toBeTruthy());
+    result.forEach(code => expect(/^[A-Z]{4}-[A-Z]{4}-[A-Z]{4}$/.test(code)).toBeTruthy());
   });
 
   test('Should generate coupon code using object format rule and prefix and suffix', () => {
@@ -528,7 +528,7 @@ describe('Generate coupon with object format rule', () => {
       length: 6,
       format: { separators: ['-', '~', '-'], groups: [4, 4, 4, 4] }
     });
-    expect(/^[A-z]{4}-[A-z]{4}~[A-z]{4}-[A-z]{4}$/.test(result)).toBeTruthy();
+    expect(/^[A-Z]{4}-[A-Z]{4}~[A-Z]{4}-[A-Z]{4}$/.test(result)).toBeTruthy();
   });
 
   test('Should generate multiple coupon code using object format rule and prefix and suffix', () => {
@@ -540,6 +540,6 @@ describe('Generate coupon with object format rule', () => {
       numberOfCoupons: 3,
       format: { separators: ['-', '~', '-'], groups: [4, 4, 4, 4] }
     });
-    result.forEach(code => expect(/^[A-z]{4}-[A-z]{4}~[A-z]{4}-[A-z]{4}$/.test(code)).toBeTruthy());
+    result.forEach(code => expect(/^[A-Z]{4}-[A-Z]{4}~[A-Z]{4}-[A-Z]{4}$/.test(code)).toBeTruthy());
   });
 });
