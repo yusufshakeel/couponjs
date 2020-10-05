@@ -25,23 +25,23 @@ const Coupon = function (config) {
     const {
       numberOfCoupons,
       length,
-      characterSet,
       prefix,
       suffix,
       omitCharacters,
-      format
+      format,
+      characterSet: characterSetOption
     } = Object.assign({}, defaultCouponGenerationOption, option);
     try {
-      const engine = new Engine(
-        characterSet,
+      const engine = new Engine({
         randomInteger,
+        characterSetOption,
         length,
         prefix,
         suffix,
         numberOfCoupons,
         omitCharacters,
         format
-      );
+      });
       const generatedCoupons = engine.run();
       performance.stopTimer();
       const performanceStats = logPerformance ? { performance: performance.stats() } : {};

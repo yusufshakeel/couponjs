@@ -1,6 +1,6 @@
 'use strict';
 
-const Performance = require('../../app/performance.js');
+const Performance = require('../../../app/performance.js');
 
 test('Should be able to return stats', () => {
   const performance = new Performance();

@@ -1,6 +1,6 @@
 'use strict';
 
-const ValidationError = require('../../../app/error/validation-error.js');
+const ValidationError = require('../../../../app/error/validation-error.js');
 
 test('Should be able to set validation error', () => {
   const validationError = new ValidationError({ message: 'This is an error message' });

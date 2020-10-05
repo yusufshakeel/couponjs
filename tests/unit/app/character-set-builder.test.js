@@ -16,9 +16,9 @@ const {
   CHARSET_OCTAL,
   CHARSET_HEX,
   CHARSET_HEX_LOWER
-} = require('../../app/constants.js');
-const characterSetBuilder = require('../../app/character-set-builder.js');
-const { defaultCouponGenerationOption } = require('../../app/option.js');
+} = require('../../../app/constants.js');
+const characterSetBuilder = require('../../../app/character-set-builder.js');
+const { defaultCouponGenerationOption } = require('../../../app/option.js');
 
 test('Should throw error if invalid builtIn option provided', () => {
   expect(() => {

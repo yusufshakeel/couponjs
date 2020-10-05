@@ -2,7 +2,7 @@
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.8.6-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.8.7-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 [![Coverage Status](https://coveralls.io/repos/github/yusufshakeel/couponjs/badge.svg?branch=master)](https://coveralls.io/github/yusufshakeel/couponjs?branch=master)
 
@@ -41,6 +41,7 @@ const CouponJS = require('couponjs');
   * [Format coupon with prefix and suffix](#format-coupon-with-prefix-and-suffix)
     * [String format rule and prefix-suffix combo](#string-format-rule-and-prefix-suffix-combo)
     * [Object format rule and prefix-suffix combo](#object-format-rule-and-prefix-suffix-combo)
+* [Possible number of coupons](#possible-number-of-coupons)
 * [License](#license)
 * [Back this project](#back-this-project)
 * [Donate](#donate)
@@ -277,6 +278,8 @@ const myCoupon = coupon.generate({
 });
 ```
 
+Reference: [Possible number of coupons](#possible-number-of-coupons)
+
 ## Coupon with custom characterSet
 To use custom characters to generate coupons pass the following option.
 ```javascript
@@ -340,6 +343,8 @@ Sample output:
 ```
 ['95TMY9JV', 'RZU6ZL0K', '1Q19N019']
 ```
+
+Reference: [Possible number of coupons](#possible-number-of-coupons)
 
 ## Omit characters
 
@@ -527,6 +532,28 @@ On executing this we will get coupon code like
 ```
 QW-ERTOWL~ZJHZXC-VB
 ```
+
+## Possible number of coupons
+
+This section estimates the possible number of coupons that can be generated using different combinations of characters.
+
+|Character Set       |Characters    |Total Characters    |Coupon Length |Total possibility |Coupon Length |Total possibility |Coupon Length |Total possibility |
+|--------------------|--------------|--------------------|--------------|-----------------:|--------------|-----------------:|--------------|-----------------:|
+|CHARSET_ALPHA       |A-Z           |26                  |6             |308915776         |8             |208827064576      |12            |9.5428957e+16     |
+|CHARSET_ALPHA_LOWER |a-z           |26                  |6             |308915776         |8             |208827064576      |12            |9.5428957e+16     |
+|CHARSET_DIGIT       |0-9           |10                  |6             |1000000           |8             |100000000         |12            |1e+12             |
+|CHARSET_ALNUM       |A-Z, a-z, 0-9 |62                  |6             |56800235584       |8             |2.1834011e+14     |12            |3.2262668e+21     |
+|CHARSET_BINARY      |0-1           |2                   |6             |64                |8             |256               |12            |4096              |
+|CHARSET_OCTAL       |0-7           |8                   |6             |262144            |8             |16777216          |12            |68719476736       |
+|CHARSET_HEX         |0-9, A-F      |16                  |6             |16777216          |8             |4294967296        |12            |2.8147498e+14     |
+|CHARSET_HEX_LOWER   |0-9, a-f      |16                  |6             |16777216          |8             |4294967296        |12            |2.8147498e+14     |
+
+Points to note!
+* Repetition of characters considered in the above computation.
+* Prefix and Suffix not considered in the above computaion.
+* Omit characters is not set in the above computation.
+* Different mix of character sets can be used to change the total number of possible coupons that can be generated.
+* Speed and generation of coupons will also depend on the hardware used.
 
 ## License
 It's free :smiley:
