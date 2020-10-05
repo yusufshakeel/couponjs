@@ -41,6 +41,7 @@ const throwValidationError = ({ message, field }) => {
  * @param {number} numberOfCoupons Total number of coupons to generate.
  * @param {string[]} omitCharacters This is the array of characters that will be ignored.
  * @param {string|object} format This is the format rule that will be applied to the coupon.
+ * @param {number} maxNumberOfCouponsToGenerate This is the maximum number of coupons that can be generated.
  * @constructor
  */
 const Engine = function ({
@@ -51,7 +52,8 @@ const Engine = function ({
   suffix = DEFAULT_SUFFIX,
   numberOfCoupons = DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
   omitCharacters = DEFAULT_OMIT_CHARACTERS,
-  format = UNDEFINED
+  format = UNDEFINED,
+  maxNumberOfCouponsToGenerate = MAX_NUMBER_OF_COUPONS_TO_GENERATE
 }) {
   const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
 
@@ -71,9 +73,9 @@ const Engine = function ({
         field: 'numberOfCoupons'
       });
     }
-    if (numberOfCoupons > MAX_NUMBER_OF_COUPONS_TO_GENERATE) {
+    if (numberOfCoupons > maxNumberOfCouponsToGenerate) {
       throwValidationError({
-        message: `Maximum value for numberOfCoupons is ${MAX_NUMBER_OF_COUPONS_TO_GENERATE}.`,
+        message: `Maximum value for numberOfCoupons is ${maxNumberOfCouponsToGenerate}.`,
         field: 'numberOfCoupons'
       });
     }

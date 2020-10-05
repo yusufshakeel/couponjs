@@ -13,8 +13,12 @@ const { couponConfigValidator } = require('./app/validator/coupon-config-validat
  */
 const Coupon = function (config) {
   const performance = new Performance();
-  const { verbose, logPerformance } = Object.assign({}, defaultCouponEngineOption, config);
-  couponConfigValidator({ verbose, logPerformance });
+  const { verbose, logPerformance, maxNumberOfCouponsToGenerate } = Object.assign(
+    {},
+    defaultCouponEngineOption,
+    config
+  );
+  couponConfigValidator({ verbose, logPerformance, maxNumberOfCouponsToGenerate });
 
   /**
    * This will generate coupons.
@@ -42,7 +46,8 @@ const Coupon = function (config) {
         suffix,
         numberOfCoupons,
         omitCharacters,
-        format
+        format,
+        maxNumberOfCouponsToGenerate
       });
       const generatedCoupons = engine.run();
       performance.stopTimer();

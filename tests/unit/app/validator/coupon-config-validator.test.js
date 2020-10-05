@@ -37,3 +37,23 @@ test('Should throw error if logPerformance is not of type boolean', () => {
     ]);
   }
 });
+
+test('Should throw error if maxNumberOfCouponsToGenerate is not of type integer', () => {
+  expect.assertions(3);
+  try {
+    couponConfigValidator({ maxNumberOfCouponsToGenerate: 'hello' });
+  } catch (e) {
+    expect(e.message).toBe(
+      "Coupon engine configuration field 'maxNumberOfCouponsToGenerate' must be of type integer."
+    );
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'maxNumberOfCouponsToGenerate',
+        message:
+          "Coupon engine configuration field 'maxNumberOfCouponsToGenerate' must be of type integer.",
+        type: 'COUPONJS_COUPON_ENGINE_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
+});

@@ -80,6 +80,32 @@ describe('Coupon engine configuration', () => {
       expect(result.performance.duration.second).not.toBeUndefined();
     });
   });
+
+  describe('maxNumberOfCouponsToGenerate test', () => {
+    test('Should be able to generate max 10 coupons', () => {
+      const coupon = new Coupon({ maxNumberOfCouponsToGenerate: 10 });
+      const result = coupon.generate({ numberOfCoupons: 10 });
+      expect(result.length).toBe(10);
+    });
+
+    test('Should throw error if trying to generate more coupons then permitted', () => {
+      expect.assertions(3);
+      try {
+        const coupon = new Coupon({ maxNumberOfCouponsToGenerate: 10 });
+        coupon.generate({ numberOfCoupons: 100 });
+      } catch (e) {
+        expect(e.message).toBe('Maximum value for numberOfCoupons is 10.');
+        expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+        expect(e.errors).toStrictEqual([
+          {
+            field: 'numberOfCoupons',
+            message: 'Maximum value for numberOfCoupons is 10.',
+            type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+          }
+        ]);
+      }
+    });
+  });
 });
 
 test('Should throw validation error', () => {
