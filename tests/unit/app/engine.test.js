@@ -1,8 +1,8 @@
 'use strict';
 
-const Engine = require('../../app/engine.js');
-const { defaultCouponGenerationOption } = require('../../app/option.js');
-const randomInteger = require('../../app/random-integer.js');
+const Engine = require('../../../app/engine.js');
+const { defaultCouponGenerationOption } = require('../../../app/option.js');
+const randomInteger = require('../../../app/random-integer.js');
 
 test('Should throw error if numberOfCoupons is less than 1', () => {
   expect.assertions(3);

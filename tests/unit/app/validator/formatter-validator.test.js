@@ -4,7 +4,7 @@ const {
   validateFormatRuleString,
   validateFormatRuleObject,
   hasEqualSumOfGroupsAndCouponLength
-} = require('../../../app/validator/formatter-validator.js');
+} = require('../../../../app/validator/formatter-validator.js');
 
 describe('Testing format rule of string type', () => {
   test('Should return computed properties if format rule has valid characters', () => {

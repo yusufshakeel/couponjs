@@ -1,6 +1,6 @@
 'use strict';
 
-const Formatter = require('../../app/formatter.js');
+const Formatter = require('../../../app/formatter.js');
 
 const assertFormatterError = (format, expectedError) => {
   try {

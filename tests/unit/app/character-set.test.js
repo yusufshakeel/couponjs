@@ -1,6 +1,6 @@
 'use strict';
 
-const characterSet = require('../../app/character-set.js');
+const characterSet = require('../../../app/character-set.js');
 const {
   ALPHABET_UPPERCASE,
   ALPHABET_LOWERCASE,
@@ -17,7 +17,7 @@ const {
   CHARSET_OCTAL,
   CHARSET_HEX,
   CHARSET_HEX_LOWER
-} = require('../../app/constants.js');
+} = require('../../../app/constants.js');
 
 test('Should throw error if invalid charSetName provided', () => {
   expect.assertions(3);

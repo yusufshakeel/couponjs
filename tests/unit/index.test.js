@@ -1,6 +1,6 @@
 'use strict';
 
-const Coupon = require('../index.js');
+const Coupon = require('../../index.js');
 
 describe('Coupon engine configuration', () => {
   describe('verbose tests', () => {
