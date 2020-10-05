@@ -7,13 +7,15 @@ const {
   CHARSET_ALPHA,
   DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_OMIT_CHARACTERS,
-  DEFAULT_COUPON_FORMAT
+  DEFAULT_COUPON_FORMAT,
+  MAX_NUMBER_OF_COUPONS_TO_GENERATE
 } = require('./constants.js');
 
 module.exports = {
   defaultCouponEngineOption: {
     verbose: false,
-    logPerformance: false
+    logPerformance: false,
+    maxNumberOfCouponsToGenerate: MAX_NUMBER_OF_COUPONS_TO_GENERATE
   },
   defaultCouponGenerationOption: {
     length: DEFAULT_LENGTH,
