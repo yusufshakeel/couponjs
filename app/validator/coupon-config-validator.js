@@ -46,6 +46,19 @@ function couponConfigValidator(config) {
       ]
     });
   }
+
+  if (maxNumberOfCouponsToGenerate < 1) {
+    throw new ValidationError({
+      message: `Coupon engine configuration field 'maxNumberOfCouponsToGenerate' must be greater than 0.`,
+      errors: [
+        {
+          type: ERROR_CONSTANTS.COUPONJS_COUPON_ENGINE_CONFIGURATION_ERROR.type,
+          field: 'maxNumberOfCouponsToGenerate',
+          message: `Coupon engine configuration field 'maxNumberOfCouponsToGenerate' must be greater than 0.`
+        }
+      ]
+    });
+  }
 }
 
 module.exports = { couponConfigValidator };

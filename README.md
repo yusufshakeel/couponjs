@@ -2,7 +2,7 @@
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.8.7-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.8.8-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 [![Coverage Status](https://coveralls.io/repos/github/yusufshakeel/couponjs/badge.svg?branch=master)](https://coveralls.io/github/yusufshakeel/couponjs?branch=master)
 
@@ -24,6 +24,7 @@ const CouponJS = require('couponjs');
 * [Coupon engine configuration](#coupon-engine-configuration)
   * [Verbose](#verbose)
   * [Log Performance](#log-performance)
+  * [Maximum number of coupons to generate](#maximum-number-of-coupons-to-generate)
 * [Generate coupon](#generate-coupon)
 * [Configuration to generate coupons](#configuration-to-generate-coupons)
   * [Coupon of length N](#coupon-of-length-n)
@@ -159,6 +160,25 @@ And error response like the following.
 }
 ```
 
+### Maximum number of coupons to generate
+
+By default, we can generate `100000` coupons.
+
+If we want to increase or decrease the number of coupons that can be generated then we set the `maxNumberOfCouponsToGenerate`
+field.
+
+It takes an integer value greater than 0.
+
+Default value: `100000`
+
+Syntax:
+
+```javascript
+const coupon = new CouponJS({ 
+  maxNumberOfCouponsToGenerate: 100
+});
+```
+
 ## Generate coupon
 Create an object.
 ```javascript
@@ -278,7 +298,8 @@ const myCoupon = coupon.generate({
 });
 ```
 
-Reference: [Possible number of coupons](#possible-number-of-coupons)
+Reference: 
+* [Possible number of coupons](#possible-number-of-coupons)
 
 ## Coupon with custom characterSet
 To use custom characters to generate coupons pass the following option.
@@ -344,7 +365,9 @@ Sample output:
 ['95TMY9JV', 'RZU6ZL0K', '1Q19N019']
 ```
 
-Reference: [Possible number of coupons](#possible-number-of-coupons)
+Reference: 
+* [Maximum number of coupons to generate](#maximum-number-of-coupons-to-generate)
+* [Possible number of coupons](#possible-number-of-coupons)
 
 ## Omit characters
 

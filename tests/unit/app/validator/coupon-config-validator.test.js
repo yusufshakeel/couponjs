@@ -57,3 +57,23 @@ test('Should throw error if maxNumberOfCouponsToGenerate is not of type integer'
     ]);
   }
 });
+
+test('Should throw error if maxNumberOfCouponsToGenerate is not greater than 0', () => {
+  expect.assertions(3);
+  try {
+    couponConfigValidator({ maxNumberOfCouponsToGenerate: 0 });
+  } catch (e) {
+    expect(e.message).toBe(
+      "Coupon engine configuration field 'maxNumberOfCouponsToGenerate' must be greater than 0."
+    );
+    expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+    expect(e.errors).toStrictEqual([
+      {
+        field: 'maxNumberOfCouponsToGenerate',
+        message:
+          "Coupon engine configuration field 'maxNumberOfCouponsToGenerate' must be greater than 0.",
+        type: 'COUPONJS_COUPON_ENGINE_CONFIGURATION_ERROR'
+      }
+    ]);
+  }
+});
