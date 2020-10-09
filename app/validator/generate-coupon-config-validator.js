@@ -4,7 +4,6 @@ const {
   MAX_LENGTH,
   MIN_LENGTH,
   MIN_NUMBER_OF_COUPONS_TO_GENERATE,
-  MAX_NUMBER_OF_COUPONS_TO_GENERATE,
   ERROR_CONSTANTS
 } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
@@ -118,17 +117,8 @@ function validateOmitCharacters(omitCharacters) {
   });
 }
 
-function generateCouponConfigValidator(config) {
-  const {
-    length,
-    numberOfCoupons,
-    omitCharacters,
-    maxNumberOfCouponsToGenerate = MAX_NUMBER_OF_COUPONS_TO_GENERATE
-  } = config;
-
-  validateLength(length);
-  validateNumberOfCoupons(numberOfCoupons, maxNumberOfCouponsToGenerate);
-  validateOmitCharacters(omitCharacters);
-}
-
-module.exports = { generateCouponConfigValidator };
+module.exports = {
+  validateLength,
+  validateNumberOfCoupons,
+  validateOmitCharacters
+};
