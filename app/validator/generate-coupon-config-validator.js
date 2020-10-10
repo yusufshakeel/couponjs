@@ -7,7 +7,7 @@ const {
   ERROR_CONSTANTS
 } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-const { isOfType, isArray } = require('../functional');
+const { isOfType, isArray } = require('../validator/validator.js');
 
 const throwValidationError = ({ message, field }) => {
   throw new ValidationError({

@@ -2,7 +2,7 @@
 
 const { ERROR_CONSTANTS } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-const { isArray } = require('../functional');
+const { isArray } = require('../validator/validator.js');
 
 const sumOfGroupsCharacters = groups => {
   return groups.reduce((sum, size) => sum + size, 0);

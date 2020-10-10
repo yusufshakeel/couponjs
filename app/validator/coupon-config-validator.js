@@ -2,7 +2,7 @@
 
 const { ERROR_CONSTANTS } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-const { isOfType, isUndefined, isInteger } = require('../functional');
+const { isOfType, isUndefined, isInteger } = require('../validator/validator.js');
 
 function couponConfigValidator(config) {
   const { verbose, logPerformance, maxNumberOfCouponsToGenerate } = config;

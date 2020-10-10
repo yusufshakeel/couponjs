@@ -7,7 +7,7 @@ const {
   isArray,
   isBoolean,
   isString
-} = require('../../../../app/functional');
+} = require('../../../../app/validator/validator.js');
 
 test('Should be able to check the type of the operand', () => {
   const foo = { bar: 'foobar' };
