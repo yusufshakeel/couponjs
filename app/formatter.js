@@ -2,7 +2,7 @@
 
 const { ERROR_CONSTANTS } = require('./constants.js');
 const ValidationError = require('./error/validation-error.js');
-
+const { isUndefined } = require('./validator/validator.js');
 const {
   validateFormatRuleString,
   validateFormatRuleObject,
@@ -12,7 +12,7 @@ const {
 function validate(format) {
   const formatType = typeof format;
 
-  if (formatType === 'undefined') {
+  if (isUndefined(format)) {
     const message = 'Format rule is not specified.';
     throw new ValidationError({
       message,
