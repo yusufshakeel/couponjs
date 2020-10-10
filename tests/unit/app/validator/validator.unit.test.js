@@ -7,6 +7,7 @@ const {
   isArray,
   isBoolean,
   isString,
+  isObject,
   isEmptyArray
 } = require('../../../../app/validator/validator.js');
 
@@ -86,4 +87,15 @@ test('Should be able to determine that value is an empty array', () => {
   expect(isEmptyArray([])).toBeTruthy();
 
   expect(isEmptyArray([1])).toBeFalsy();
+});
+
+test('Should be able to determine that value is object', () => {
+  expect(isObject({})).toBeTruthy();
+  expect(isObject({ foo: 'bar' })).toBeTruthy();
+
+  expect(isObject(true)).toBeFalsy();
+  expect(isObject(false)).toBeFalsy();
+  expect(isObject(1)).toBeFalsy();
+  expect(isObject(0)).toBeFalsy();
+  expect(isObject(undefined)).toBeFalsy();
 });

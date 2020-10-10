@@ -2,7 +2,7 @@
 
 const { ERROR_CONSTANTS } = require('./constants.js');
 const ValidationError = require('./error/validation-error.js');
-const { isUndefined, isString } = require('./validator/validator.js');
+const { isUndefined, isString, isObject } = require('./validator/validator.js');
 const {
   validateFormatRuleString,
   validateFormatRuleObject,
@@ -10,8 +10,6 @@ const {
 } = require('./validator/formatter-validator.js');
 
 function validate(format) {
-  const formatType = typeof format;
-
   if (isUndefined(format)) {
     const message = 'Format rule is not specified.';
     throw new ValidationError({
@@ -32,7 +30,7 @@ function validate(format) {
       totalCharactersInGroup,
       separators
     };
-  } else if (formatType === 'object') {
+  } else if (isObject(format)) {
     const result = validateFormatRuleObject(format);
     const { groups, totalCharactersInGroup, separators } = result;
     return {

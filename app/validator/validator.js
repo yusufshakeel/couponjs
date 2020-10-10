@@ -2,6 +2,7 @@
 
 const isOfType = (operand, type) => typeof operand === type;
 const isBoolean = value => typeof value === 'boolean';
+const isObject = value => typeof value === 'object';
 const isString = value => typeof value === 'string';
 const isUndefined = value => typeof value === 'undefined';
 const isInteger = value => Number.isInteger(value) && Number.isFinite(value) && `${value}`;
@@ -15,5 +16,6 @@ module.exports = {
   isArray,
   isBoolean,
   isString,
+  isObject,
   isEmptyArray
 };
