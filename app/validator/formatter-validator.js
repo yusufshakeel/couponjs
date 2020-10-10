@@ -2,7 +2,7 @@
 
 const { ERROR_CONSTANTS } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-const { isArray, isString, isInteger } = require('../validator/validator.js');
+const { isArray, isString, isInteger, isEmptyArray } = require('../validator/validator.js');
 const { sumOf } = require('../functional');
 
 const getErrorsInGroups = groups => {
@@ -103,7 +103,7 @@ function validateFormatRuleObject(ruleObject) {
     });
   }
 
-  if (groups.length === 0) {
+  if (isEmptyArray(groups)) {
     const message = `Format object must have at least one element in the array field 'groups'.`;
     throw new ValidationError({
       message,
