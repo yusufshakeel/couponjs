@@ -87,12 +87,15 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Total number of possible coupons that can be generated is 27.');
+    expect(e.message).toBe(
+      'Total number of possible coupons that can be generated is 27 for the given length and characterSet.'
+    );
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'numberOfCoupons',
-        message: 'Total number of possible coupons that can be generated is 27.',
+        message:
+          'Total number of possible coupons that can be generated is 27 for the given length and characterSet.',
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
@@ -120,12 +123,15 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Total number of possible coupons that can be generated is 17576.');
+    expect(e.message).toBe(
+      'Total number of possible coupons that can be generated is 17576 for the given length and characterSet.'
+    );
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'numberOfCoupons',
-        message: 'Total number of possible coupons that can be generated is 17576.',
+        message:
+          'Total number of possible coupons that can be generated is 17576 for the given length and characterSet.',
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
@@ -153,12 +159,15 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Total number of possible coupons that can be generated is 17576.');
+    expect(e.message).toBe(
+      'Total number of possible coupons that can be generated is 17576 for the given length and characterSet.'
+    );
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'numberOfCoupons',
-        message: 'Total number of possible coupons that can be generated is 17576.',
+        message:
+          'Total number of possible coupons that can be generated is 17576 for the given length and characterSet.',
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
@@ -186,12 +195,15 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Total number of possible coupons that can be generated is 1000.');
+    expect(e.message).toBe(
+      'Total number of possible coupons that can be generated is 1000 for the given length and characterSet.'
+    );
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'numberOfCoupons',
-        message: 'Total number of possible coupons that can be generated is 1000.',
+        message:
+          'Total number of possible coupons that can be generated is 1000 for the given length and characterSet.',
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
@@ -219,12 +231,15 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Total number of possible coupons that can be generated is 8.');
+    expect(e.message).toBe(
+      'Total number of possible coupons that can be generated is 8 for the given length and characterSet.'
+    );
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'numberOfCoupons',
-        message: 'Total number of possible coupons that can be generated is 8.',
+        message:
+          'Total number of possible coupons that can be generated is 8 for the given length and characterSet.',
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
@@ -252,12 +267,15 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Total number of possible coupons that can be generated is 512.');
+    expect(e.message).toBe(
+      'Total number of possible coupons that can be generated is 512 for the given length and characterSet.'
+    );
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'numberOfCoupons',
-        message: 'Total number of possible coupons that can be generated is 512.',
+        message:
+          'Total number of possible coupons that can be generated is 512 for the given length and characterSet.',
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
@@ -285,12 +303,15 @@ test('Should throw error if length is 3 and numberOfCoupons is greater than tota
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Total number of possible coupons that can be generated is 4096.');
+    expect(e.message).toBe(
+      'Total number of possible coupons that can be generated is 4096 for the given length and characterSet.'
+    );
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'numberOfCoupons',
-        message: 'Total number of possible coupons that can be generated is 4096.',
+        message:
+          'Total number of possible coupons that can be generated is 4096 for the given length and characterSet.',
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
@@ -318,12 +339,15 @@ test('Should throw error if length is 2 and numberOfCoupons is greater than tota
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Total number of possible coupons that can be generated is 3844.');
+    expect(e.message).toBe(
+      'Total number of possible coupons that can be generated is 3844 for the given length and characterSet.'
+    );
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'numberOfCoupons',
-        message: 'Total number of possible coupons that can be generated is 3844.',
+        message:
+          'Total number of possible coupons that can be generated is 3844 for the given length and characterSet.',
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);
@@ -344,12 +368,12 @@ test('Should throw error if length is less than 1', () => {
     });
     engine.run();
   } catch (e) {
-    expect(e.message).toBe('Minimum value for length is 1.');
+    expect(e.message).toBe("Minimum value for 'length' is 1.");
     expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
     expect(e.errors).toStrictEqual([
       {
         field: 'length',
-        message: 'Minimum value for length is 1.',
+        message: "Minimum value for 'length' is 1.",
         type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
       }
     ]);

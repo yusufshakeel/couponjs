@@ -3,12 +3,12 @@
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.8.9-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.8.10-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 [![Coverage Status](https://coveralls.io/repos/github/yusufshakeel/couponjs/badge.svg?branch=master)](https://coveralls.io/github/yusufshakeel/couponjs?branch=master)
 
 
-> Generated 5,000,000 unique coupons of length 16 in average `15.693002507333334` seconds.
+> Generated 5,000,000 unique coupons of length 16 in average `15.142595082666666` seconds.
 > Logs in [PERFORMANCE.md](./PERFORMANCE.md) file.
 
 
@@ -640,25 +640,6 @@ To check performance run the following command in the terminal.
 ```
 
 Performance summary. Full log in [PERFORMANCE.md](./PERFORMANCE.md) file.
-
-```
-============================================================
-#1: Time: 2020-10-05T21:20:42.632Z Total Coupons: 5000000, Coupon Length: 16, Duration: 15784127863n
-============================================================
-#2: Time: 2020-10-05T21:20:58.133Z Total Coupons: 5000000, Coupon Length: 16, Duration: 15500175178n
-============================================================
-#3: Time: 2020-10-05T21:21:13.928Z Total Coupons: 5000000, Coupon Length: 16, Duration: 15794704481n
-============================================================
-Performance:
-{
-  "averageDuration": {
-    "nano": 15693002507.333334,
-    "micro": 15693002.507333335,
-    "milli": 15693.002507333335,
-    "second": 15.693002507333334
-  }
-}
-```
 
 ## License
 
