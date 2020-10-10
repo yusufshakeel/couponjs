@@ -2,13 +2,12 @@
 
 const { ERROR_CONSTANTS } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-
-const isOfType = (variable, type) => typeof variable === type;
+const { isOfType, isUndefined, isInteger } = require('../functional');
 
 function couponConfigValidator(config) {
   const { verbose, logPerformance, maxNumberOfCouponsToGenerate } = config;
 
-  if (verbose && !isOfType(verbose, 'boolean')) {
+  if (!isUndefined(verbose) && !isOfType(verbose, 'boolean')) {
     throw new ValidationError({
       message: `Coupon engine configuration field 'verbose' must be of type boolean.`,
       errors: [
@@ -21,7 +20,7 @@ function couponConfigValidator(config) {
     });
   }
 
-  if (logPerformance && !isOfType(logPerformance, 'boolean')) {
+  if (!isUndefined(logPerformance) && !isOfType(logPerformance, 'boolean')) {
     throw new ValidationError({
       message: `Coupon engine configuration field 'logPerformance' must be of type boolean.`,
       errors: [
@@ -34,7 +33,7 @@ function couponConfigValidator(config) {
     });
   }
 
-  if (maxNumberOfCouponsToGenerate && !Number.isInteger(maxNumberOfCouponsToGenerate)) {
+  if (!isUndefined(maxNumberOfCouponsToGenerate) && !isInteger(maxNumberOfCouponsToGenerate)) {
     throw new ValidationError({
       message: `Coupon engine configuration field 'maxNumberOfCouponsToGenerate' must be of type integer.`,
       errors: [
