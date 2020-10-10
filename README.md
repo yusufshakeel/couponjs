@@ -7,11 +7,6 @@ This is a simple coupon creation project using NodeJS.
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 [![Coverage Status](https://coveralls.io/repos/github/yusufshakeel/couponjs/badge.svg?branch=master)](https://coveralls.io/github/yusufshakeel/couponjs?branch=master)
 
-
-> Generated 5,000,000 unique coupons of length 16 in average `15.142595082666666` seconds.
-> Logs in [PERFORMANCE.md](./PERFORMANCE.md) file.
-
-
 # Getting Started
 
 Add this to your project using npm.
