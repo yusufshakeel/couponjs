@@ -3,10 +3,7 @@
 const { ERROR_CONSTANTS } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
 const { isArray, isString, isInteger } = require('../validator/validator.js');
-
-const sumOfGroupsCharacters = groups => {
-  return groups.reduce((sum, size) => sum + size, 0);
-};
+const { sumOf } = require('../functional');
 
 const getErrorsInGroups = groups => {
   return groups.reduce((error, group, index) => {
@@ -49,7 +46,7 @@ function validateFormatRuleString(ruleString) {
   const isValidFormatRuleString = /^([x]+-?[x]*)*?x$/g.test(ruleString);
   if (isValidFormatRuleString) {
     const groups = ruleString.split('-').map(group => group.length);
-    const totalCharactersInGroup = sumOfGroupsCharacters(groups);
+    const totalCharactersInGroup = sumOf(groups);
     const separators = '-'.repeat(groups.length - 1).split('');
     return {
       groups,
@@ -173,7 +170,7 @@ function validateFormatRuleObject(ruleObject) {
   return {
     separators,
     groups: groups.map(group => parseInt(group)),
-    totalCharactersInGroup: sumOfGroupsCharacters(groups)
+    totalCharactersInGroup: sumOf(groups)
   };
 }
 
