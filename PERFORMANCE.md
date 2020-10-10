@@ -1,12 +1,16 @@
 # PERFORMANCE
 
+This file contains the performance log.
+
+Generated at: 2020-10-10T12:39:27.445Z
+
 You can run the following command to see fresh logs on your machine.
 
 ```
-> node performance/index.js 
+> npm run performance
 ```
 
-### Settings used:
+### Settings
 
 ```javascript
 const coupon = new CouponJS({
@@ -27,522 +31,835 @@ More details in this file:
 ```
 performance/index.js
 ```
+============================================================
 
-### Logs:
+Round: 1: Time: 2020-10-10T12:39:27.454Z Total Coupons: 1, Coupon Length: 6, Duration: 650592n
+
+============================================================
+
+Round: 2: Time: 2020-10-10T12:39:27.455Z Total Coupons: 1, Coupon Length: 6, Duration: 1532827n
+
+============================================================
+
+Round: 3: Time: 2020-10-10T12:39:27.456Z Total Coupons: 1, Coupon Length: 6, Duration: 65862n
+
+============================================================
+
 
 ```
-➜  couponjs git:(dev) node performance/index.js
-============================================================
-#1: Time: 2020-10-10T07:21:15.701Z Total Coupons: 1, Coupon Length: 6, Duration: 710903n
-============================================================
-#2: Time: 2020-10-10T07:21:15.701Z Total Coupons: 1, Coupon Length: 6, Duration: 69908n
-============================================================
-#3: Time: 2020-10-10T07:21:15.701Z Total Coupons: 1, Coupon Length: 6, Duration: 57511n
-============================================================
 Performance:
 {
   "averageDuration": {
-    "nano": 279440.6666666667,
-    "micro": 279.4406666666667,
-    "milli": 0.27944066666666667,
-    "second": 0.0002794406666666667
+    "nano": 749760.3333333334,
+    "micro": 749.7603333333334,
+    "milli": 0.7497603333333334,
+    "second": 0.0007497603333333334
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.701Z Total Coupons: 1, Coupon Length: 8, Duration: 67489n
+
+Round: 1: Time: 2020-10-10T12:39:27.456Z Total Coupons: 1, Coupon Length: 8, Duration: 76395n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.703Z Total Coupons: 1, Coupon Length: 8, Duration: 1520859n
+
+Round: 2: Time: 2020-10-10T12:39:27.456Z Total Coupons: 1, Coupon Length: 8, Duration: 54040n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.703Z Total Coupons: 1, Coupon Length: 8, Duration: 74063n
+
+Round: 3: Time: 2020-10-10T12:39:27.456Z Total Coupons: 1, Coupon Length: 8, Duration: 60116n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 554137,
-    "micro": 554.137,
-    "milli": 0.554137,
-    "second": 0.000554137
+    "nano": 63517,
+    "micro": 63.517,
+    "milli": 0.063517,
+    "second": 0.000063517
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.704Z Total Coupons: 1, Coupon Length: 12, Duration: 46053n
+
+Round: 1: Time: 2020-10-10T12:39:27.457Z Total Coupons: 1, Coupon Length: 12, Duration: 45540n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.704Z Total Coupons: 1, Coupon Length: 12, Duration: 36045n
+
+Round: 2: Time: 2020-10-10T12:39:27.457Z Total Coupons: 1, Coupon Length: 12, Duration: 37667n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.704Z Total Coupons: 1, Coupon Length: 12, Duration: 33763n
+
+Round: 3: Time: 2020-10-10T12:39:27.457Z Total Coupons: 1, Coupon Length: 12, Duration: 36231n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 38620.333333333336,
-    "micro": 38.620333333333335,
-    "milli": 0.03862033333333333,
-    "second": 0.000038620333333333334
+    "nano": 39812.666666666664,
+    "micro": 39.812666666666665,
+    "milli": 0.03981266666666666,
+    "second": 0.000039812666666666666
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.704Z Total Coupons: 1, Coupon Length: 16, Duration: 35284n
+
+Round: 1: Time: 2020-10-10T12:39:27.457Z Total Coupons: 1, Coupon Length: 16, Duration: 37016n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.704Z Total Coupons: 1, Coupon Length: 16, Duration: 34508n
+
+Round: 2: Time: 2020-10-10T12:39:27.457Z Total Coupons: 1, Coupon Length: 16, Duration: 35103n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.704Z Total Coupons: 1, Coupon Length: 16, Duration: 33863n
+
+Round: 3: Time: 2020-10-10T12:39:27.457Z Total Coupons: 1, Coupon Length: 16, Duration: 34622n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 34551.666666666664,
-    "micro": 34.55166666666666,
-    "milli": 0.03455166666666666,
-    "second": 0.00003455166666666666
+    "nano": 35580.333333333336,
+    "micro": 35.580333333333336,
+    "milli": 0.03558033333333334,
+    "second": 0.000035580333333333336
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.704Z Total Coupons: 10, Coupon Length: 6, Duration: 117749n
+
+Round: 1: Time: 2020-10-10T12:39:27.458Z Total Coupons: 10, Coupon Length: 6, Duration: 112744n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.705Z Total Coupons: 10, Coupon Length: 6, Duration: 54570n
+
+Round: 2: Time: 2020-10-10T12:39:27.458Z Total Coupons: 10, Coupon Length: 6, Duration: 54414n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.705Z Total Coupons: 10, Coupon Length: 6, Duration: 56661n
+
+Round: 3: Time: 2020-10-10T12:39:27.458Z Total Coupons: 10, Coupon Length: 6, Duration: 56199n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 76326.66666666667,
-    "micro": 76.32666666666667,
-    "milli": 0.07632666666666667,
-    "second": 0.00007632666666666667
+    "nano": 74452.33333333333,
+    "micro": 74.45233333333333,
+    "milli": 0.07445233333333333,
+    "second": 0.00007445233333333333
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.705Z Total Coupons: 10, Coupon Length: 8, Duration: 61563n
+
+Round: 1: Time: 2020-10-10T12:39:27.458Z Total Coupons: 10, Coupon Length: 8, Duration: 63136n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.705Z Total Coupons: 10, Coupon Length: 8, Duration: 57731n
+
+Round: 2: Time: 2020-10-10T12:39:27.458Z Total Coupons: 10, Coupon Length: 8, Duration: 58088n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.705Z Total Coupons: 10, Coupon Length: 8, Duration: 57187n
+
+Round: 3: Time: 2020-10-10T12:39:27.459Z Total Coupons: 10, Coupon Length: 8, Duration: 57056n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 58827,
-    "micro": 58.827,
-    "milli": 0.058827,
-    "second": 0.000058827
+    "nano": 59426.666666666664,
+    "micro": 59.42666666666666,
+    "milli": 0.05942666666666666,
+    "second": 0.000059426666666666665
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.705Z Total Coupons: 10, Coupon Length: 12, Duration: 70478n
+
+Round: 1: Time: 2020-10-10T12:39:27.459Z Total Coupons: 10, Coupon Length: 12, Duration: 71847n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.705Z Total Coupons: 10, Coupon Length: 12, Duration: 67855n
+
+Round: 2: Time: 2020-10-10T12:39:27.459Z Total Coupons: 10, Coupon Length: 12, Duration: 67385n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.706Z Total Coupons: 10, Coupon Length: 12, Duration: 66206n
+
+Round: 3: Time: 2020-10-10T12:39:27.459Z Total Coupons: 10, Coupon Length: 12, Duration: 72440n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 68179.66666666667,
-    "micro": 68.17966666666668,
-    "milli": 0.06817966666666667,
-    "second": 0.00006817966666666667
+    "nano": 70557.33333333333,
+    "micro": 70.55733333333333,
+    "milli": 0.07055733333333333,
+    "second": 0.00007055733333333333
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.706Z Total Coupons: 10, Coupon Length: 16, Duration: 79547n
+
+Round: 1: Time: 2020-10-10T12:39:27.459Z Total Coupons: 10, Coupon Length: 16, Duration: 80520n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.706Z Total Coupons: 10, Coupon Length: 16, Duration: 78285n
+
+Round: 2: Time: 2020-10-10T12:39:27.459Z Total Coupons: 10, Coupon Length: 16, Duration: 79933n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.706Z Total Coupons: 10, Coupon Length: 16, Duration: 103811n
+
+Round: 3: Time: 2020-10-10T12:39:27.460Z Total Coupons: 10, Coupon Length: 16, Duration: 79244n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 87214.33333333333,
-    "micro": 87.21433333333333,
-    "milli": 0.08721433333333332,
-    "second": 0.00008721433333333333
+    "nano": 79899,
+    "micro": 79.899,
+    "milli": 0.079899,
+    "second": 0.000079899
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.707Z Total Coupons: 100, Coupon Length: 6, Duration: 784031n
+
+Round: 1: Time: 2020-10-10T12:39:27.460Z Total Coupons: 100, Coupon Length: 6, Duration: 255069n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.708Z Total Coupons: 100, Coupon Length: 6, Duration: 293686n
+
+Round: 2: Time: 2020-10-10T12:39:27.460Z Total Coupons: 100, Coupon Length: 6, Duration: 240463n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.708Z Total Coupons: 100, Coupon Length: 6, Duration: 278949n
+
+Round: 3: Time: 2020-10-10T12:39:27.461Z Total Coupons: 100, Coupon Length: 6, Duration: 249568n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 452222,
-    "micro": 452.222,
-    "milli": 0.452222,
-    "second": 0.000452222
+    "nano": 248366.66666666666,
+    "micro": 248.36666666666665,
+    "milli": 0.24836666666666665,
+    "second": 0.00024836666666666667
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.709Z Total Coupons: 100, Coupon Length: 8, Duration: 702341n
+
+Round: 1: Time: 2020-10-10T12:39:27.461Z Total Coupons: 100, Coupon Length: 8, Duration: 303305n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.711Z Total Coupons: 100, Coupon Length: 8, Duration: 1821463n
+
+Round: 2: Time: 2020-10-10T12:39:27.462Z Total Coupons: 100, Coupon Length: 8, Duration: 556123n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.711Z Total Coupons: 100, Coupon Length: 8, Duration: 347861n
+
+Round: 3: Time: 2020-10-10T12:39:27.462Z Total Coupons: 100, Coupon Length: 8, Duration: 307467n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 957221.6666666666,
-    "micro": 957.2216666666666,
-    "milli": 0.9572216666666666,
-    "second": 0.0009572216666666666
+    "nano": 388965,
+    "micro": 388.965,
+    "milli": 0.388965,
+    "second": 0.000388965
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.714Z Total Coupons: 100, Coupon Length: 12, Duration: 2496978n
+
+Round: 1: Time: 2020-10-10T12:39:27.464Z Total Coupons: 100, Coupon Length: 12, Duration: 1432943n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.714Z Total Coupons: 100, Coupon Length: 12, Duration: 235222n
+
+Round: 2: Time: 2020-10-10T12:39:27.464Z Total Coupons: 100, Coupon Length: 12, Duration: 385070n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.715Z Total Coupons: 100, Coupon Length: 12, Duration: 209242n
+
+Round: 3: Time: 2020-10-10T12:39:27.464Z Total Coupons: 100, Coupon Length: 12, Duration: 229882n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 980480.6666666666,
-    "micro": 980.4806666666666,
-    "milli": 0.9804806666666667,
-    "second": 0.0009804806666666667
+    "nano": 682631.6666666666,
+    "micro": 682.6316666666667,
+    "milli": 0.6826316666666666,
+    "second": 0.0006826316666666666
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.715Z Total Coupons: 100, Coupon Length: 16, Duration: 274181n
+
+Round: 1: Time: 2020-10-10T12:39:27.465Z Total Coupons: 100, Coupon Length: 16, Duration: 347938n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.715Z Total Coupons: 100, Coupon Length: 16, Duration: 264470n
+
+Round: 2: Time: 2020-10-10T12:39:27.466Z Total Coupons: 100, Coupon Length: 16, Duration: 481420n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.716Z Total Coupons: 100, Coupon Length: 16, Duration: 257203n
+
+Round: 3: Time: 2020-10-10T12:39:27.466Z Total Coupons: 100, Coupon Length: 16, Duration: 357660n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 265284.6666666667,
-    "micro": 265.2846666666667,
-    "milli": 0.26528466666666667,
-    "second": 0.0002652846666666667
+    "nano": 395672.6666666667,
+    "micro": 395.6726666666667,
+    "milli": 0.3956726666666667,
+    "second": 0.0003956726666666667
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.717Z Total Coupons: 1000, Coupon Length: 6, Duration: 1170931n
+
+Round: 1: Time: 2020-10-10T12:39:27.468Z Total Coupons: 1000, Coupon Length: 6, Duration: 1228021n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.718Z Total Coupons: 1000, Coupon Length: 6, Duration: 1082777n
+
+Round: 2: Time: 2020-10-10T12:39:27.469Z Total Coupons: 1000, Coupon Length: 6, Duration: 1331089n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.719Z Total Coupons: 1000, Coupon Length: 6, Duration: 923853n
+
+Round: 3: Time: 2020-10-10T12:39:27.470Z Total Coupons: 1000, Coupon Length: 6, Duration: 809939n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 1059187,
-    "micro": 1059.187,
-    "milli": 1.059187,
-    "second": 0.001059187
+    "nano": 1123016.3333333333,
+    "micro": 1123.0163333333333,
+    "milli": 1.1230163333333332,
+    "second": 0.0011230163333333333
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.721Z Total Coupons: 1000, Coupon Length: 8, Duration: 1291910n
+
+Round: 1: Time: 2020-10-10T12:39:27.479Z Total Coupons: 1000, Coupon Length: 8, Duration: 1441156n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.722Z Total Coupons: 1000, Coupon Length: 8, Duration: 762843n
+
+Round: 2: Time: 2020-10-10T12:39:27.480Z Total Coupons: 1000, Coupon Length: 8, Duration: 661196n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.723Z Total Coupons: 1000, Coupon Length: 8, Duration: 853038n
+
+Round: 3: Time: 2020-10-10T12:39:27.481Z Total Coupons: 1000, Coupon Length: 8, Duration: 852065n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 969263.6666666666,
-    "micro": 969.2636666666666,
-    "milli": 0.9692636666666666,
-    "second": 0.0009692636666666666
+    "nano": 984805.6666666666,
+    "micro": 984.8056666666666,
+    "milli": 0.9848056666666666,
+    "second": 0.0009848056666666666
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.728Z Total Coupons: 1000, Coupon Length: 12, Duration: 4138034n
+
+Round: 1: Time: 2020-10-10T12:39:27.482Z Total Coupons: 1000, Coupon Length: 12, Duration: 1451675n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.730Z Total Coupons: 1000, Coupon Length: 12, Duration: 1803470n
+
+Round: 2: Time: 2020-10-10T12:39:27.487Z Total Coupons: 1000, Coupon Length: 12, Duration: 4463524n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.732Z Total Coupons: 1000, Coupon Length: 12, Duration: 1520096n
+
+Round: 3: Time: 2020-10-10T12:39:27.488Z Total Coupons: 1000, Coupon Length: 12, Duration: 869802n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 2487200,
-    "micro": 2487.2,
-    "milli": 2.4872,
-    "second": 0.0024872
+    "nano": 2261667,
+    "micro": 2261.667,
+    "milli": 2.261667,
+    "second": 0.002261667
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.735Z Total Coupons: 1000, Coupon Length: 16, Duration: 2134485n
+
+Round: 1: Time: 2020-10-10T12:39:27.490Z Total Coupons: 1000, Coupon Length: 16, Duration: 1165884n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.738Z Total Coupons: 1000, Coupon Length: 16, Duration: 2742291n
+
+Round: 2: Time: 2020-10-10T12:39:27.492Z Total Coupons: 1000, Coupon Length: 16, Duration: 2378328n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.739Z Total Coupons: 1000, Coupon Length: 16, Duration: 1108157n
+
+Round: 3: Time: 2020-10-10T12:39:27.494Z Total Coupons: 1000, Coupon Length: 16, Duration: 1538983n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 1994977.6666666667,
-    "micro": 1994.9776666666667,
-    "milli": 1.9949776666666668,
-    "second": 0.001994977666666667
+    "nano": 1694398.3333333333,
+    "micro": 1694.3983333333333,
+    "milli": 1.6943983333333332,
+    "second": 0.0016943983333333333
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.748Z Total Coupons: 10000, Coupon Length: 6, Duration: 8733452n
+
+Round: 1: Time: 2020-10-10T12:39:27.503Z Total Coupons: 10000, Coupon Length: 6, Duration: 7947128n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.759Z Total Coupons: 10000, Coupon Length: 6, Duration: 10363787n
+
+Round: 2: Time: 2020-10-10T12:39:27.511Z Total Coupons: 10000, Coupon Length: 6, Duration: 7734827n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.769Z Total Coupons: 10000, Coupon Length: 6, Duration: 9750629n
+
+Round: 3: Time: 2020-10-10T12:39:27.519Z Total Coupons: 10000, Coupon Length: 6, Duration: 7987933n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 9615956,
-    "micro": 9615.956,
-    "milli": 9.615956,
-    "second": 0.009615956
+    "nano": 7889962.666666667,
+    "micro": 7889.962666666667,
+    "milli": 7.889962666666667,
+    "second": 0.007889962666666667
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.780Z Total Coupons: 10000, Coupon Length: 8, Duration: 10795239n
+
+Round: 1: Time: 2020-10-10T12:39:27.534Z Total Coupons: 10000, Coupon Length: 8, Duration: 13238616n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.791Z Total Coupons: 10000, Coupon Length: 8, Duration: 10345103n
+
+Round: 2: Time: 2020-10-10T12:39:27.543Z Total Coupons: 10000, Coupon Length: 8, Duration: 8572670n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.803Z Total Coupons: 10000, Coupon Length: 8, Duration: 11375967n
+
+Round: 3: Time: 2020-10-10T12:39:27.555Z Total Coupons: 10000, Coupon Length: 8, Duration: 11438137n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 10838769.666666666,
-    "micro": 10838.769666666665,
-    "milli": 10.838769666666666,
-    "second": 0.010838769666666666
+    "nano": 11083141,
+    "micro": 11083.141,
+    "milli": 11.083141,
+    "second": 0.011083141
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.815Z Total Coupons: 10000, Coupon Length: 12, Duration: 12005665n
+
+Round: 1: Time: 2020-10-10T12:39:27.571Z Total Coupons: 10000, Coupon Length: 12, Duration: 14891263n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.825Z Total Coupons: 10000, Coupon Length: 12, Duration: 9897700n
+
+Round: 2: Time: 2020-10-10T12:39:27.580Z Total Coupons: 10000, Coupon Length: 12, Duration: 8774097n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.846Z Total Coupons: 10000, Coupon Length: 12, Duration: 20841472n
+
+Round: 3: Time: 2020-10-10T12:39:27.598Z Total Coupons: 10000, Coupon Length: 12, Duration: 18211219n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 14248279,
-    "micro": 14248.279,
-    "milli": 14.248279,
-    "second": 0.014248279
+    "nano": 13958859.666666666,
+    "micro": 13958.859666666665,
+    "milli": 13.958859666666665,
+    "second": 0.013958859666666667
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:15.863Z Total Coupons: 10000, Coupon Length: 16, Duration: 15579920n
+
+Round: 1: Time: 2020-10-10T12:39:27.612Z Total Coupons: 10000, Coupon Length: 16, Duration: 13835435n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:15.880Z Total Coupons: 10000, Coupon Length: 16, Duration: 16933307n
+
+Round: 2: Time: 2020-10-10T12:39:27.641Z Total Coupons: 10000, Coupon Length: 16, Duration: 28005643n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:15.894Z Total Coupons: 10000, Coupon Length: 16, Duration: 13720031n
+
+Round: 3: Time: 2020-10-10T12:39:27.655Z Total Coupons: 10000, Coupon Length: 16, Duration: 13508263n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 15411086,
-    "micro": 15411.086,
-    "milli": 15.411086,
-    "second": 0.015411086
+    "nano": 18449780.333333332,
+    "micro": 18449.780333333332,
+    "milli": 18.449780333333333,
+    "second": 0.018449780333333332
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:16.003Z Total Coupons: 100000, Coupon Length: 6, Duration: 108686632n
+
+Round: 1: Time: 2020-10-10T12:39:27.761Z Total Coupons: 100000, Coupon Length: 6, Duration: 105953183n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:16.093Z Total Coupons: 100000, Coupon Length: 6, Duration: 89604124n
+
+Round: 2: Time: 2020-10-10T12:39:27.859Z Total Coupons: 100000, Coupon Length: 6, Duration: 97433892n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:16.197Z Total Coupons: 100000, Coupon Length: 6, Duration: 104059089n
+
+Round: 3: Time: 2020-10-10T12:39:27.964Z Total Coupons: 100000, Coupon Length: 6, Duration: 104915824n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 100783281.66666667,
-    "micro": 100783.28166666668,
-    "milli": 100.78328166666667,
-    "second": 0.10078328166666667
+    "nano": 102767633,
+    "micro": 102767.633,
+    "milli": 102.767633,
+    "second": 0.102767633
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:16.300Z Total Coupons: 100000, Coupon Length: 8, Duration: 101914897n
+
+Round: 1: Time: 2020-10-10T12:39:28.065Z Total Coupons: 100000, Coupon Length: 8, Duration: 101135528n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:16.423Z Total Coupons: 100000, Coupon Length: 8, Duration: 123275285n
+
+Round: 2: Time: 2020-10-10T12:39:28.171Z Total Coupons: 100000, Coupon Length: 8, Duration: 105380577n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:16.525Z Total Coupons: 100000, Coupon Length: 8, Duration: 101494229n
+
+Round: 3: Time: 2020-10-10T12:39:28.276Z Total Coupons: 100000, Coupon Length: 8, Duration: 105019699n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 108894803.66666667,
-    "micro": 108894.80366666667,
-    "milli": 108.89480366666668,
-    "second": 0.10889480366666668
+    "nano": 103845268,
+    "micro": 103845.268,
+    "milli": 103.845268,
+    "second": 0.103845268
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:16.651Z Total Coupons: 100000, Coupon Length: 12, Duration: 126427862n
+
+Round: 1: Time: 2020-10-10T12:39:28.399Z Total Coupons: 100000, Coupon Length: 12, Duration: 122431597n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:16.791Z Total Coupons: 100000, Coupon Length: 12, Duration: 139341662n
+
+Round: 2: Time: 2020-10-10T12:39:28.514Z Total Coupons: 100000, Coupon Length: 12, Duration: 114557672n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:16.922Z Total Coupons: 100000, Coupon Length: 12, Duration: 131159181n
+
+Round: 3: Time: 2020-10-10T12:39:28.637Z Total Coupons: 100000, Coupon Length: 12, Duration: 123210410n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 132309568.33333333,
-    "micro": 132309.56833333333,
-    "milli": 132.30956833333332,
-    "second": 0.13230956833333332
+    "nano": 120066559.66666667,
+    "micro": 120066.55966666667,
+    "milli": 120.06655966666668,
+    "second": 0.12006655966666667
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:17.062Z Total Coupons: 100000, Coupon Length: 16, Duration: 139484133n
+
+Round: 1: Time: 2020-10-10T12:39:28.785Z Total Coupons: 100000, Coupon Length: 16, Duration: 147459533n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:17.202Z Total Coupons: 100000, Coupon Length: 16, Duration: 139725961n
+
+Round: 2: Time: 2020-10-10T12:39:28.921Z Total Coupons: 100000, Coupon Length: 16, Duration: 135998423n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:17.337Z Total Coupons: 100000, Coupon Length: 16, Duration: 135019500n
+
+Round: 3: Time: 2020-10-10T12:39:29.057Z Total Coupons: 100000, Coupon Length: 16, Duration: 136033539n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 138076531.33333334,
-    "micro": 138076.53133333335,
-    "milli": 138.07653133333335,
-    "second": 0.13807653133333334
+    "nano": 139830498.33333334,
+    "micro": 139830.49833333335,
+    "milli": 139.83049833333334,
+    "second": 0.13983049833333333
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:18.303Z Total Coupons: 1000000, Coupon Length: 6, Duration: 965397557n
+
+Round: 1: Time: 2020-10-10T12:39:30.038Z Total Coupons: 1000000, Coupon Length: 6, Duration: 980278863n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:19.249Z Total Coupons: 1000000, Coupon Length: 6, Duration: 945387951n
+
+Round: 2: Time: 2020-10-10T12:39:30.996Z Total Coupons: 1000000, Coupon Length: 6, Duration: 957931699n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:20.213Z Total Coupons: 1000000, Coupon Length: 6, Duration: 964145476n
+
+Round: 3: Time: 2020-10-10T12:39:31.955Z Total Coupons: 1000000, Coupon Length: 6, Duration: 958991476n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 958310328,
-    "micro": 958310.328,
-    "milli": 958.310328,
-    "second": 0.958310328
+    "nano": 965734012.6666666,
+    "micro": 965734.0126666666,
+    "milli": 965.7340126666667,
+    "second": 0.9657340126666666
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:21.248Z Total Coupons: 1000000, Coupon Length: 8, Duration: 1034099856n
+
+Round: 1: Time: 2020-10-10T12:39:32.960Z Total Coupons: 1000000, Coupon Length: 8, Duration: 1003863274n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:22.281Z Total Coupons: 1000000, Coupon Length: 8, Duration: 1032574618n
+
+Round: 2: Time: 2020-10-10T12:39:34.006Z Total Coupons: 1000000, Coupon Length: 8, Duration: 1045952818n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:23.309Z Total Coupons: 1000000, Coupon Length: 8, Duration: 1028021661n
+
+Round: 3: Time: 2020-10-10T12:39:35.021Z Total Coupons: 1000000, Coupon Length: 8, Duration: 1014933851n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 1031565378.3333334,
-    "micro": 1031565.3783333334,
-    "milli": 1031.5653783333335,
-    "second": 1.0315653783333334
+    "nano": 1021583314.3333334,
+    "micro": 1021583.3143333334,
+    "milli": 1021.5833143333334,
+    "second": 1.0215833143333333
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:24.512Z Total Coupons: 1000000, Coupon Length: 12, Duration: 1201674001n
+
+Round: 1: Time: 2020-10-10T12:39:36.203Z Total Coupons: 1000000, Coupon Length: 12, Duration: 1180318799n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:25.736Z Total Coupons: 1000000, Coupon Length: 12, Duration: 1223148272n
+
+Round: 2: Time: 2020-10-10T12:39:37.409Z Total Coupons: 1000000, Coupon Length: 12, Duration: 1205718988n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:26.905Z Total Coupons: 1000000, Coupon Length: 12, Duration: 1169301213n
+
+Round: 3: Time: 2020-10-10T12:39:38.584Z Total Coupons: 1000000, Coupon Length: 12, Duration: 1174828751n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 1198041162,
-    "micro": 1198041.162,
-    "milli": 1198.041162,
-    "second": 1.198041162
+    "nano": 1186955512.6666667,
+    "micro": 1186955.5126666666,
+    "milli": 1186.9555126666667,
+    "second": 1.1869555126666667
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:28.285Z Total Coupons: 1000000, Coupon Length: 16, Duration: 1379977769n
+
+Round: 1: Time: 2020-10-10T12:39:39.968Z Total Coupons: 1000000, Coupon Length: 16, Duration: 1383961111n
+
 ============================================================
-#2: Time: 2020-10-10T07:21:29.664Z Total Coupons: 1000000, Coupon Length: 16, Duration: 1378205968n
+
+Round: 2: Time: 2020-10-10T12:39:41.354Z Total Coupons: 1000000, Coupon Length: 16, Duration: 1385275978n
+
 ============================================================
-#3: Time: 2020-10-10T07:21:31.071Z Total Coupons: 1000000, Coupon Length: 16, Duration: 1406502940n
+
+Round: 3: Time: 2020-10-10T12:39:42.744Z Total Coupons: 1000000, Coupon Length: 16, Duration: 1389538697n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 1388228892.3333333,
-    "micro": 1388228.8923333331,
-    "milli": 1388.2288923333333,
-    "second": 1.3882288923333332
+    "nano": 1386258595.3333333,
+    "micro": 1386258.5953333334,
+    "milli": 1386.2585953333332,
+    "second": 1.3862585953333333
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:21:45.794Z Total Coupons: 5000000, Coupon Length: 6, Duration: 14719946440n
+
+Round: 1: Time: 2020-10-10T12:39:56.565Z Total Coupons: 5000000, Coupon Length: 6, Duration: 13817845501n
+
 ============================================================
-#2: Time: 2020-10-10T07:22:00.613Z Total Coupons: 5000000, Coupon Length: 6, Duration: 14818504758n
+
+Round: 2: Time: 2020-10-10T12:40:10.836Z Total Coupons: 5000000, Coupon Length: 6, Duration: 14270304416n
+
 ============================================================
-#3: Time: 2020-10-10T07:22:15.296Z Total Coupons: 5000000, Coupon Length: 6, Duration: 14681900443n
+
+Round: 3: Time: 2020-10-10T12:40:25.121Z Total Coupons: 5000000, Coupon Length: 6, Duration: 14284331893n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 14740117213.666666,
-    "micro": 14740117.213666666,
-    "milli": 14740.117213666666,
-    "second": 14.740117213666666
+    "nano": 14124160603.333334,
+    "micro": 14124160.603333334,
+    "milli": 14124.160603333334,
+    "second": 14.124160603333333
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:22:29.784Z Total Coupons: 5000000, Coupon Length: 8, Duration: 14487423668n
+
+Round: 1: Time: 2020-10-10T12:40:40.206Z Total Coupons: 5000000, Coupon Length: 8, Duration: 15083329136n
+
 ============================================================
-#2: Time: 2020-10-10T07:22:44.305Z Total Coupons: 5000000, Coupon Length: 8, Duration: 14520772590n
+
+Round: 2: Time: 2020-10-10T12:40:54.593Z Total Coupons: 5000000, Coupon Length: 8, Duration: 14385348077n
+
 ============================================================
-#3: Time: 2020-10-10T07:22:59.573Z Total Coupons: 5000000, Coupon Length: 8, Duration: 15263588445n
+
+Round: 3: Time: 2020-10-10T12:41:09.971Z Total Coupons: 5000000, Coupon Length: 8, Duration: 15377337793n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 14757261567.666666,
-    "micro": 14757261.567666667,
-    "milli": 14757.261567666666,
-    "second": 14.757261567666665
+    "nano": 14948671668.666666,
+    "micro": 14948671.668666666,
+    "milli": 14948.671668666666,
+    "second": 14.948671668666666
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:23:14.314Z Total Coupons: 5000000, Coupon Length: 12, Duration: 14738783670n
+
+Round: 1: Time: 2020-10-10T12:41:24.843Z Total Coupons: 5000000, Coupon Length: 12, Duration: 14871288793n
+
 ============================================================
-#2: Time: 2020-10-10T07:23:29.080Z Total Coupons: 5000000, Coupon Length: 12, Duration: 14764170865n
+
+Round: 2: Time: 2020-10-10T12:41:39.492Z Total Coupons: 5000000, Coupon Length: 12, Duration: 14647360831n
+
 ============================================================
-#3: Time: 2020-10-10T07:23:43.783Z Total Coupons: 5000000, Coupon Length: 12, Duration: 14701691610n
+
+Round: 3: Time: 2020-10-10T12:41:54.129Z Total Coupons: 5000000, Coupon Length: 12, Duration: 14636811558n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 14734882048.333334,
-    "micro": 14734882.048333334,
-    "milli": 14734.882048333335,
-    "second": 14.734882048333334
+    "nano": 14718487060.666666,
+    "micro": 14718487.060666665,
+    "milli": 14718.487060666666,
+    "second": 14.718487060666666
   }
 }
+```
 ============================================================
-#1: Time: 2020-10-10T07:23:58.397Z Total Coupons: 5000000, Coupon Length: 16, Duration: 14613183640n
+
+Round: 1: Time: 2020-10-10T12:42:09.056Z Total Coupons: 5000000, Coupon Length: 16, Duration: 14926049575n
+
 ============================================================
-#2: Time: 2020-10-10T07:24:13.476Z Total Coupons: 5000000, Coupon Length: 16, Duration: 15078827229n
+
+Round: 2: Time: 2020-10-10T12:42:24.165Z Total Coupons: 5000000, Coupon Length: 16, Duration: 15108060372n
+
 ============================================================
-#3: Time: 2020-10-10T07:24:29.213Z Total Coupons: 5000000, Coupon Length: 16, Duration: 15735774379n
+
+Round: 3: Time: 2020-10-10T12:42:39.021Z Total Coupons: 5000000, Coupon Length: 16, Duration: 14855433739n
+
 ============================================================
+
+
+```
 Performance:
 {
   "averageDuration": {
-    "nano": 15142595082.666666,
-    "micro": 15142595.082666665,
-    "milli": 15142.595082666667,
-    "second": 15.142595082666666
+    "nano": 14963181228.666666,
+    "micro": 14963181.228666667,
+    "milli": 14963.181228666666,
+    "second": 14.963181228666667
   }
 }
-➜  couponjs git:(dev)
 ```
