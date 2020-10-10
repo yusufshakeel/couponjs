@@ -1,15 +1,15 @@
 'use strict';
 
-const { ERROR_CONSTANTS } = require('./constants.js');
-const ValidationError = require('./error/validation-error.js');
+const {
+  validateLength,
+  validateOmitCharacters,
+  validateNumberOfCoupons
+} = require('./validator/generate-coupon-config-validator.js');
 
 const {
-  MAX_LENGTH,
-  MIN_LENGTH,
   DEFAULT_LENGTH,
   DEFAULT_PREFIX,
   DEFAULT_SUFFIX,
-  MIN_NUMBER_OF_COUPONS_TO_GENERATE,
   MAX_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_OMIT_CHARACTERS,
@@ -17,19 +17,6 @@ const {
 } = require('./constants.js');
 const Formatter = require('./formatter.js');
 const characterSetBuilder = require('./character-set-builder.js');
-
-const throwValidationError = ({ message, field }) => {
-  throw new ValidationError({
-    message,
-    errors: [
-      {
-        message,
-        field,
-        type: ERROR_CONSTANTS.COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR.type
-      }
-    ]
-  });
-};
 
 /**
  * Engine to produce coupon.
@@ -55,49 +42,20 @@ const Engine = function ({
   format = UNDEFINED,
   maxNumberOfCouponsToGenerate = MAX_NUMBER_OF_COUPONS_TO_GENERATE
 }) {
+  validateLength(length);
+  validateOmitCharacters(omitCharacters);
+
   const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
 
   const characters = characterSetBuilder(characterSetOption, omitCharacters).split('');
   const charactersLength = characters.length;
   const totalNumberOfPossibleCoupons = Math.pow(charactersLength, length);
 
-  /**
-   * This will validate options
-   * @param {number} length
-   * @param {number} numberOfCoupons
-   */
-  const validate = function ({ length, numberOfCoupons }) {
-    if (numberOfCoupons < MIN_NUMBER_OF_COUPONS_TO_GENERATE) {
-      throwValidationError({
-        message: `Minimum value for numberOfCoupons is ${MIN_NUMBER_OF_COUPONS_TO_GENERATE}.`,
-        field: 'numberOfCoupons'
-      });
-    }
-    if (numberOfCoupons > maxNumberOfCouponsToGenerate) {
-      throwValidationError({
-        message: `Maximum value for numberOfCoupons is ${maxNumberOfCouponsToGenerate}.`,
-        field: 'numberOfCoupons'
-      });
-    }
-    if (numberOfCoupons > totalNumberOfPossibleCoupons) {
-      throwValidationError({
-        message: `Total number of possible coupons that can be generated is ${totalNumberOfPossibleCoupons}.`,
-        field: 'numberOfCoupons'
-      });
-    }
-    if (length < MIN_LENGTH) {
-      throwValidationError({
-        message: `Minimum value for length is ${MIN_LENGTH}.`,
-        field: 'length'
-      });
-    }
-    if (length > MAX_LENGTH) {
-      throwValidationError({
-        message: `Maximum value for length is ${MAX_LENGTH}.`,
-        field: 'length'
-      });
-    }
-  };
+  validateNumberOfCoupons(
+    numberOfCoupons,
+    maxNumberOfCouponsToGenerate,
+    totalNumberOfPossibleCoupons
+  );
 
   /**
    * This will generate the coupon.
@@ -137,7 +95,6 @@ const Engine = function ({
    * @returns {string|string[]}
    */
   this.run = function () {
-    validate({ length, numberOfCoupons });
     if (numberOfCoupons === 1) {
       return generateSingleCoupon();
     }

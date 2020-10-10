@@ -158,6 +158,26 @@ describe('Testing numberOfCoupons', () => {
     }
   });
 
+  test('Should throw error if numberOfCoupons is greater than total number of possible coupons that can be generated', () => {
+    expect.assertions(3);
+    try {
+      validateNumberOfCoupons(1000, MAX_NUMBER_OF_COUPONS_TO_GENERATE, 100);
+    } catch (e) {
+      expect(e.message).toBe(
+        'Total number of possible coupons that can be generated is 100 for the given length and characterSet.'
+      );
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'numberOfCoupons',
+          message:
+            'Total number of possible coupons that can be generated is 100 for the given length and characterSet.',
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
   test('Should not throw error if number is okay', () => {
     expect(() => validateNumberOfCoupons(10)).not.toThrow();
   });

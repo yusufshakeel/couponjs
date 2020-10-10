@@ -51,7 +51,11 @@ function validateLength(length) {
   });
 }
 
-function validateNumberOfCoupons(numberOfCoupons, maxNumberOfCouponsToGenerate) {
+function validateNumberOfCoupons(
+  numberOfCoupons,
+  maxNumberOfCouponsToGenerate,
+  totalNumberOfPossibleCoupons
+) {
   if (!isOfType(numberOfCoupons, 'undefined')) {
     if (!Number.isInteger(numberOfCoupons)) {
       throwValidationError({
@@ -68,6 +72,12 @@ function validateNumberOfCoupons(numberOfCoupons, maxNumberOfCouponsToGenerate) 
     if (numberOfCoupons > maxNumberOfCouponsToGenerate) {
       throwValidationError({
         message: `Maximum value for numberOfCoupons is ${maxNumberOfCouponsToGenerate}.`,
+        field: 'numberOfCoupons'
+      });
+    }
+    if (numberOfCoupons > totalNumberOfPossibleCoupons) {
+      throwValidationError({
+        message: `Total number of possible coupons that can be generated is ${totalNumberOfPossibleCoupons} for the given length and characterSet.`,
         field: 'numberOfCoupons'
       });
     }
