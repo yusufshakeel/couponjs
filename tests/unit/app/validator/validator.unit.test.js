@@ -6,7 +6,8 @@ const {
   isInteger,
   isArray,
   isBoolean,
-  isString
+  isString,
+  isEmptyArray
 } = require('../../../../app/validator/validator.js');
 
 test('Should be able to check the type of the operand', () => {
@@ -79,4 +80,10 @@ test('Should be able to determine that value is string', () => {
   expect(isString([])).toBeFalsy();
   expect(isString(null)).toBeFalsy();
   expect(isString(undefined)).toBeFalsy();
+});
+
+test('Should be able to determine that value is an empty array', () => {
+  expect(isEmptyArray([])).toBeTruthy();
+
+  expect(isEmptyArray([1])).toBeFalsy();
 });

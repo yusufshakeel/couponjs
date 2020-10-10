@@ -23,17 +23,17 @@ const getErrorsInGroups = groups => {
 
 const getErrorsInSeparators = separators => {
   return separators.reduce((error, separator, index) => {
-    if (!isString(separator)) {
-      return [
-        ...error,
-        {
-          field: 'separators',
-          message: `Format object must only have string elements in 'separators' array. Found error at index ${index}.`,
-          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type
-        }
-      ];
+    if (isString(separator)) {
+      return error;
     }
-    return error;
+    return [
+      ...error,
+      {
+        field: 'separators',
+        message: `Format object must only have string elements in 'separators' array. Found error at index ${index}.`,
+        type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type
+      }
+    ];
   }, []);
 };
 

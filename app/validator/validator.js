@@ -6,6 +6,7 @@ const isString = value => typeof value === 'string';
 const isUndefined = value => typeof value === 'undefined';
 const isInteger = value => Number.isInteger(value) && Number.isFinite(value) && `${value}`;
 const isArray = value => Array.isArray(value);
+const isEmptyArray = value => isArray(value) && value.length === 0;
 
 module.exports = {
   isOfType,
@@ -13,5 +14,6 @@ module.exports = {
   isInteger,
   isArray,
   isBoolean,
-  isString
+  isString,
+  isEmptyArray
 };
