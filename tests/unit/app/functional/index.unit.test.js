@@ -1,6 +1,13 @@
 'use strict';
 
-const { isOfType, isUndefined, isInteger, isArray } = require('../../../../app/functional');
+const {
+  isOfType,
+  isUndefined,
+  isInteger,
+  isArray,
+  isBoolean,
+  isString
+} = require('../../../../app/functional');
 
 test('Should be able to check the type of the operand', () => {
   const foo = { bar: 'foobar' };
@@ -12,7 +19,7 @@ test('Should be able to check the type of the operand', () => {
   expect(isOfType(foo.unknown, 'string')).toBeFalsy();
 });
 
-test('Should be able to determine that an operand is undefined', () => {
+test('Should be able to determine that an value is undefined', () => {
   const foo = { bar: 'foobar' };
   expect(isUndefined(foo.bar)).toBeFalsy();
   expect(isUndefined(foo.unknown)).toBeTruthy();
@@ -44,4 +51,32 @@ test('Should be able to determine that value is an array', () => {
   expect(isArray({})).toBeFalsy();
   expect(isArray(null)).toBeFalsy();
   expect(isArray(undefined)).toBeFalsy();
+});
+
+test('Should be able to determine that value is boolean', () => {
+  expect(isBoolean(true)).toBeTruthy();
+  expect(isBoolean(false)).toBeTruthy();
+
+  expect(isBoolean('true')).toBeFalsy();
+  expect(isBoolean('false')).toBeFalsy();
+  expect(isBoolean(1)).toBeFalsy();
+  expect(isBoolean(0)).toBeFalsy();
+  expect(isBoolean({})).toBeFalsy();
+  expect(isBoolean([])).toBeFalsy();
+  expect(isBoolean(null)).toBeFalsy();
+  expect(isBoolean(undefined)).toBeFalsy();
+});
+
+test('Should be able to determine that value is string', () => {
+  expect(isString('')).toBeTruthy();
+  expect(isString('hello')).toBeTruthy();
+
+  expect(isString(true)).toBeFalsy();
+  expect(isString(false)).toBeFalsy();
+  expect(isString(1)).toBeFalsy();
+  expect(isString(0)).toBeFalsy();
+  expect(isString({})).toBeFalsy();
+  expect(isString([])).toBeFalsy();
+  expect(isString(null)).toBeFalsy();
+  expect(isString(undefined)).toBeFalsy();
 });
