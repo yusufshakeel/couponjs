@@ -2,7 +2,7 @@
 
 const { ERROR_CONSTANTS } = require('./constants.js');
 const ValidationError = require('./error/validation-error.js');
-const { isUndefined } = require('./validator/validator.js');
+const { isUndefined, isString } = require('./validator/validator.js');
 const {
   validateFormatRuleString,
   validateFormatRuleObject,
@@ -24,7 +24,7 @@ function validate(format) {
         }
       ]
     });
-  } else if (formatType === 'string') {
+  } else if (isString(format)) {
     const result = validateFormatRuleString(format);
     const { groups, totalCharactersInGroup, separators } = result;
     return {
