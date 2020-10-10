@@ -3,7 +3,7 @@
 This is a simple coupon creation project using NodeJS.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.8.12-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.8.13-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![Build Status](https://travis-ci.com/yusufshakeel/couponjs.svg?branch=master)](https://travis-ci.com/yusufshakeel/couponjs)
 [![Coverage Status](https://coveralls.io/repos/github/yusufshakeel/couponjs/badge.svg?branch=master)](https://coveralls.io/github/yusufshakeel/couponjs?branch=master)
 
@@ -46,6 +46,7 @@ const CouponJS = require('couponjs');
     * [String format rule and prefix-suffix combo](#string-format-rule-and-prefix-suffix-combo)
     * [Object format rule and prefix-suffix combo](#object-format-rule-and-prefix-suffix-combo)
 * [Possible number of coupons](#possible-number-of-coupons)
+* [Storage size](#storage-size)
 * [Performance](#performance)
 * [License](#license)
 * [Back this project](#back-this-project)
@@ -625,6 +626,55 @@ Points to note!
 * Omit characters is not set in the above computation.
 * Different mix of character sets can be used to change the total number of possible coupons that can be generated.
 * Speed and generation of coupons will also depend on the hardware used.
+
+## Storage size
+
+In this section we estimate the rough storage size based on the coupon size and number of coupons generated.
+
+Assumption:
+* Using UTF8 characters and each character taking up 1 byte storage.
+
+|Total Characters |Number of coupons     |Size (MB)         |Size (GB)         |
+|----------------:|---------------------:|-----------------:|-----------------:|
+|6                |1000                  |0.006             |0.000006          |
+|6                |10000                 |0.060             |0.000060          |
+|6                |100000                |0.600             |0.000600          |
+|6                |1000000               |6.000             |0.006000          |
+|6                |10000000              |60.000            |0.060000          |
+|6                |100000000             |600.000           |0.600000          |
+|6                |1000000000            |6000.000          |6.000000          |
+
+|Total Characters |Number of coupons     |Size (MB)         |Size (GB)         |
+|----------------:|---------------------:|-----------------:|-----------------:|
+|8                |1000                  |0.008             |0.000008          |
+|8                |10000                 |0.080             |0.000080          |
+|8                |100000                |0.800             |0.000800          |
+|8                |1000000               |8.000             |0.008000          |
+|8                |10000000              |80.000            |0.080000          |
+|8                |100000000             |800.000           |0.800000          |
+|8                |1000000000            |8000.000          |8.000000          |
+
+|Total Characters |Number of coupons     |Size (MB)         |Size (GB)         |
+|----------------:|---------------------:|-----------------:|-----------------:|
+|12               |1000                  |0.012             |0.000012          |
+|12               |10000                 |0.120             |0.000120          |
+|12               |100000                |1.200             |0.001200          |
+|12               |1000000               |12.000            |0.012000          |
+|12               |10000000              |120.000           |0.120000          |
+|12               |100000000             |1200.000          |1.200000          |
+|12               |1000000000            |12000.000         |12.000000         |
+
+|Total Characters |Number of coupons     |Size (MB)         |Size (GB)         |
+|----------------:|---------------------:|-----------------:|-----------------:|
+|16               |1000                  |0.016             |0.000016          |
+|16               |10000                 |0.160             |0.000160          |
+|16               |100000                |1.600             |0.001600          |
+|16               |1000000               |16.000            |0.016000          |
+|16               |10000000              |160.000           |0.160000          |
+|16               |100000000             |1600.000          |1.600000          |
+|16               |1000000000            |16000.000         |16.000000         |
+
+
 
 ## Performance
 
