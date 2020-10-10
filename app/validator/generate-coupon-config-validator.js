@@ -7,7 +7,13 @@ const {
   ERROR_CONSTANTS
 } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-const isOfType = (variable, type) => typeof variable === type;
+const {
+  isArray,
+  isUndefined,
+  isInteger,
+  isString,
+  isEmptyArray
+} = require('../validator/validator.js');
 
 const throwValidationError = ({ message, field }) => {
   throw new ValidationError({
@@ -23,8 +29,8 @@ const throwValidationError = ({ message, field }) => {
 };
 
 function validateLength(length) {
-  if (!isOfType(length, 'undefined')) {
-    if (!Number.isInteger(length)) {
+  if (!isUndefined(length)) {
+    if (!isInteger(length)) {
       throwValidationError({
         message: `The field 'length' must be of type integer.`,
         field: 'length'
@@ -56,8 +62,8 @@ function validateNumberOfCoupons(
   maxNumberOfCouponsToGenerate,
   totalNumberOfPossibleCoupons
 ) {
-  if (!isOfType(numberOfCoupons, 'undefined')) {
-    if (!Number.isInteger(numberOfCoupons)) {
+  if (!isUndefined(numberOfCoupons)) {
+    if (!isInteger(numberOfCoupons)) {
       throwValidationError({
         message: `The field 'numberOfCoupons' must be of type integer.`,
         field: 'numberOfCoupons'
@@ -91,8 +97,8 @@ function validateNumberOfCoupons(
 }
 
 function validateOmitCharacters(omitCharacters) {
-  if (!isOfType(omitCharacters, 'undefined')) {
-    if (!Array.isArray(omitCharacters)) {
+  if (!isUndefined(omitCharacters)) {
+    if (!isArray(omitCharacters)) {
       throwValidationError({
         message: `The field 'omitCharacters' must be of type array.`,
         field: 'omitCharacters'
@@ -100,7 +106,7 @@ function validateOmitCharacters(omitCharacters) {
     }
 
     const errors = omitCharacters.reduce((error, omitCharacter, index) => {
-      if (isOfType(omitCharacter, 'string')) {
+      if (isString(omitCharacter)) {
         return error;
       }
       return [
@@ -112,7 +118,7 @@ function validateOmitCharacters(omitCharacters) {
         }
       ];
     }, []);
-    if (errors.length > 0) {
+    if (!isEmptyArray(errors)) {
       throw new ValidationError({
         errors,
         message: `The field 'omitCharacters' must be an array of strings.`

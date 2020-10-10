@@ -2,14 +2,12 @@
 
 const { ERROR_CONSTANTS } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-
-const sumOfGroupsCharacters = groups => {
-  return groups.reduce((sum, size) => sum + size, 0);
-};
+const { isArray, isString, isInteger, isEmptyArray } = require('../validator/validator.js');
+const { sumOf } = require('../functional');
 
 const getErrorsInGroups = groups => {
   return groups.reduce((error, group, index) => {
-    if (typeof group === 'number' && Number.isInteger(group)) {
+    if (isInteger(group)) {
       return error;
     }
     return [
@@ -25,17 +23,17 @@ const getErrorsInGroups = groups => {
 
 const getErrorsInSeparators = separators => {
   return separators.reduce((error, separator, index) => {
-    if (typeof separator !== 'string') {
-      return [
-        ...error,
-        {
-          field: 'separators',
-          message: `Format object must only have string elements in 'separators' array. Found error at index ${index}.`,
-          type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type
-        }
-      ];
+    if (isString(separator)) {
+      return error;
     }
-    return error;
+    return [
+      ...error,
+      {
+        field: 'separators',
+        message: `Format object must only have string elements in 'separators' array. Found error at index ${index}.`,
+        type: ERROR_CONSTANTS.COUPONJS_FORMAT_ERROR.type
+      }
+    ];
   }, []);
 };
 
@@ -48,7 +46,7 @@ function validateFormatRuleString(ruleString) {
   const isValidFormatRuleString = /^([x]+-?[x]*)*?x$/g.test(ruleString);
   if (isValidFormatRuleString) {
     const groups = ruleString.split('-').map(group => group.length);
-    const totalCharactersInGroup = sumOfGroupsCharacters(groups);
+    const totalCharactersInGroup = sumOf(groups);
     const separators = '-'.repeat(groups.length - 1).split('');
     return {
       groups,
@@ -77,7 +75,7 @@ function validateFormatRuleString(ruleString) {
 function validateFormatRuleObject(ruleObject) {
   const { separators, groups } = ruleObject;
 
-  if (!Array.isArray(separators)) {
+  if (!isArray(separators)) {
     const message = `Format object must have field 'separators' of type array.`;
     throw new ValidationError({
       message,
@@ -91,7 +89,7 @@ function validateFormatRuleObject(ruleObject) {
     });
   }
 
-  if (!Array.isArray(groups)) {
+  if (!isArray(groups)) {
     const message = `Format object must have field 'groups' of type array.`;
     throw new ValidationError({
       message,
@@ -105,7 +103,7 @@ function validateFormatRuleObject(ruleObject) {
     });
   }
 
-  if (groups.length === 0) {
+  if (isEmptyArray(groups)) {
     const message = `Format object must have at least one element in the array field 'groups'.`;
     throw new ValidationError({
       message,
@@ -172,7 +170,7 @@ function validateFormatRuleObject(ruleObject) {
   return {
     separators,
     groups: groups.map(group => parseInt(group)),
-    totalCharactersInGroup: sumOfGroupsCharacters(groups)
+    totalCharactersInGroup: sumOf(groups)
   };
 }
 
