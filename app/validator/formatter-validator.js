@@ -2,7 +2,7 @@
 
 const { ERROR_CONSTANTS } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-const { isArray } = require('../validator/validator.js');
+const { isArray, isString } = require('../validator/validator.js');
 
 const sumOfGroupsCharacters = groups => {
   return groups.reduce((sum, size) => sum + size, 0);
@@ -26,7 +26,8 @@ const getErrorsInGroups = groups => {
 
 const getErrorsInSeparators = separators => {
   return separators.reduce((error, separator, index) => {
-    if (typeof separator !== 'string') {
+    // if (typeof separator !== 'string') {
+    if (!isString(separator)) {
       return [
         ...error,
         {
