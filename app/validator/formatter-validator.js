@@ -2,6 +2,7 @@
 
 const { ERROR_CONSTANTS } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
+const { isArray } = require('../functional');
 
 const sumOfGroupsCharacters = groups => {
   return groups.reduce((sum, size) => sum + size, 0);
@@ -77,7 +78,7 @@ function validateFormatRuleString(ruleString) {
 function validateFormatRuleObject(ruleObject) {
   const { separators, groups } = ruleObject;
 
-  if (!Array.isArray(separators)) {
+  if (!isArray(separators)) {
     const message = `Format object must have field 'separators' of type array.`;
     throw new ValidationError({
       message,
@@ -91,7 +92,7 @@ function validateFormatRuleObject(ruleObject) {
     });
   }
 
-  if (!Array.isArray(groups)) {
+  if (!isArray(groups)) {
     const message = `Format object must have field 'groups' of type array.`;
     throw new ValidationError({
       message,

@@ -7,7 +7,7 @@ const {
   ERROR_CONSTANTS
 } = require('../constants.js');
 const ValidationError = require('../error/validation-error.js');
-const isOfType = (variable, type) => typeof variable === type;
+const { isOfType, isArray } = require('../functional');
 
 const throwValidationError = ({ message, field }) => {
   throw new ValidationError({
@@ -92,7 +92,7 @@ function validateNumberOfCoupons(
 
 function validateOmitCharacters(omitCharacters) {
   if (!isOfType(omitCharacters, 'undefined')) {
-    if (!Array.isArray(omitCharacters)) {
+    if (!isArray(omitCharacters)) {
       throwValidationError({
         message: `The field 'omitCharacters' must be of type array.`,
         field: 'omitCharacters'

@@ -1,6 +1,6 @@
 'use strict';
 
-const { isOfType, isUndefined, isInteger } = require('../../../../app/functional');
+const { isOfType, isUndefined, isInteger, isArray } = require('../../../../app/functional');
 
 test('Should be able to check the type of the operand', () => {
   const foo = { bar: 'foobar' };
@@ -18,7 +18,7 @@ test('Should be able to determine that an operand is undefined', () => {
   expect(isUndefined(foo.unknown)).toBeTruthy();
 });
 
-test('Should be able to determine that an operand is integer', () => {
+test('Should be able to determine that value is integer', () => {
   const foo = { bar: 123 };
   expect(isInteger(0)).toBeTruthy();
   expect(isInteger(123)).toBeTruthy();
@@ -32,4 +32,16 @@ test('Should be able to determine that an operand is integer', () => {
   expect(isInteger(Number.POSITIVE_INFINITY)).toBeFalsy();
   expect(isInteger(Number.NEGATIVE_INFINITY)).toBeFalsy();
   expect(isInteger(foo.unknown)).toBeFalsy();
+});
+
+test('Should be able to determine that value is an array', () => {
+  expect(isArray([])).toBeTruthy();
+  expect(isArray(['a'])).toBeTruthy();
+  expect(isArray([1])).toBeTruthy();
+
+  expect(isArray(1)).toBeFalsy();
+  expect(isArray('1')).toBeFalsy();
+  expect(isArray({})).toBeFalsy();
+  expect(isArray(null)).toBeFalsy();
+  expect(isArray(undefined)).toBeFalsy();
 });
