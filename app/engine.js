@@ -3,7 +3,9 @@
 const {
   validateLength,
   validateOmitCharacters,
-  validateNumberOfCoupons
+  validateNumberOfCoupons,
+  validatePrefix,
+  validateSuffix
 } = require('./validator/generate-coupon-config-validator.js');
 
 const {
@@ -42,6 +44,8 @@ const Engine = function ({
   format = UNDEFINED,
   maxNumberOfCouponsToGenerate = MAX_NUMBER_OF_COUPONS_TO_GENERATE
 }) {
+  validatePrefix(prefix);
+  validateSuffix(suffix);
   validateLength(length);
   validateOmitCharacters(omitCharacters);
 
