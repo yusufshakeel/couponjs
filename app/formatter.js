@@ -75,13 +75,28 @@ function getFormattedCoupon(couponChunks, separators) {
   }, '');
 }
 
+/**
+ * This will format the coupon based on the format rule which can be a string
+ * or object.
+ * @param {string|object} formatRule
+ * @constructor
+ */
 function Formatter(formatRule) {
   const { separators, groups, totalCharactersInGroup } = validate(formatRule);
 
+  /**
+   * This will return the configuration used for formatting.
+   * @returns {{groups: (number[]), totalCharactersInGroup: (number), separators: (string[])}}
+   */
   this.getConfig = function () {
     return { separators, groups, totalCharactersInGroup };
   };
 
+  /**
+   * This will return the formatted coupon.
+   * @param {string} coupon The coupon to format.
+   * @returns {*}
+   */
   this.format = function (coupon) {
     if (!hasEqualSumOfGroupsAndCouponLength(coupon, totalCharactersInGroup)) {
       const message = 'Coupon length is not equal to the sum of groups in the format.';
