@@ -52,7 +52,7 @@ function validateLength(length) {
   }
 
   throwValidationError({
-    message: `The field 'length' number be defined.`,
+    message: `The field 'length' must be defined.`,
     field: 'length'
   });
 }
@@ -91,7 +91,7 @@ function validateNumberOfCoupons(
   }
 
   throwValidationError({
-    message: `The field 'numberOfCoupons' number be defined.`,
+    message: `The field 'numberOfCoupons' must be defined.`,
     field: 'numberOfCoupons'
   });
 }
@@ -128,13 +128,51 @@ function validateOmitCharacters(omitCharacters) {
   }
 
   throwValidationError({
-    message: `The field 'omitCharacters' number be defined.`,
+    message: `The field 'omitCharacters' must be defined.`,
     field: 'omitCharacters'
   });
+}
+
+function validatePrefix(prefix) {
+  if (isUndefined(prefix)) {
+    throwValidationError({
+      message: `The field 'prefix' must be defined.`,
+      field: 'prefix'
+    });
+  }
+
+  if (!isString(prefix)) {
+    throwValidationError({
+      message: `The field 'prefix' must be of type string.`,
+      field: 'prefix'
+    });
+  }
+
+  return prefix;
+}
+
+function validateSuffix(suffix) {
+  if (isUndefined(suffix)) {
+    throwValidationError({
+      message: `The field 'suffix' must be defined.`,
+      field: 'suffix'
+    });
+  }
+
+  if (!isString(suffix)) {
+    throwValidationError({
+      message: `The field 'suffix' must be of type string.`,
+      field: 'suffix'
+    });
+  }
+
+  return suffix;
 }
 
 module.exports = {
   validateLength,
   validateNumberOfCoupons,
-  validateOmitCharacters
+  validateOmitCharacters,
+  validatePrefix,
+  validateSuffix
 };
