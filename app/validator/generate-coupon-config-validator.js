@@ -28,6 +28,11 @@ const throwValidationError = ({ message, field }) => {
   });
 };
 
+/**
+ * This will validate length of the coupon.
+ * @param {number} length
+ * @returns {*}
+ */
 function validateLength(length) {
   if (!isUndefined(length)) {
     if (!isInteger(length)) {
@@ -57,6 +62,13 @@ function validateLength(length) {
   });
 }
 
+/**
+ * This will validate the number of coupons.
+ * @param {number} numberOfCoupons
+ * @param {number} maxNumberOfCouponsToGenerate
+ * @param {number} totalNumberOfPossibleCoupons
+ * @returns {*}
+ */
 function validateNumberOfCoupons(
   numberOfCoupons,
   maxNumberOfCouponsToGenerate,
@@ -96,6 +108,11 @@ function validateNumberOfCoupons(
   });
 }
 
+/**
+ * This will validate the characters to omit.
+ * @param {string[]} omitCharacters
+ * @returns {*}
+ */
 function validateOmitCharacters(omitCharacters) {
   if (!isUndefined(omitCharacters)) {
     if (!isArray(omitCharacters)) {
@@ -133,6 +150,11 @@ function validateOmitCharacters(omitCharacters) {
   });
 }
 
+/**
+ * This will validate the prefix.
+ * @param {string} prefix
+ * @returns {*}
+ */
 function validatePrefix(prefix) {
   if (isUndefined(prefix)) {
     throwValidationError({
@@ -151,6 +173,11 @@ function validatePrefix(prefix) {
   return prefix;
 }
 
+/**
+ * This will validate the suffix.
+ * @param {string} suffix
+ * @returns {*}
+ */
 function validateSuffix(suffix) {
   if (isUndefined(suffix)) {
     throwValidationError({
