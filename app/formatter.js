@@ -9,6 +9,11 @@ const {
   hasEqualSumOfGroupsAndCouponLength
 } = require('./validator/formatter-validator.js');
 
+/**
+ * This will validate the format rule.
+ * @param {string|object} format
+ * @returns {{groups: number[], totalCharactersInGroup: number, separators: string[]}}
+ */
 function validate(format) {
   if (isUndefined(format)) {
     const message = 'Format rule is not specified.';
@@ -52,6 +57,12 @@ function validate(format) {
   });
 }
 
+/**
+ * This will return array of coupon chunks.
+ * @param {string} coupon
+ * @param {number[]} groups
+ * @returns {{chunks: string[], lengthCovered: number}}
+ */
 function getCouponInGroups(coupon, groups) {
   return groups.reduce(
     (result, currentGroupSize) => {
@@ -66,6 +77,12 @@ function getCouponInGroups(coupon, groups) {
   );
 }
 
+/**
+ * This will return formatted coupon.
+ * @param {string[]} couponChunks
+ * @param {string[]} separators
+ * @returns {string}
+ */
 function getFormattedCoupon(couponChunks, separators) {
   const separatorLength = separators.length;
   return couponChunks.reduce((formattedCoupon, currentChunk, index) => {
@@ -86,7 +103,7 @@ function Formatter(formatRule) {
 
   /**
    * This will return the configuration used for formatting.
-   * @returns {{groups: (number[]), totalCharactersInGroup: (number), separators: (string[])}}
+   * @returns {{groups: number[], totalCharactersInGroup: number, separators: string[]}}
    */
   this.getConfig = function () {
     return { separators, groups, totalCharactersInGroup };
