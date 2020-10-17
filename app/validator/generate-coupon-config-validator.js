@@ -12,6 +12,7 @@ const {
   isUndefined,
   isInteger,
   isString,
+  isObject,
   isEmptyArray
 } = require('../validator/validator.js');
 
@@ -196,10 +197,100 @@ function validateSuffix(suffix) {
   return suffix;
 }
 
+/**
+ * This will validate the character set option.
+ * @param {{builtIn: string[], custom: string[]}} characterSetOption
+ * @returns {*}
+ */
+function validateCharacterSetOption(characterSetOption) {
+  if (isUndefined(characterSetOption)) {
+    throwValidationError({
+      message: `The field 'characterSet' must be defined.`,
+      field: 'characterSet'
+    });
+  }
+
+  if (!isObject(characterSetOption)) {
+    throwValidationError({
+      message: `The field 'characterSet' must be of type object.`,
+      field: 'characterSet'
+    });
+  }
+
+  const { builtIn, custom } = characterSetOption;
+
+  if (isUndefined(builtIn)) {
+    throwValidationError({
+      message: `The field 'characterSet.builtIn' must be defined.`,
+      field: 'characterSet.builtIn'
+    });
+  }
+  if (!isArray(builtIn)) {
+    throwValidationError({
+      message: `The field 'characterSet.builtIn' must be an array.`,
+      field: 'characterSet.builtIn'
+    });
+  }
+  const builtInErrors = builtIn.reduce((error, charSet, index) => {
+    if (isString(charSet)) {
+      return error;
+    }
+    return [
+      ...error,
+      {
+        field: 'characterSet.builtIn',
+        message: `The field 'characterSet.builtIn' must be an array of string. Non-string value found at index ${index}.`,
+        type: ERROR_CONSTANTS.COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR.type
+      }
+    ];
+  }, []);
+  if (!isEmptyArray(builtInErrors)) {
+    throw new ValidationError({
+      errors: builtInErrors,
+      message: `The field 'characterSet.builtIn' must be an array of strings.`
+    });
+  }
+
+  if (isUndefined(custom)) {
+    throwValidationError({
+      message: `The field 'characterSet.custom' must be defined.`,
+      field: 'characterSet.custom'
+    });
+  }
+  if (!isArray(custom)) {
+    throwValidationError({
+      message: `The field 'characterSet.custom' must be an array.`,
+      field: 'characterSet.custom'
+    });
+  }
+  const customErrors = custom.reduce((error, charSet, index) => {
+    if (isString(charSet)) {
+      return error;
+    }
+    return [
+      ...error,
+      {
+        field: 'characterSet.custom',
+        message: `The field 'characterSet.custom' must be an array of string. Non-string value found at index ${index}.`,
+        type: ERROR_CONSTANTS.COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR.type
+      }
+    ];
+  }, []);
+  if (!isEmptyArray(customErrors)) {
+    throw new ValidationError({
+      errors: customErrors,
+      message: `The field 'characterSet.custom' must be an array of strings.`
+    });
+  }
+
+  return characterSetOption;
+}
+
 module.exports = {
   validateLength,
   validateNumberOfCoupons,
   validateOmitCharacters,
   validatePrefix,
-  validateSuffix
+  validateSuffix,
+  validateCharacterSetOption
 };

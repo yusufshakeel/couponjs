@@ -11,7 +11,8 @@ const {
   validateOmitCharacters,
   validateNumberOfCoupons,
   validatePrefix,
-  validateSuffix
+  validateSuffix,
+  validateCharacterSetOption
 } = require('../../../../app/validator/generate-coupon-config-validator.js');
 
 describe('Testing length', () => {
@@ -330,5 +331,166 @@ describe('Testing suffix', () => {
     expect(() => {
       validateSuffix('WORLD');
     }).not.toThrow();
+  });
+});
+
+describe('Testing characterSetOption', () => {
+  test('Should throw error if character set option is not defined', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption();
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet' must be defined.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet',
+          message: "The field 'characterSet' must be defined.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if character set is not an object', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption('invalid');
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet' must be of type object.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet',
+          message: "The field 'characterSet' must be of type object.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.builtIn is not defined', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({});
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.builtIn' must be defined.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.builtIn',
+          message: "The field 'characterSet.builtIn' must be defined.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.builtIn is not of type array', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ builtIn: 'invalid' });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.builtIn' must be an array.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.builtIn',
+          message: "The field 'characterSet.builtIn' must be an array.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.builtIn is has invalid value', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ builtIn: ['A', 1, 2, 'B'] });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.builtIn' must be an array of strings.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.builtIn',
+          message:
+            "The field 'characterSet.builtIn' must be an array of string. Non-string value found at index 1.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        },
+        {
+          field: 'characterSet.builtIn',
+          message:
+            "The field 'characterSet.builtIn' must be an array of string. Non-string value found at index 2.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.custom is not defined', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ builtIn: ['A'] });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.custom' must be defined.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.custom',
+          message: "The field 'characterSet.custom' must be defined.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.custom is not of type array', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ builtIn: ['A'], custom: 'invalid' });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.custom' must be an array.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.custom',
+          message: "The field 'characterSet.custom' must be an array.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.custom is has invalid value', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ builtIn: ['A'], custom: ['A', 1, 'B', 2] });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.custom' must be an array of strings.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.custom',
+          message:
+            "The field 'characterSet.custom' must be an array of string. Non-string value found at index 1.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        },
+        {
+          field: 'characterSet.custom',
+          message:
+            "The field 'characterSet.custom' must be an array of string. Non-string value found at index 3.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should be able to return characterSetOption that is valid', () => {
+    expect(
+      validateCharacterSetOption({ builtIn: ['CHARSET_ALPHA'], custom: ['123'] })
+    ).toStrictEqual({
+      builtIn: ['CHARSET_ALPHA'],
+      custom: ['123']
+    });
   });
 });

@@ -8,7 +8,8 @@ const {
   DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_OMIT_CHARACTERS,
   DEFAULT_COUPON_FORMAT,
-  MAX_NUMBER_OF_COUPONS_TO_GENERATE
+  MAX_NUMBER_OF_COUPONS_TO_GENERATE,
+  DEFAULT_CUSTOM_CHARACTER_SET
 } = require('./constants.js');
 
 module.exports = {
@@ -22,7 +23,8 @@ module.exports = {
     prefix: DEFAULT_PREFIX,
     suffix: DEFAULT_SUFFIX,
     characterSet: {
-      builtIn: [CHARSET_ALPHA]
+      builtIn: [CHARSET_ALPHA],
+      custom: DEFAULT_CUSTOM_CHARACTER_SET
     },
     numberOfCoupons: DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
     omitCharacters: DEFAULT_OMIT_CHARACTERS,
