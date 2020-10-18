@@ -369,23 +369,6 @@ describe('Testing characterSetOption', () => {
     }
   });
 
-  test('Should throw error if characterSet.builtIn is not defined', () => {
-    expect.assertions(3);
-    try {
-      validateCharacterSetOption({});
-    } catch (e) {
-      expect(e.message).toBe("The field 'characterSet.builtIn' must be defined.");
-      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      expect(e.errors).toStrictEqual([
-        {
-          field: 'characterSet.builtIn',
-          message: "The field 'characterSet.builtIn' must be defined.",
-          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
-        }
-      ]);
-    }
-  });
-
   test('Should throw error if characterSet.builtIn is not of type array', () => {
     expect.assertions(3);
     try {
@@ -427,27 +410,10 @@ describe('Testing characterSetOption', () => {
     }
   });
 
-  test('Should throw error if characterSet.custom is not defined', () => {
-    expect.assertions(3);
-    try {
-      validateCharacterSetOption({ builtIn: ['A'] });
-    } catch (e) {
-      expect(e.message).toBe("The field 'characterSet.custom' must be defined.");
-      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      expect(e.errors).toStrictEqual([
-        {
-          field: 'characterSet.custom',
-          message: "The field 'characterSet.custom' must be defined.",
-          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
-        }
-      ]);
-    }
-  });
-
   test('Should throw error if characterSet.custom is not of type array', () => {
     expect.assertions(3);
     try {
-      validateCharacterSetOption({ builtIn: ['A'], custom: 'invalid' });
+      validateCharacterSetOption({ custom: 'invalid' });
     } catch (e) {
       expect(e.message).toBe("The field 'characterSet.custom' must be an array.");
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
@@ -464,7 +430,7 @@ describe('Testing characterSetOption', () => {
   test('Should throw error if characterSet.custom is has invalid value', () => {
     expect.assertions(3);
     try {
-      validateCharacterSetOption({ builtIn: ['A'], custom: ['A', 1, 'B', 2] });
+      validateCharacterSetOption({ custom: ['A', 1, 'B', 2] });
     } catch (e) {
       expect(e.message).toBe("The field 'characterSet.custom' must be an array of strings.");
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
@@ -485,12 +451,22 @@ describe('Testing characterSetOption', () => {
     }
   });
 
-  test('Should be able to return characterSetOption that is valid', () => {
+  test('Should be able to return characterSetOption that is valid and has builtIn, custom fields', () => {
     expect(
       validateCharacterSetOption({ builtIn: ['CHARSET_ALPHA'], custom: ['123'] })
     ).toStrictEqual({
       builtIn: ['CHARSET_ALPHA'],
       custom: ['123']
     });
+  });
+
+  test('Should be able to return characterSetOption that is valid and has only builtIn field', () => {
+    expect(
+      validateCharacterSetOption({ builtIn: ['CHARSET_ALPHA'] })
+    ).toStrictEqual({ builtIn: ['CHARSET_ALPHA'] });
+  });
+
+  test('Should be able to return characterSetOption that is valid and has empty object', () => {
+    expect(validateCharacterSetOption({})).toStrictEqual({});
   });
 });

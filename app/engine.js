@@ -5,7 +5,8 @@ const {
   validateOmitCharacters,
   validateNumberOfCoupons,
   validatePrefix,
-  validateSuffix
+  validateSuffix,
+  validateCharacterSetOption
 } = require('./validator/generate-coupon-config-validator.js');
 
 const {
@@ -49,6 +50,7 @@ const Engine = function ({
   validateSuffix(suffix);
   validateLength(length);
   validateOmitCharacters(omitCharacters);
+  // validateCharacterSetOption(characterSetOption);
 
   const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
 
