@@ -35,7 +35,7 @@ maxCoupons.forEach(maxCoupon => {
         numberOfCoupons: maxCoupon
       });
       performances.push(result.performance);
-      const performanceOfCurrentRound = `Round: ${round}: Time: ${new Date().toISOString()} Total Coupons: ${maxCoupon}, Coupon Length: ${couponLength}, Duration: ${
+      const performanceOfCurrentRound = `Round: ${round} | Time: ${new Date().toISOString()} | Total Coupons: ${maxCoupon} | Coupon Length: ${couponLength} | Duration: ${
         result.performance.duration.nano
       }n`;
       console.info(performanceOfCurrentRound);
