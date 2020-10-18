@@ -50,7 +50,7 @@ const Engine = function ({
   validateSuffix(suffix);
   validateLength(length);
   validateOmitCharacters(omitCharacters);
-  // validateCharacterSetOption(characterSetOption);
+  validateCharacterSetOption(characterSetOption);
 
   const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
 

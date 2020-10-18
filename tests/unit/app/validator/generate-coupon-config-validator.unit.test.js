@@ -461,9 +461,9 @@ describe('Testing characterSetOption', () => {
   });
 
   test('Should be able to return characterSetOption that is valid and has only builtIn field', () => {
-    expect(
-      validateCharacterSetOption({ builtIn: ['CHARSET_ALPHA'] })
-    ).toStrictEqual({ builtIn: ['CHARSET_ALPHA'] });
+    expect(validateCharacterSetOption({ builtIn: ['CHARSET_ALPHA'] })).toStrictEqual({
+      builtIn: ['CHARSET_ALPHA']
+    });
   });
 
   test('Should be able to return characterSetOption that is valid and has empty object', () => {

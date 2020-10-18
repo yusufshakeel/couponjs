@@ -99,5 +99,9 @@ test('Should be able to determine that value is object', () => {
   expect(isObject(0)).toBeFalsy();
   expect(isObject(undefined)).toBeFalsy();
   expect(isObject(null)).toBeFalsy();
-  expect(isObject(function(){ this.x = 10; })).toBeFalsy();
+  expect(
+    isObject(function () {
+      this.x = 10;
+    })
+  ).toBeFalsy();
 });
