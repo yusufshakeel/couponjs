@@ -9,7 +9,10 @@ const {
 const {
   validateLength,
   validateOmitCharacters,
-  validateNumberOfCoupons
+  validateNumberOfCoupons,
+  validatePrefix,
+  validateSuffix,
+  validateCharacterSetOption
 } = require('../../../../app/validator/generate-coupon-config-validator.js');
 
 describe('Testing length', () => {
@@ -18,12 +21,12 @@ describe('Testing length', () => {
     try {
       validateLength();
     } catch (e) {
-      expect(e.message).toBe("The field 'length' number be defined.");
+      expect(e.message).toBe("The field 'length' must be defined.");
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([
         {
           field: 'length',
-          message: "The field 'length' number be defined.",
+          message: "The field 'length' must be defined.",
           type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
         }
       ]);
@@ -92,12 +95,12 @@ describe('Testing numberOfCoupons', () => {
     try {
       validateNumberOfCoupons();
     } catch (e) {
-      expect(e.message).toBe("The field 'numberOfCoupons' number be defined.");
+      expect(e.message).toBe("The field 'numberOfCoupons' must be defined.");
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
-          message: "The field 'numberOfCoupons' number be defined.",
+          message: "The field 'numberOfCoupons' must be defined.",
           type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
         }
       ]);
@@ -189,12 +192,12 @@ describe('Testing omitCharacters', () => {
     try {
       validateOmitCharacters();
     } catch (e) {
-      expect(e.message).toBe("The field 'omitCharacters' number be defined.");
+      expect(e.message).toBe("The field 'omitCharacters' must be defined.");
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([
         {
           field: 'omitCharacters',
-          message: "The field 'omitCharacters' number be defined.",
+          message: "The field 'omitCharacters' must be defined.",
           type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
         }
       ]);
@@ -244,5 +247,226 @@ describe('Testing omitCharacters', () => {
 
   test('Should not throw error if omitCharacters is okay', () => {
     expect(() => validateOmitCharacters(['A'])).not.toThrow();
+  });
+});
+
+describe('Testing prefix', () => {
+  test('Should throw error if prefix is not defined', () => {
+    expect.assertions(3);
+    try {
+      validatePrefix();
+    } catch (e) {
+      expect(e.message).toBe("The field 'prefix' must be defined.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'prefix',
+          message: "The field 'prefix' must be defined.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if prefix is not of type string', () => {
+    expect.assertions(3);
+    try {
+      validatePrefix(123);
+    } catch (e) {
+      expect(e.message).toBe("The field 'prefix' must be of type string.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'prefix',
+          message: "The field 'prefix' must be of type string.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should not throw error if prefix is valid', () => {
+    expect(() => {
+      validatePrefix('HELLO');
+    }).not.toThrow();
+  });
+});
+
+describe('Testing suffix', () => {
+  test('Should throw error if suffix is not defined', () => {
+    expect.assertions(3);
+    try {
+      validateSuffix();
+    } catch (e) {
+      expect(e.message).toBe("The field 'suffix' must be defined.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'suffix',
+          message: "The field 'suffix' must be defined.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if suffix is not of type string', () => {
+    expect.assertions(3);
+    try {
+      validateSuffix(123);
+    } catch (e) {
+      expect(e.message).toBe("The field 'suffix' must be of type string.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'suffix',
+          message: "The field 'suffix' must be of type string.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should not throw error if suffix is valid', () => {
+    expect(() => {
+      validateSuffix('WORLD');
+    }).not.toThrow();
+  });
+});
+
+describe('Testing characterSetOption', () => {
+  test('Should throw error if character set option is not defined', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption();
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet' must be defined.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet',
+          message: "The field 'characterSet' must be defined.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if character set is not an object', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption('invalid');
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet' must be of type object.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet',
+          message: "The field 'characterSet' must be of type object.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.builtIn is not of type array', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ builtIn: 'invalid' });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.builtIn' must be an array.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.builtIn',
+          message: "The field 'characterSet.builtIn' must be an array.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.builtIn is has invalid value', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ builtIn: ['A', 1, 2, 'B'] });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.builtIn' must be an array of strings.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.builtIn',
+          message:
+            "The field 'characterSet.builtIn' must be an array of string. Non-string value found at index 1.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        },
+        {
+          field: 'characterSet.builtIn',
+          message:
+            "The field 'characterSet.builtIn' must be an array of string. Non-string value found at index 2.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.custom is not of type array', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ custom: 'invalid' });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.custom' must be an array.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.custom',
+          message: "The field 'characterSet.custom' must be an array.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should throw error if characterSet.custom is has invalid value', () => {
+    expect.assertions(3);
+    try {
+      validateCharacterSetOption({ custom: ['A', 1, 'B', 2] });
+    } catch (e) {
+      expect(e.message).toBe("The field 'characterSet.custom' must be an array of strings.");
+      expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
+      expect(e.errors).toStrictEqual([
+        {
+          field: 'characterSet.custom',
+          message:
+            "The field 'characterSet.custom' must be an array of string. Non-string value found at index 1.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        },
+        {
+          field: 'characterSet.custom',
+          message:
+            "The field 'characterSet.custom' must be an array of string. Non-string value found at index 3.",
+          type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
+        }
+      ]);
+    }
+  });
+
+  test('Should be able to return characterSetOption that is valid and has builtIn, custom fields', () => {
+    expect(
+      validateCharacterSetOption({ builtIn: ['CHARSET_ALPHA'], custom: ['123'] })
+    ).toStrictEqual({
+      builtIn: ['CHARSET_ALPHA'],
+      custom: ['123']
+    });
+  });
+
+  test('Should be able to return characterSetOption that is valid and has only builtIn field', () => {
+    expect(validateCharacterSetOption({ builtIn: ['CHARSET_ALPHA'] })).toStrictEqual({
+      builtIn: ['CHARSET_ALPHA']
+    });
+  });
+
+  test('Should be able to return characterSetOption that is valid and has empty object', () => {
+    expect(validateCharacterSetOption({})).toStrictEqual({});
   });
 });

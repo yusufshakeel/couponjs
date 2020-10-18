@@ -406,6 +406,13 @@ test('Should throw error if length is greater than 128', () => {
   }
 });
 
+test('Should return a unique coupon using default character set option', () => {
+  const engine = new Engine({ randomInteger });
+  const coupon = engine.run();
+  expect(coupon.length).toBe(6);
+  expect(/^[A-Z]{6}/.test(coupon)).toBeTruthy();
+});
+
 test('Should return AAAAAA as coupon when character set is "A" and randomInteger generates always 0', () => {
   const characterSet = {
     custom: ['A']

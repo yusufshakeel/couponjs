@@ -3,7 +3,10 @@
 const {
   validateLength,
   validateOmitCharacters,
-  validateNumberOfCoupons
+  validateNumberOfCoupons,
+  validatePrefix,
+  validateSuffix,
+  validateCharacterSetOption
 } = require('./validator/generate-coupon-config-validator.js');
 
 const {
@@ -13,6 +16,7 @@ const {
   MAX_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_OMIT_CHARACTERS,
+  DEFAULT_CHARACTER_SET_OPTION,
   UNDEFINED
 } = require('./constants.js');
 const Formatter = require('./formatter.js');
@@ -20,8 +24,8 @@ const characterSetBuilder = require('./character-set-builder.js');
 
 /**
  * Engine to produce coupon.
- * @param {object} characterSetOption This is the set of character set options used to generate coupon.
  * @param {function} randomInteger This is the function that will generate random integer value.
+ * @param {{ builtIn: string[], custom: string[] }} characterSetOption This is the set of character set options used to generate coupon.
  * @param {number} length This is the length of the coupon excluding prefix and suffix characters if any.
  * @param {string} prefix This is the set of characters that is added at the start of the coupon.
  * @param {string} suffix This is the set of characters that is added at the end of the coupon.
@@ -32,8 +36,8 @@ const characterSetBuilder = require('./character-set-builder.js');
  * @constructor
  */
 const Engine = function ({
-  characterSetOption,
   randomInteger,
+  characterSetOption = DEFAULT_CHARACTER_SET_OPTION,
   length = DEFAULT_LENGTH,
   prefix = DEFAULT_PREFIX,
   suffix = DEFAULT_SUFFIX,
@@ -42,8 +46,11 @@ const Engine = function ({
   format = UNDEFINED,
   maxNumberOfCouponsToGenerate = MAX_NUMBER_OF_COUPONS_TO_GENERATE
 }) {
+  validatePrefix(prefix);
+  validateSuffix(suffix);
   validateLength(length);
   validateOmitCharacters(omitCharacters);
+  validateCharacterSetOption(characterSetOption);
 
   const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
 
