@@ -1,5 +1,7 @@
 'use strict';
 
+const { attachSuffix, attachPrefix, pipe } = require('./functional');
+
 const {
   validateLength,
   validateOmitCharacters,
@@ -73,8 +75,8 @@ const Engine = function ({
     for (let i = 0; i < length; i++) {
       generatedCouponCharacters.push(characters[randomInteger(0, charactersLength - 1)]);
     }
-    const coupon = `${prefix}${generatedCouponCharacters.join('')}${suffix}`;
-    return formatter.format(coupon);
+    const coupon = generatedCouponCharacters.join('');
+    return pipe([attachPrefix(prefix), attachSuffix(suffix), formatter.format])(coupon);
   }
 
   /**
