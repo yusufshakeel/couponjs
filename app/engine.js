@@ -1,6 +1,6 @@
 'use strict';
 
-const { attachSuffix, attachPrefix, pipe } = require('./functional');
+const { attachSuffix, attachPrefix, pipe, identity } = require('./functional');
 
 const {
   validateLength,
@@ -56,7 +56,7 @@ const Engine = function ({
   validateOmitCharacters(omitCharacters);
   validateCharacterSetOption(characterSetOption);
 
-  const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
+  const formatter = format !== UNDEFINED ? new Formatter(format) : { format: identity };
 
   const characters = characterSetBuilder(characterSetOption, omitCharacters).split('');
   const charactersLength = characters.length;

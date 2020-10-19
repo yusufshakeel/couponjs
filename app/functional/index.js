@@ -29,4 +29,11 @@ const attachSuffix = (suffix = '') => coupon => `${coupon}${suffix}`;
 const pipe = operators => value =>
   operators.reduce((enrichedValue, operator) => operator(enrichedValue), value);
 
-module.exports = { sumOf, attachPrefix, attachSuffix, pipe };
+/**
+ * This will return the first argument it receives.
+ * @param {*} value
+ * @returns {*}
+ */
+const identity = value => value;
+
+module.exports = { sumOf, attachPrefix, attachSuffix, pipe, identity };
