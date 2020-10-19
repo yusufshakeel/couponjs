@@ -21,4 +21,12 @@ const attachPrefix = (prefix = '') => coupon => `${prefix}${coupon}`;
  */
 const attachSuffix = (suffix = '') => coupon => `${coupon}${suffix}`;
 
-module.exports = { sumOf, attachPrefix, attachSuffix };
+/**
+ * This will take in an array of operators to operate on a value.
+ * @param {*} operators
+ * @returns {function(*=): *}
+ */
+const pipe = operators => value =>
+  operators.reduce((enrichedValue, operator) => operator(enrichedValue), value);
+
+module.exports = { sumOf, attachPrefix, attachSuffix, pipe };
