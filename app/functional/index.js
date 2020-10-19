@@ -44,4 +44,11 @@ const identity = value => value;
  */
 const omit = (values, valuesToOmit) => values.filter(value => !valuesToOmit.includes(value));
 
-module.exports = { sumOf, attachPrefix, attachSuffix, pipe, identity, omit };
+/**
+ * This will return unique characters array.
+ * @param {string[]} characters
+ * @returns {string[]}
+ */
+const uniqueChars = characters => [...new Set(characters.join(''))];
+
+module.exports = { sumOf, attachPrefix, attachSuffix, pipe, identity, omit, uniqueChars };

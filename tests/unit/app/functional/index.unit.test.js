@@ -6,7 +6,8 @@ const {
   attachPrefix,
   pipe,
   identity,
-  omit
+  omit,
+  uniqueChars
 } = require('../../../../app/functional');
 
 test('Should be able to sum up', () => {
@@ -41,4 +42,8 @@ test('Should be able to omit values', () => {
   const values = ['A', 'B', 'C', 'D', 'E', 'F'];
   const valuesToOmit = ['A', 'B', 'F'];
   expect(omit(values, valuesToOmit)).toStrictEqual(['C', 'D', 'E']);
+});
+
+test('Should be able to get unique characters', () => {
+  expect(uniqueChars(['ABC', 'CD', 'EB', 'ACF'])).toStrictEqual(['A', 'B', 'C', 'D', 'E', 'F']);
 });
