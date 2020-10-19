@@ -21,7 +21,9 @@ const {
   DEFAULT_CHARACTER_SET_OPTION,
   UNDEFINED
 } = require('./constants.js');
+
 const Formatter = require('./formatter.js');
+
 const characterSetBuilder = require('./character-set-builder.js');
 
 /**
