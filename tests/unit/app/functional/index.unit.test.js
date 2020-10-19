@@ -1,6 +1,13 @@
 'use strict';
 
-const { sumOf, attachSuffix, attachPrefix, pipe, identity } = require('../../../../app/functional');
+const {
+  sumOf,
+  attachSuffix,
+  attachPrefix,
+  pipe,
+  identity,
+  omit
+} = require('../../../../app/functional');
 
 test('Should be able to sum up', () => {
   expect(sumOf([1, 2, 3])).toBe(6);
@@ -28,4 +35,10 @@ test('Should be able to return the first argument it receives using identity fun
   expect(identity({ foo: 'bar' })).toStrictEqual({ foo: 'bar' });
   expect(identity(true)).toBeTruthy();
   expect(identity(false)).toBeFalsy();
+});
+
+test('Should be able to omit values', () => {
+  const values = ['A', 'B', 'C', 'D', 'E', 'F'];
+  const valuesToOmit = ['A', 'B', 'F'];
+  expect(omit(values, valuesToOmit)).toStrictEqual(['C', 'D', 'E']);
 });

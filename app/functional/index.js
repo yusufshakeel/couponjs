@@ -36,4 +36,12 @@ const pipe = operators => value =>
  */
 const identity = value => value;
 
-module.exports = { sumOf, attachPrefix, attachSuffix, pipe, identity };
+/**
+ * This will omit the specified values.
+ * @param {string[]} values
+ * @param {string[]} valuesToOmit
+ * @returns {string[]}
+ */
+const omit = (values, valuesToOmit) => values.filter(value => !valuesToOmit.includes(value));
+
+module.exports = { sumOf, attachPrefix, attachSuffix, pipe, identity, omit };
