@@ -7,7 +7,7 @@ const {
   pipe,
   identity,
   omit,
-  uniqueChars
+  uniqueCharacters
 } = require('../../../../app/functional');
 
 test('Should be able to sum up', () => {
@@ -45,5 +45,12 @@ test('Should be able to omit values', () => {
 });
 
 test('Should be able to get unique characters', () => {
-  expect(uniqueChars(['ABC', 'CD', 'EB', 'ACF'])).toStrictEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+  expect(uniqueCharacters(['ABC', 'CD', 'EB', 'ACF'])).toStrictEqual([
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F'
+  ]);
 });

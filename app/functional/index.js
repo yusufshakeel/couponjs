@@ -49,6 +49,6 @@ const omit = (values, valuesToOmit) => values.filter(value => !valuesToOmit.incl
  * @param {string[]} characters
  * @returns {string[]}
  */
-const uniqueChars = characters => [...new Set(characters.join(''))];
+const uniqueCharacters = characters => [...new Set(characters.join(''))];
 
-module.exports = { sumOf, attachPrefix, attachSuffix, pipe, identity, omit, uniqueChars };
+module.exports = { sumOf, attachPrefix, attachSuffix, pipe, identity, omit, uniqueCharacters };
