@@ -1,5 +1,7 @@
 'use strict';
 
+const { attachSuffix, attachPrefix, pipe, identity } = require('./functional');
+
 const {
   validateLength,
   validateOmitCharacters,
@@ -19,7 +21,9 @@ const {
   DEFAULT_CHARACTER_SET_OPTION,
   UNDEFINED
 } = require('./constants.js');
+
 const Formatter = require('./formatter.js');
+
 const characterSetBuilder = require('./character-set-builder.js');
 
 /**
@@ -52,7 +56,7 @@ const Engine = function ({
   validateOmitCharacters(omitCharacters);
   validateCharacterSetOption(characterSetOption);
 
-  const formatter = format !== UNDEFINED ? new Formatter(format) : { format: coupon => coupon };
+  const formatter = format !== UNDEFINED ? new Formatter(format) : { format: identity };
 
   const characters = characterSetBuilder(characterSetOption, omitCharacters).split('');
   const charactersLength = characters.length;
@@ -73,8 +77,8 @@ const Engine = function ({
     for (let i = 0; i < length; i++) {
       generatedCouponCharacters.push(characters[randomInteger(0, charactersLength - 1)]);
     }
-    const coupon = `${prefix}${generatedCouponCharacters.join('')}${suffix}`;
-    return formatter.format(coupon);
+    const coupon = generatedCouponCharacters.join('');
+    return pipe([attachPrefix(prefix), attachSuffix(suffix), formatter.format])(coupon);
   }
 
   /**

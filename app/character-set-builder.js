@@ -2,6 +2,7 @@
 
 const { DEFAULT_OMIT_CHARACTERS } = require('./constants.js');
 const characterSet = require('./character-set.js');
+const { omit, uniqueCharacters } = require('./functional');
 
 /**
  * This will generate a string of unique characters based on the options provided.
@@ -11,16 +12,12 @@ const characterSet = require('./character-set.js');
  */
 function characterSetBuilder(characterSetOptions, omitCharacters = DEFAULT_OMIT_CHARACTERS) {
   const { builtIn = [], custom = [] } = characterSetOptions;
-  const charactersToOmit = [...new Set(omitCharacters.join(''))];
-  const charactersFromCharacterSetOptions = [
-    ...new Set(
-      [...builtIn.map(characterSetName => characterSet(characterSetName)), ...custom].join('')
-    )
-  ];
-  const charactersToUse = charactersFromCharacterSetOptions.filter(
-    character => !charactersToOmit.includes(character)
-  );
-  return charactersToUse.join('');
+  const charactersToOmit = uniqueCharacters(omitCharacters);
+  const charactersFromCharacterSetOptions = uniqueCharacters([
+    ...builtIn.map(characterSetName => characterSet(characterSetName)),
+    ...custom
+  ]);
+  return omit(charactersFromCharacterSetOptions, charactersToOmit).join('');
 }
 
 module.exports = characterSetBuilder;
