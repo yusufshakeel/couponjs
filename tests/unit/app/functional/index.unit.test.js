@@ -7,7 +7,8 @@ const {
   pipe,
   identity,
   omit,
-  uniqueCharacters
+  uniqueCharacters,
+  shallowMerge
 } = require('../../../../app/functional');
 
 test('Should be able to sum up', () => {
@@ -53,4 +54,23 @@ test('Should be able to get unique characters', () => {
     'E',
     'F'
   ]);
+});
+
+test('Should be able to shallow merge without mutating the source objects', () => {
+  const obj1 = { a: 1, b: 2, e: { f: [1, 2], g: { h: 10 } } };
+  const obj2 = { b: 3 };
+  const obj3 = { c: 4 };
+  const obj4 = { e: { f: 10 } };
+  expect(shallowMerge(obj1, obj2, obj3, obj4)).toStrictEqual({
+    a: 1,
+    b: 3,
+    c: 4,
+    e: {
+      f: 10
+    }
+  });
+  expect(obj1).toStrictEqual({ a: 1, b: 2, e: { f: [1, 2], g: { h: 10 } } });
+  expect(obj2).toStrictEqual({ b: 3 });
+  expect(obj3).toStrictEqual({ c: 4 });
+  expect(obj4).toStrictEqual({ e: { f: 10 } });
 });
