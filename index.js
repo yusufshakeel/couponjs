@@ -5,6 +5,7 @@ const { defaultCouponGenerationOption, defaultCouponEngineOption } = require('./
 const randomInteger = require('./app/random-integer.js');
 const Performance = require('./app/performance.js');
 const { couponConfigValidator } = require('./app/validator/coupon-config-validator.js');
+const { shallowMerge } = require('./app/functional');
 
 /**
  * The Coupon constructor.
@@ -13,8 +14,7 @@ const { couponConfigValidator } = require('./app/validator/coupon-config-validat
  */
 const Coupon = function (config) {
   const performance = new Performance();
-  const { verbose, logPerformance, maxNumberOfCouponsToGenerate } = Object.assign(
-    {},
+  const { verbose, logPerformance, maxNumberOfCouponsToGenerate } = shallowMerge(
     defaultCouponEngineOption,
     config
   );
@@ -36,7 +36,7 @@ const Coupon = function (config) {
       omitCharacters,
       format,
       characterSet: characterSetOption
-    } = Object.assign({}, defaultCouponGenerationOption, option);
+    } = shallowMerge(defaultCouponGenerationOption, option);
     try {
       const engine = new Engine({
         randomInteger,
