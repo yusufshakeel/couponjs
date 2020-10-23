@@ -51,4 +51,20 @@ const omit = (values, valuesToOmit) => values.filter(value => !valuesToOmit.incl
  */
 const uniqueCharacters = characters => [...new Set(characters.join(''))];
 
-module.exports = { sumOf, attachPrefix, attachSuffix, pipe, identity, omit, uniqueCharacters };
+/**
+ * Copies all enumerable own properties from one or more objects to a empty target object.
+ * @param {...object} sourceObjects
+ * @returns {object}
+ */
+const shallowMerge = (...sourceObjects) => Object.assign({}, ...sourceObjects);
+
+module.exports = {
+  sumOf,
+  attachPrefix,
+  attachSuffix,
+  pipe,
+  identity,
+  omit,
+  uniqueCharacters,
+  shallowMerge
+};
