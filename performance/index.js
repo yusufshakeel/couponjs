@@ -4,14 +4,14 @@ const fs = require('fs');
 const CouponJS = require('../index.js');
 const { startSection } = require('./template.js');
 
-const maxCoupons = [1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 5e6];
+const maxCoupons = [1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6];
 
-const couponLengths = [6, 8, 12, 16];
+const couponLengths = [6, 8, 12, 16, 20];
 
 const roundNumbers = [1, 2, 3];
 
 const performanceMdData = {
-  file: './PERFORMANCE.md',
+  file: './output/PERFORMANCE.md',
   timestamp: new Date().toISOString(),
   divider: '============================================================'
 };
