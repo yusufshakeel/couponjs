@@ -684,8 +684,6 @@ To check performance run the following command in the terminal.
 > npm run performance
 ```
 
-Performance summary. Full log in [PERFORMANCE.md](./PERFORMANCE.md) file.
-
 ## License
 
 It's free :smiley:
