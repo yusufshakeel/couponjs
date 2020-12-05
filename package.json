@@ -4,6 +4,7 @@
   "description": "This is a simple coupon creation project using NodeJS.",
   "main": "index.js",
   "scripts": {
+    "project:init": "mkdir -p output && npm i && npm run test",
     "test": "jest -c jest.config.json",
     "generate-docs": "npx jsdoc -c jsdocs.config.json",
     "lint": "npx eslint -c .eslintrc.json ./index.js ./app ./tests ./performance",
