@@ -4,6 +4,7 @@
   "description": "This is a simple coupon creation project using NodeJS.",
   "main": "index.js",
   "scripts": {
+    "bootstrap": "mkdir -p output",
     "project:init": "mkdir -p output && npm i && npm run test",
     "test": "jest -c jest.config.json",
     "generate-docs": "npx jsdoc -c jsdocs.config.json",
@@ -13,7 +14,7 @@
     "search-duplicate-code": "npx jscpd ./index.js ./app",
     "precommit": "npm run lint && npm run search-circular-dependencies && npm run search-duplicate-code && npm run test && npm run generate-docs",
     "coveralls": "coveralls < ./coverage/lcov.info",
-    "performance": "node performance/index.js"
+    "performance": "npm run bootstrap && node performance/index.js"
   },
   "repository": {
     "type": "git",
