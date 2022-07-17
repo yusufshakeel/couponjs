@@ -1,6 +1,6 @@
 {
   "name": "couponjs",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "This is a simple coupon creation project using NodeJS.",
   "main": "index.js",
   "scripts": {
