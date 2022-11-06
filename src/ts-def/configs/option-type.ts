@@ -1,4 +1,4 @@
-export type characterSetOptionType = {
+export type characterSetOptionsType = {
   builtIn?: string[],
   custom?: string[] | []
 };
@@ -15,7 +15,7 @@ export type OptionType = {
     length: number,
     prefix: string,
     suffix: string,
-    characterSet: characterSetOptionType,
+    characterSet: characterSetOptionsType,
     numberOfCoupons: number,
     omitCharacters: omitCharactersType,
     format: string
