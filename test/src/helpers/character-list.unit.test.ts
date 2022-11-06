@@ -1,22 +1,12 @@
 import {
-  ALPHABET_UPPERCASE,
   ALPHABET_LOWERCASE,
-  DIGIT,
-  BINARY,
-  OCTAL,
-  HEX,
-  HEX_LOWER,
+  ALPHABET_UPPERCASE, BINARY, CHARSET_ALNUM,
   CHARSET_ALPHA,
-  CHARSET_ALPHA_LOWER,
-  CHARSET_DIGIT,
-  CHARSET_ALNUM,
-  CHARSET_BINARY,
-  CHARSET_OCTAL,
-  CHARSET_HEX,
-  CHARSET_HEX_LOWER
-} from '../../src/constants';
-import characterSetBuilder from '../../src/character-set-builder';
-import options from '../../src/configs/option';
+  CHARSET_ALPHA_LOWER, CHARSET_BINARY,
+  CHARSET_DIGIT, CHARSET_HEX, CHARSET_HEX_LOWER, CHARSET_OCTAL, DIGIT, HEX, HEX_LOWER, OCTAL
+} from '../../../src/constants';
+import characterList from '../../../src/helpers/character-list';
+import options from '../../../src/configs/option';
 
 const { defaultCouponGenerationOption } = options;
 
@@ -26,52 +16,52 @@ describe('Testing character set builder', () => {
       const option = {
         builtIn: ['UNKNOWN']
       };
-      characterSetBuilder(option);
+      characterList(option);
     }).toThrow(
       'Invalid builtIn characterSet specified. Allowed values: CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT, CHARSET_ALNUM, CHARSET_BINARY, CHARSET_OCTAL, CHARSET_HEX, CHARSET_HEX_LOWER'
     );
   });
 
   test('Should return uppercase alphabet A-Z when using default options', () => {
-    expect(characterSetBuilder(
+    expect(characterList(
       defaultCouponGenerationOption.characterSet
-    )).toBe(ALPHABET_UPPERCASE);
+    )).toStrictEqual(ALPHABET_UPPERCASE.split(''));
   });
 
   test('Should return uppercase alphabet A-Z when using builtIn "CHARSET_ALPHA" option', () => {
-    expect(characterSetBuilder({ builtIn: [CHARSET_ALPHA] })).toBe(ALPHABET_UPPERCASE);
+    expect(characterList({ builtIn: [CHARSET_ALPHA] })).toStrictEqual(ALPHABET_UPPERCASE.split(''));
   });
 
   test('Should return lowercase alphabet a-z when using builtIn "CHARSET_ALPHA_LOWER" option', () => {
-    expect(characterSetBuilder({ builtIn: [CHARSET_ALPHA_LOWER] })).toBe(ALPHABET_LOWERCASE);
+    expect(characterList({ builtIn: [CHARSET_ALPHA_LOWER] })).toStrictEqual(ALPHABET_LOWERCASE.split(''));
   });
 
   test('Should return digits 0-9 when using builtIn "CHARSET_DIGIT" option', () => {
-    expect(characterSetBuilder({ builtIn: [CHARSET_DIGIT] })).toBe(DIGIT);
+    expect(characterList({ builtIn: [CHARSET_DIGIT] })).toStrictEqual(DIGIT.split(''));
   });
 
   test('Should return uppercase, lowercase alphabet and digits when using builtIn ["CHARSET_ALPHA", "CHARSET_ALPHA_LOWER", "CHARSET_DIGIT"] option', () => {
     expect(
-      characterSetBuilder({
+      characterList({
         builtIn: [CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT]
       })
-    ).toBe(`${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`);
+    ).toStrictEqual(`${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`.split(''));
   });
 
   test('Should return alphabet ABC when using custom "ABC" option', () => {
-    expect(characterSetBuilder({ custom: ['ABC'] })).toBe('ABC');
+    expect(characterList({ custom: ['ABC'] })).toStrictEqual(['A', 'B', 'C']);
   });
 
   test('Should return alphabet abc when using custom "abc" option', () => {
-    expect(characterSetBuilder({ custom: ['abc'] })).toBe('abc');
+    expect(characterList({ custom: ['abc'] })).toStrictEqual(['a', 'b', 'c']);
   });
 
   test('Should return digits 123 when using custom "123" option', () => {
-    expect(characterSetBuilder({ custom: ['123'] })).toBe('123');
+    expect(characterList({ custom: ['123'] })).toStrictEqual(['1', '2', '3']);
   });
 
   test('Should return alphabet uppercase, lowercase and digit "ABCabc123" when using custom ["ABC", "abc", "123"] option', () => {
-    expect(characterSetBuilder({ custom: ['ABC', 'abc', '123'] })).toBe('ABCabc123');
+    expect(characterList({ custom: ['ABC', 'abc', '123'] })).toStrictEqual(['A', 'B', 'C', 'a', 'b', 'c', '1', '2', '3']);
   });
 
   test('Should return both builtIn and custom characters when using custom both options', () => {
@@ -79,8 +69,8 @@ describe('Testing character set builder', () => {
       builtIn: [CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT],
       custom: ['@$%']
     };
-    const expectedResult = `${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}@$%`;
-    expect(characterSetBuilder(option)).toBe(expectedResult);
+    const expectedResult = `${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}@$%`.split('');
+    expect(characterList(option)).toStrictEqual(expectedResult);
   });
 
   test('Should return unique characters when option has duplicate characters', () => {
@@ -88,32 +78,32 @@ describe('Testing character set builder', () => {
       builtIn: [CHARSET_ALPHA, CHARSET_ALPHA_LOWER, CHARSET_DIGIT],
       custom: ['ABC', 'abc', 'BCD', 'xyz', '123']
     };
-    expect(characterSetBuilder(option)).toBe(`${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`);
+    expect(characterList(option)).toStrictEqual(`${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`.split(''));
   });
 
   test('Should return uppercase, lowercase alphabet and digit when using builtIn "CHARSET_ALNUM" option', () => {
-    expect(characterSetBuilder({ builtIn: [CHARSET_ALNUM] })).toBe(
-      `${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`
+    expect(characterList({ builtIn: [CHARSET_ALNUM] })).toStrictEqual(
+      `${ALPHABET_UPPERCASE}${ALPHABET_LOWERCASE}${DIGIT}`.split('')
     );
   });
 
   test('Should return binary characters when using builtIn "CHARSET_BINARY" option', () => {
-    expect(characterSetBuilder({ builtIn: [CHARSET_BINARY] })).toBe(BINARY);
+    expect(characterList({ builtIn: [CHARSET_BINARY] })).toStrictEqual(BINARY.split(''));
   });
 
   test('Should return octal characters when using builtIn "CHARSET_OCTAL" option', () => {
-    expect(characterSetBuilder({ builtIn: [CHARSET_OCTAL] })).toBe(OCTAL);
+    expect(characterList({ builtIn: [CHARSET_OCTAL] })).toStrictEqual(OCTAL.split(''));
   });
 
   test('Should return hex characters when using builtIn "CHARSET_HEX" option', () => {
-    expect(characterSetBuilder({ builtIn: [CHARSET_HEX] })).toBe(HEX);
+    expect(characterList({ builtIn: [CHARSET_HEX] })).toStrictEqual(HEX.split(''));
   });
 
   test('Should return hex lowercase characters when using builtIn "CHARSET_HEX_LOWER" option', () => {
-    expect(characterSetBuilder({ builtIn: [CHARSET_HEX_LOWER] })).toBe(HEX_LOWER);
+    expect(characterList({ builtIn: [CHARSET_HEX_LOWER] })).toStrictEqual(HEX_LOWER.split(''));
   });
 
   test('Should be able to omit characters', () => {
-    expect(characterSetBuilder({ custom: ['ABCDEF', '123456'] }, ['AB', '12'])).toBe('CDEF3456');
+    expect(characterList({ custom: ['ABCDEF', '123456'] }, ['AB', '12'])).toStrictEqual('CDEF3456'.split(''));
   });
 });

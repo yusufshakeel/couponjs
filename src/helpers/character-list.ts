@@ -1,23 +1,23 @@
-import { DEFAULT_OMIT_CHARACTERS } from './constants';
-import characterSet from './character-set';
-import { omit, uniqueCharacters } from './helpers';
-import { characterSetOptionsType, omitCharactersType } from './ts-def/configs/option-type';
+import { characterSetOptionsType, omitCharactersType } from '../ts-def/configs/option-type';
+import { DEFAULT_OMIT_CHARACTERS } from '../constants';
+import { omit, uniqueCharacters } from './index';
+import characterSet from '../character-set';
 
 /**
  * This will generate a string of unique characters based on the options provided.
  * @param {characterSetOptionsType} characterSetOptions The options to build the character set.
  * @param {omitCharactersType} omitCharacters The array of characters that will be omitted.
- * @returns {string} The set of characters based on the options provided.
+ * @returns {string[]} The set of characters based on the options provided.
  */
-export default function characterSetBuilder(
+export default function characterList(
   characterSetOptions: characterSetOptionsType,
   omitCharacters: omitCharactersType = DEFAULT_OMIT_CHARACTERS
-): string {
+): string[] {
   const { builtIn = [], custom = [] } = characterSetOptions;
   const charactersToOmit = uniqueCharacters(omitCharacters);
   const charactersFromCharacterSetOptions = uniqueCharacters([
     ...builtIn.map(characterSetName => characterSet(characterSetName)),
     ...custom
   ]);
-  return omit(charactersFromCharacterSetOptions, charactersToOmit).join('');
+  return omit(charactersFromCharacterSetOptions, charactersToOmit);
 }
