@@ -9,7 +9,10 @@ import { characterSetOptionType, omitCharactersType } from './ts-def/configs/opt
  * @param {omitCharactersType} omitCharacters The array of characters that will be omitted.
  * @returns {string} The set of characters based on the options provided.
  */
-export default function characterSetBuilder(characterSetOptions: characterSetOptionType, omitCharacters: omitCharactersType = DEFAULT_OMIT_CHARACTERS): string {
+export default function characterSetBuilder(
+  characterSetOptions: characterSetOptionType,
+  omitCharacters: omitCharactersType = DEFAULT_OMIT_CHARACTERS
+): string {
   const { builtIn = [], custom = [] } = characterSetOptions;
   const charactersToOmit = uniqueCharacters(omitCharacters);
   const charactersFromCharacterSetOptions = uniqueCharacters([
