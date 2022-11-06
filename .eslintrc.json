@@ -1,25 +1,39 @@
 {
   "env": {
-    "browser": true,
     "commonjs": true,
     "es6": true,
     "node": true,
     "jest": true
   },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:node/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
+  "settings": {
+    "node": {
+      "tryExtensions": [
+        ".js",
+        ".json",
+        ".node",
+        ".ts",
+        ".d.ts"
+      ]
+    }
+  },
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-    "ecmaVersion": 2018
   },
   "rules": {
     "strict": [
@@ -27,15 +41,7 @@
       "global"
     ],
     "no-console": [
-      "error",
-      {
-        "allow": [
-          "time",
-          "timeEnd",
-          "error",
-          "info"
-        ]
-      }
+      "error"
     ],
     "new-cap": [
       "off"

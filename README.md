@@ -1,9 +1,9 @@
 # couponjs
 
-This is a simple coupon creation project using NodeJS.
+Generate coupons.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.9.4-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.10.0-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![npm Downloads](https://img.shields.io/npm/dm/couponjs.svg)](https://www.npmjs.com/package/couponjs)
 
 ![CouponJS](./resource/couponjs-500x150.png)
