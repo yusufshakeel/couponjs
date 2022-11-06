@@ -14,6 +14,7 @@ export const BINARY = '01';
 export const OCTAL = '01234567';
 export const HEX = '0123456789ABCDEF';
 export const HEX_LOWER = '0123456789abcdef';
+export const ALNUM = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 export const CHARSET_ALPHA = 'CHARSET_ALPHA';
 export const CHARSET_ALPHA_LOWER = 'CHARSET_ALPHA_LOWER';
 export const CHARSET_DIGIT = 'CHARSET_DIGIT';

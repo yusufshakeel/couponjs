@@ -8,8 +8,9 @@ import {
   MAX_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_CHARACTER_SET_OPTION
 } from '../constants';
+import { OptionType } from '../ts-def/configs/option-type';
 
-const options = {
+const options: OptionType = {
   defaultCouponEngineOption: {
     verbose: false,
     logPerformance: false,
