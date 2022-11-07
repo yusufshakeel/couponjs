@@ -1,4 +1,4 @@
-import { CharacterSetOptionsType, OmitCharactersType } from '../ts-def/configs/option-type';
+import { CharacterSetOptionsType, OmitCharactersType } from '../ts-def/option-type';
 import { DEFAULT_OMIT_CHARACTERS } from '../constants';
 import { omit, uniqueCharacters } from './index';
 import characterSet from '../character-set';

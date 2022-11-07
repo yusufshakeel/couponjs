@@ -1,4 +1,4 @@
-import { PerformanceType } from '../ts-def/helpers/performance-type';
+import { PerformanceType } from '../ts-def/performance-type';
 
 const NS_PER_SEC = 1e9;
 

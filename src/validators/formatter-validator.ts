@@ -8,7 +8,7 @@ import {
   FormatRuleObjectType,
   GroupErrorType,
   SeparatorErrorType
-} from '../ts-def/validators/format-rule-type';
+} from '../ts-def/format-rule-type';
 
 export const getErrorsInGroups = (groups: number[]): ErrorType[] | [] => {
   return groups.reduce((error: GroupErrorType, group, index) => {

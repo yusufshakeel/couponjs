@@ -13,8 +13,8 @@ import {
   isObject,
   isEmptyArray
 } from './index';
-import { CharacterSetOptionsType } from '../ts-def/configs/option-type';
-import { ErrorType } from '../ts-def/validators/format-rule-type';
+import { CharacterSetOptionsType } from '../ts-def/option-type';
+import { ErrorType } from '../ts-def/format-rule-type';
 
 const throwValidationError = ({ message, field }: {message: string, field: string}) => {
   throw new ValidationError({

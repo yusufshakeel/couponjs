@@ -8,7 +8,7 @@ import {
   MAX_NUMBER_OF_COUPONS_TO_GENERATE,
   DEFAULT_CHARACTER_SET_OPTION
 } from '../constants';
-import { OptionType } from '../ts-def/configs/option-type';
+import { OptionType } from '../ts-def/option-type';
 
 const options: OptionType = {
   defaultCouponEngineOption: {
