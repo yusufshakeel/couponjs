@@ -1,9 +1,9 @@
-export type characterSetOptionsType = {
+export type CharacterSetOptionsType = {
   builtIn?: string[],
-  custom?: string[] | []
+  custom?: string[]
 };
 
-export type omitCharactersType = string[] | [];
+export type OmitCharactersType = string[];
 
 export type OptionType = {
   defaultCouponEngineOption: {
@@ -15,9 +15,9 @@ export type OptionType = {
     length: number,
     prefix: string,
     suffix: string,
-    characterSet: characterSetOptionsType,
+    characterSet: CharacterSetOptionsType,
     numberOfCoupons: number,
-    omitCharacters: omitCharactersType,
+    omitCharacters: OmitCharactersType,
     format: string
   }
 };
