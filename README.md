@@ -12,10 +12,10 @@ Generate coupons.
 
 Import. Configure. Generate.
 
-This is a simple project to generate coupons. Lots of coupons. And of course, it is configurable.
+This is a simple project to generate coupons. Lots of coupons.
 
-Import the package, configure (optional), generate (1 or more coupons) and then use the coupons however
-you like (save in database, display, etc).
+Import the package, configure (this is optional), generate (1 or more coupons) and then use the coupons however
+you like (save in database, etc).
 
 ## Table of Contents
 
