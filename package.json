@@ -28,8 +28,7 @@
     "lint:fix:src": "npx eslint --fix -c .eslintrc.json src",
     "lint:test": "npx eslint -c .eslintrc.json test",
     "lint:fix:test": "npx eslint --fix -c .eslintrc.json test",
-    "coveralls": "coveralls < ./coverage/lcov.info",
-    "performance": "npm run bootstrap && node performance/index.js"
+    "coveralls": "coveralls < ./coverage/lcov.info"
   },
   "repository": {
     "type": "git",
