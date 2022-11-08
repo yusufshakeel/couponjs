@@ -2,18 +2,30 @@
   "testEnvironment": "node",
   "verbose": true,
   "bail": true,
-  "testRegex": "(unit).test.js$",
+  "testRegex": "(unit).test.(js|ts)$",
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ],
+  "transform": {
+    "^.+\\.(t|j)sx?$": "ts-jest"
+  },
   "collectCoverage": true,
   "collectCoverageFrom": [
-    "**/*.{js,jsx}",
+    "src/**/*.{ts,tsx}",
     "!**/coverage/**",
     "!**/docs/**",
+    "!**/lib/**",
     "!**/node_modules/**",
-    "!**/performance/**",
-    "!**/tests/**"
+    "!**/test/**"
   ],
   "coverageThreshold": {
     "global": {
+      "statements": 100,
       "branches": 100,
       "functions": 100,
       "lines": 100
