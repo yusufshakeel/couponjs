@@ -3,7 +3,7 @@
 Generate coupons.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/couponjs)
-[![npm version](https://img.shields.io/badge/npm-0.10.0-blue.svg)](https://www.npmjs.com/package/couponjs)
+[![npm version](https://img.shields.io/badge/npm-0.10.1-blue.svg)](https://www.npmjs.com/package/couponjs)
 [![npm Downloads](https://img.shields.io/npm/dm/couponjs.svg)](https://www.npmjs.com/package/couponjs)
 
 ![CouponJS](./resource/couponjs-500x150.png)
@@ -43,7 +43,6 @@ you like (save in database, etc).
     * [Object format rule and prefix-suffix combo](#object-format-rule-and-prefix-suffix-combo)
 * [Possible number of coupons](#possible-number-of-coupons)
 * [Storage size](#storage-size)
-* [Performance](#performance)
 * [Older version](#older-version)
 * [License](#license)
 * [Donate](#donate)
@@ -687,16 +686,6 @@ Assumption:
 |16               |10000000              |160.000           |0.160000          |
 |16               |100000000             |1600.000          |1.600000          |
 |16               |1000000000            |16000.000         |16.000000         |
-
-## Performance
-
-To check performance run the following command in the terminal.
-
-```
-> npm run performance
-```
-
-Performance will be recorded in `output/PERFORMANCE.md` file.
 
 ### Older version
 
