@@ -8,28 +8,23 @@ Generate coupons.
 
 ![CouponJS](./resource/couponjs-500x150.png)
 
-# Getting Started
+## Use case
 
-Add this to your project using npm.
+Import. Configure. Generate.
 
-```
-> npm i couponjs
-```
+This is a simple project to generate coupons. Lots of coupons. And of course, it is configurable.
 
-Next, require `couponjs`.
-
-```javascript
-const CouponJS = require('couponjs');
-```
+Import the package, configure (optional), generate (1 or more coupons) and then use the coupons however
+you like (save in database, display, etc).
 
 ## Table of Contents
 
 * [Getting Started](#getting-started)
+* [Generate coupon](#generate-coupon)
 * [Coupon engine configuration](#coupon-engine-configuration)
   * [Verbose](#verbose)
   * [Log Performance](#log-performance)
   * [Maximum number of coupons to generate](#maximum-number-of-coupons-to-generate)
-* [Generate coupon](#generate-coupon)
 * [Configuration to generate coupons](#configuration-to-generate-coupons)
   * [Coupon of length N](#coupon-of-length-n)
   * [Coupon with prefix](#coupon-with-prefix)
@@ -49,9 +44,45 @@ const CouponJS = require('couponjs');
 * [Possible number of coupons](#possible-number-of-coupons)
 * [Storage size](#storage-size)
 * [Performance](#performance)
+* [Older version](#older-version)
 * [License](#license)
-* [Back this project](#back-this-project)
 * [Donate](#donate)
+
+# Getting Started
+
+#### Install
+
+```
+npm i couponjs
+```
+
+#### Require
+
+```js
+// ESM
+import CouponJS from 'couponjs';
+
+// CommonJs
+const { CouponJS } = require('couponjs');
+```
+
+## Generate coupon
+
+Create an object.
+
+```javascript
+const coupon = new CouponJS();
+```
+
+Now, call the `generate` method.
+
+```javascript
+const myCoupon = coupon.generate();
+```
+
+The above code will produce coupon like `ASDFGH`.
+
+By default, `generate` will return coupon code of length 6 using uppercase alphabet.
 
 ## Coupon engine configuration
 
@@ -184,24 +215,6 @@ const coupon = new CouponJS({
   maxNumberOfCouponsToGenerate: 100
 });
 ```
-
-## Generate coupon
-
-Create an object.
-
-```javascript
-const coupon = new CouponJS();
-```
-
-Now, call the `generate` method.
-
-```javascript
-const myCoupon = coupon.generate();
-```
-
-The above code will produce coupon like `ASDFGH`.
-
-By default, `generate` will return coupon code of length 6 using uppercase alphabet.
 
 ## Configuration to generate coupons
 
@@ -675,8 +688,6 @@ Assumption:
 |16               |100000000             |1600.000          |1.600000          |
 |16               |1000000000            |16000.000         |16.000000         |
 
-
-
 ## Performance
 
 To check performance run the following command in the terminal.
@@ -687,15 +698,15 @@ To check performance run the following command in the terminal.
 
 Performance will be recorded in `output/PERFORMANCE.md` file.
 
+### Older version
+
+[CommonJS version - check v0.9.4](https://github.com/yusufshakeel/couponjs/tree/v0.9.4)
+
 ## License
 
 It's free :smiley:
 
 [MIT License](https://github.com/yusufshakeel/couponjs/blob/master/LICENSE) Copyright (c) 2020 Yusuf Shakeel
-
-### Back this project
-
-If you find this project useful and interesting then feel free to support it on [Patreon](https://www.patreon.com/yusufshakeel).
 
 ### Donate
 
