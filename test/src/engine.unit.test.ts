@@ -23,15 +23,9 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe('Minimum value for numberOfCoupons is 1.');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -60,15 +54,9 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe('Maximum value for numberOfCoupons is 100000.');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -99,17 +87,11 @@ describe('Testing Engine', () => {
         randomInteger: mockRandomInteger
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 27 for the given length and characterSet.'
       );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -141,17 +123,11 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 17576 for the given length and characterSet.'
       );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -183,17 +159,11 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 17576 for the given length and characterSet.'
       );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -225,17 +195,11 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 1000 for the given length and characterSet.'
       );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -267,17 +231,11 @@ describe('Testing Engine', () => {
         randomInteger: mockRandomInteger
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 8 for the given length and characterSet.'
       );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -309,17 +267,11 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 512 for the given length and characterSet.'
       );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -351,17 +303,11 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 4096 for the given length and characterSet.'
       );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -393,17 +339,11 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 3844 for the given length and characterSet.'
       );
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'numberOfCoupons',
@@ -428,15 +368,9 @@ describe('Testing Engine', () => {
         randomInteger: mockRandomInteger
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe("Minimum value for 'length' is 1.");
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'length',
@@ -460,15 +394,9 @@ describe('Testing Engine', () => {
         randomInteger: mockRandomInteger
       });
       engine.run();
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+    } catch (e: any) {
       expect(e.message).toBe('Maximum value for length is 128.');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       expect(e.errors).toStrictEqual([
         {
           field: 'length',
@@ -482,10 +410,8 @@ describe('Testing Engine', () => {
   test('Should return a unique coupon using default character set option', () => {
     const engine = new Engine({ randomInteger });
     const coupon = engine.run();
-    expect(coupon.length).toBe(1);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    expect(/^[A-Z]{6}/.test(coupon[0])).toBeTruthy();
+    expect(coupon.length).toBe(6);
+    expect(/^[A-Z]{6}/.test((coupon as string))).toBeTruthy();
   });
 
   test('Should return AAAAAA as coupon when character set is "A" and randomInteger generates always 0', () => {
@@ -499,7 +425,7 @@ describe('Testing Engine', () => {
       characterSetOption: characterSet,
       randomInteger: mockRandomInteger
     });
-    expect(engine.run()[0]).toBe('AAAAAA');
+    expect(engine.run()).toBe('AAAAAA');
   });
 
   test('Should return zzzzzz as coupon when character set is "z" and randomInteger generates always 0', () => {
@@ -513,7 +439,7 @@ describe('Testing Engine', () => {
       characterSetOption: characterSet,
       randomInteger: mockRandomInteger
     });
-    expect(engine.run()[0]).toBe('zzzzzz');
+    expect(engine.run()).toBe('zzzzzz');
   });
 
   test('Should return aaa as coupon when character set is "a" and randomInteger generates always 0 and length is 3', () => {
@@ -528,7 +454,7 @@ describe('Testing Engine', () => {
       characterSetOption: characterSet,
       randomInteger: mockRandomInteger
     });
-    expect(engine.run()[0]).toBe('aaa');
+    expect(engine.run()).toBe('aaa');
   });
 
   test('Should return PREFIXaaa as coupon when character set is "a" and randomInteger generates always 0 and length is 3', () => {
@@ -544,7 +470,7 @@ describe('Testing Engine', () => {
       characterSetOption: characterSet,
       randomInteger: mockRandomInteger
     });
-    expect(engine.run()[0]).toBe('PREFIXaaa');
+    expect(engine.run()).toBe('PREFIXaaa');
   });
 
   test('Should return aaaSUFFIX as coupon when character set is "a" and randomInteger generates always 0 and length is 3', () => {
@@ -560,7 +486,7 @@ describe('Testing Engine', () => {
       characterSetOption: characterSet,
       randomInteger: mockRandomInteger
     });
-    expect(engine.run()[0]).toBe('aaaSUFFIX');
+    expect(engine.run()).toBe('aaaSUFFIX');
   });
 
   test('Should return PREFIXaaaSUFFIX as coupon when character set is "a" and randomInteger generates always 0 and length is 3', () => {
@@ -577,7 +503,7 @@ describe('Testing Engine', () => {
       randomInteger: mockRandomInteger,
       characterSetOption: characterSet
     });
-    expect(engine.run()[0]).toBe('PREFIXaaaSUFFIX');
+    expect(engine.run()).toBe('PREFIXaaaSUFFIX');
   });
 
   test('Should return 2 unique coupon when character set is "abc", length is 3 and numberOfCoupons is 2', () => {
@@ -610,23 +536,8 @@ describe('Testing Engine', () => {
     });
     const coupons = engine.run();
     expect(coupons.length).toBe(2);
-    coupons.forEach(coupon => {
-      expect(/^[def456]{6}/.test((coupon as string))).toBeTruthy();
+    (coupons as string[]).forEach(coupon => {
+      expect(/^[def456]{6}/.test(coupon)).toBeTruthy();
     });
-  });
-
-  test('Should return a unique coupon in formatted form', () => {
-    const mockRandomInteger = jest.fn(() => {
-      return 0;
-    });
-    const engine = new Engine({
-      randomInteger: mockRandomInteger,
-      format: 'xx-xx-xx'
-    });
-    const coupon = engine.run();
-    expect(coupon.length).toBe(1);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    expect(coupon[0]).toBe('AA-AA-AA');
   });
 });

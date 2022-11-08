@@ -21,6 +21,7 @@ import Formatter from './formatter';
 import characterList from './helpers/character-list';
 import { EngineConstructorType, RandomIntegerFunctionType } from './ts-def/engine-type';
 import { CharacterSetOptionsType } from './ts-def/option-type';
+import { CouponResponseType } from './ts-def/coupon-response-type';
 
 export default class Engine {
   private formatter: any;
@@ -87,11 +88,22 @@ export default class Engine {
     );
   }
 
-  public run() {
+  private generateSingleCoupon(): string {
+    return this.generateCoupon();
+  }
+
+  private generateMultipleCoupons(): string[] {
     const couponSet = new Set();
     while (couponSet.size < this.numberOfCoupons) {
       couponSet.add(this.generateCoupon());
     }
-    return Array.from(couponSet);
+    return Array.from(couponSet) as string[];
+  }
+
+  public run(): CouponResponseType {
+    if (this.numberOfCoupons === 1) {
+      return this.generateSingleCoupon();
+    }
+    return this.generateMultipleCoupons();
   }
 }
