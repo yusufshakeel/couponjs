@@ -3,12 +3,10 @@ import {
   ALPHABET_UPPERCASE, BINARY, CHARSET_ALNUM,
   CHARSET_ALPHA,
   CHARSET_ALPHA_LOWER, CHARSET_BINARY,
-  CHARSET_DIGIT, CHARSET_HEX, CHARSET_HEX_LOWER, CHARSET_OCTAL, DIGIT, HEX, HEX_LOWER, OCTAL
+  CHARSET_DIGIT, CHARSET_HEX, CHARSET_HEX_LOWER, CHARSET_OCTAL, DIGIT, HEX, HEX_LOWER, OCTAL,
+  DEFAULT_CHARACTER_SET_OPTION
 } from '../../../src/constants';
 import characterList from '../../../src/helpers/character-list';
-import options from '../../../src/configs/option';
-
-const { defaultCouponGenerationOption } = options;
 
 describe('Testing character set builder', () => {
   test('Should throw error if invalid builtIn option provided', () => {
@@ -23,9 +21,7 @@ describe('Testing character set builder', () => {
   });
 
   test('Should return uppercase alphabet A-Z when using default options', () => {
-    expect(characterList(
-      defaultCouponGenerationOption.characterSet
-    )).toStrictEqual(ALPHABET_UPPERCASE.split(''));
+    expect(characterList(DEFAULT_CHARACTER_SET_OPTION)).toStrictEqual(ALPHABET_UPPERCASE.split(''));
   });
 
   test('Should return uppercase alphabet A-Z when using builtIn "CHARSET_ALPHA" option', () => {
