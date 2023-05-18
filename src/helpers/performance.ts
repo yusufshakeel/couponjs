@@ -1,27 +1,25 @@
 import { PerformanceType } from '../ts-def/performance-type';
 
-const NS_PER_SEC = 1e9;
-
 export default class Performance {
-  private startedAt: [number, number] = [0, 0];
-  private duration: [number, number] = [0, 0];
+  private startedAt = 0;
+  private endedAt = 0;
 
   public startTimer() {
-    this.startedAt = process.hrtime();
+    this.startedAt = new Date().getTime();
   }
 
   public stopTimer() {
-    this.duration = process.hrtime(this.startedAt);
+    this.endedAt = new Date().getTime();
   }
 
   public stats(): PerformanceType {
-    const nano = (this.duration)[0] * NS_PER_SEC + (this.duration)[1];
+    const milli = this.endedAt - this.startedAt;
     return {
       duration: {
-        nano,
-        micro: nano / 1e3,
-        milli: nano / 1e6,
-        second: nano / 1e9
+        nano: milli * 1e6,
+        micro: milli * 1e3,
+        milli,
+        second: milli / 1e3
       }
     };
   }
