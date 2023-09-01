@@ -34,6 +34,7 @@ export class CouponJS {
     this.verbose = verbose;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public generate(option?: CouponGenerationOptionType): any {
     this.performance.startTimer();
     const {
@@ -69,7 +70,10 @@ export class CouponJS {
           generatedCoupons as string[]
       };
       return this.verbose ? verboseResult : generatedCoupons;
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       this.performance.stopTimer();
       const performanceStats = this.logPerformance ? { performance: this.performance.stats() } : {};
       if (this.verbose) {

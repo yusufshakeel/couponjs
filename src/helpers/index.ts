@@ -44,7 +44,9 @@ export function attachSuffix(suffix = '') {
  * @param {*} operators
  * @returns {function(*=): *}
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function pipe(operators: any[]) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return function (value: any) {
     return operators.reduce((enrichedValue, operator) => operator(enrichedValue), value);
   };
@@ -55,6 +57,7 @@ export function pipe(operators: any[]) {
  * @param {*} value
  * @returns {*}
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function identity(value: any): any {
   return value;
 }
@@ -83,6 +86,7 @@ export function uniqueCharacters(characters: string[]): string[] {
  * @param {...object} sourceObjects
  * @returns {object}
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function shallowMerge(...sourceObjects: any[]): any {
   return Object.assign({}, ...sourceObjects);
 }

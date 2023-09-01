@@ -24,6 +24,7 @@ import { CharacterSetOptionsType } from './ts-def/option-type';
 import { CouponResponseType } from './ts-def/coupon-response-type';
 
 export default class Engine {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private formatter: any;
   private characterSetOption: CharacterSetOptionsType;
   private length: number;

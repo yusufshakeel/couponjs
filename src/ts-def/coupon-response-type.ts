@@ -15,6 +15,7 @@ export type ErrorResponseType = {
   error: {
     message: string,
     type: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     errors: any
   }
 };

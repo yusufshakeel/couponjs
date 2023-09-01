@@ -92,7 +92,10 @@ describe('Testing couponjs', () => {
         try {
           const coupon = new Coupon({ maxNumberOfCouponsToGenerate: 10 });
           coupon.generate({ numberOfCoupons: 100 });
-        } catch (e: any) {
+          // eslint-disable-next-line brace-style
+        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        catch (e: any) {
           expect(e.message).toBe('Maximum value for numberOfCoupons is 10.');
           expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
           expect(e.errors).toStrictEqual([
@@ -111,7 +114,10 @@ describe('Testing couponjs', () => {
     try {
       const coupon = new Coupon();
       coupon.generate({ format: 'abc-xyz' });
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe('Invalid characters used in the format rule.');
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([

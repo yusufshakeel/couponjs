@@ -1,6 +1,7 @@
 import Formatter from '../../src/formatter';
 
 describe('Testing Formatter', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const assertFormatterError = (format: any, expectedError: any) => {
     try {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -20,11 +21,15 @@ describe('Testing Formatter', () => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const assertFormatterFormatCouponError = (formatter: any, coupon: any, expectedError: any) => {
     try {
       formatter.format(coupon);
       throw new Error('should have failed!');
-    } catch (e) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       expect(e.message).toBe(expectedError.message);

@@ -23,7 +23,10 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe('Minimum value for numberOfCoupons is 1.');
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([
@@ -54,7 +57,10 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe('Maximum value for numberOfCoupons is 100000.');
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([
@@ -87,7 +93,10 @@ describe('Testing Engine', () => {
         randomInteger: mockRandomInteger
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 27 for the given length and characterSet.'
       );
@@ -123,7 +132,10 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 17576 for the given length and characterSet.'
       );
@@ -159,7 +171,10 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 17576 for the given length and characterSet.'
       );
@@ -195,7 +210,10 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 1000 for the given length and characterSet.'
       );
@@ -231,7 +249,10 @@ describe('Testing Engine', () => {
         randomInteger: mockRandomInteger
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 8 for the given length and characterSet.'
       );
@@ -267,7 +288,10 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 512 for the given length and characterSet.'
       );
@@ -303,7 +327,10 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 4096 for the given length and characterSet.'
       );
@@ -339,7 +366,10 @@ describe('Testing Engine', () => {
         characterSetOption: characterSet
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe(
         'Total number of possible coupons that can be generated is 3844 for the given length and characterSet.'
       );
@@ -368,7 +398,10 @@ describe('Testing Engine', () => {
         randomInteger: mockRandomInteger
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe("Minimum value for 'length' is 1.");
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([
@@ -394,7 +427,10 @@ describe('Testing Engine', () => {
         randomInteger: mockRandomInteger
       });
       engine.run();
-    } catch (e: any) {
+      // eslint-disable-next-line brace-style
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (e: any) {
       expect(e.message).toBe('Maximum value for length is 128.');
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([

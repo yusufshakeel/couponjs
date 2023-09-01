@@ -12,6 +12,7 @@ describe('Testing formatter validator', () => {
   });
 
   describe('Testing format rule of object type - validateFormatRuleObject', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const assertErrorForFormatRuleOfTypeObject = (format: any, expectedError: any) => {
       try {
         validateFormatRuleObject(format);
@@ -228,6 +229,7 @@ describe('Testing formatter validator', () => {
     });
 
     test('Should throw error if format rule has invalid characters or structure', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const assertErrorForFormatRuleOfTypeString = (format: any) => {
         try {
           validateFormatRuleString(format);
