@@ -9,6 +9,7 @@ import {
   ErrorResponseType,
   VerboseResponseType
 } from './ts-def/coupon-response-type';
+import { ErrorType } from './ts-def/error-type';
 
 const { defaultCouponGenerationOption, defaultCouponEngineOption } = options;
 
@@ -70,19 +71,16 @@ export class CouponJS {
           generatedCoupons as string[]
       };
       return this.verbose ? verboseResult : generatedCoupons;
-      // eslint-disable-next-line brace-style
-    }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    catch (e: any) {
+    } catch (e: unknown) {
       this.performance.stopTimer();
       const performanceStats = this.logPerformance ? { performance: this.performance.stats() } : {};
       if (this.verbose) {
         return ({
           status: 'error',
           error: {
-            message: e.message,
-            type: e.type,
-            errors: e.errors
+            message: (e as ErrorType).message,
+            type: (e as ErrorType).type,
+            errors: (e as ErrorType).errors
           },
           ...performanceStats
         } as ErrorResponseType);

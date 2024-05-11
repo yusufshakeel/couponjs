@@ -402,12 +402,12 @@ describe('Testing Engine', () => {
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     catch (e: any) {
-      expect(e.message).toBe("Minimum value for 'length' is 1.");
+      expect(e.message).toBe('Minimum value for \'length\' is 1.');
       expect(e.type).toBe('COUPONJS_VALIDATION_ERROR');
       expect(e.errors).toStrictEqual([
         {
           field: 'length',
-          message: "Minimum value for 'length' is 1.",
+          message: 'Minimum value for \'length\' is 1.',
           type: 'COUPONJS_GENERATE_COUPON_CONFIGURATION_ERROR'
         }
       ]);

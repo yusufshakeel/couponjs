@@ -1,28 +1,20 @@
 {
   "name": "couponjs",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Generate coupons.",
-  "main": "lib/esm/index.js",
-  "types": "lib/types/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "lib/**/*",
-    "!**/*.map"
+    "dist"
   ],
-  "exports": {
-    "import": "./lib/esm/index.js",
-    "require": "./lib/cjs/index.js",
-    "default": "./lib/esm/index.js"
-  },
   "scripts": {
     "bootstrap": "mkdir -p output",
     "project:init": "mkdir -p output && npm i && npm run test",
     "test": "jest -c jest.config.json",
     "precommit": "npm run lint && npm run test",
-    "build": "npm run precommit && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc -p tsconfig.json",
-    "build:cjs": "tsc -p tsconfig-cjs.json",
-    "build:fresh": "rm -rf lib && npm run build",
-    "build:forcefully": "rm -rf lib && npm run build:esm && npm run build:cjs",
+    "build": "tsup",
+    "all": "rm -rf dist && npm run precommit && npm run build",
     "lint": "npm run lint:src && npm run lint:test",
     "lint:src": "npx eslint -c .eslintrc.json src",
     "lint:fix:src": "npx eslint --fix -c .eslintrc.json src",
@@ -63,6 +55,7 @@
     "madge": "^6.0.0",
     "prettier": "^3.0.3",
     "ts-jest": "^29.1.0",
+    "tsup": "^8.0.2",
     "typescript": "^5.0.4"
   }
 }

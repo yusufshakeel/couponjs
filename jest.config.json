@@ -17,9 +17,10 @@
   "collectCoverage": true,
   "collectCoverageFrom": [
     "src/**/*.{ts,tsx}",
+    "!tsup.config.ts",
     "!**/coverage/**",
     "!**/docs/**",
-    "!**/lib/**",
+    "!**/dist/**",
     "!**/node_modules/**",
     "!**/test/**"
   ],

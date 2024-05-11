@@ -1,39 +1,31 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isOfType(operand: any, type: string): boolean {
+export function isOfType(operand: unknown, type: string): boolean {
   return typeof operand === type;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isBoolean(value: any): boolean {
+export function isBoolean(value: unknown): boolean {
   return typeof value === 'boolean';
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isObject(value: any): boolean {
+export function isObject(value: unknown): boolean {
   return typeof value === 'object' && value !== null && value.constructor === Object;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isString(value: any): boolean {
+export function isString(value: unknown): boolean {
   return typeof value === 'string';
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isUndefined(value: any): boolean {
+export function isUndefined(value: unknown): boolean {
   return typeof value === 'undefined';
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isInteger(value: any): boolean {
+export function isInteger(value: unknown): boolean {
   return Number.isInteger(value) && Number.isFinite(value);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isArray(value: any): boolean {
+export function isArray(value: unknown): boolean {
   return Array.isArray(value);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isEmptyArray(value: any): boolean {
-  return isArray(value) && value.length === 0;
+export function isEmptyArray(value: unknown): boolean {
+  return isArray(value) && (value as Array<unknown>).length === 0;
 }

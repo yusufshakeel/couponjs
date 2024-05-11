@@ -1,9 +1,9 @@
 import {
   MAX_LENGTH,
   MIN_LENGTH,
-  MIN_NUMBER_OF_COUPONS_TO_GENERATE,
-  ERROR_CONSTANTS
+  MIN_NUMBER_OF_COUPONS_TO_GENERATE
 } from '../constants';
+import { ERROR_CONSTANTS } from '../constants/error-constants';
 import ValidationError from '../error/validation-error';
 import {
   isArray,
@@ -16,7 +16,7 @@ import {
 import { CharacterSetOptionsType } from '../ts-def/option-type';
 import { ErrorType } from '../ts-def/format-rule-type';
 
-const throwValidationError = ({ message, field }: {message: string, field: string}) => {
+const throwValidationError = ({ message, field }: { message: string, field: string }) => {
   throw new ValidationError({
     message,
     errors: [

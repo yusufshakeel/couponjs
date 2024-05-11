@@ -2,7 +2,7 @@
  * This will return an integer value between min and max both inclusive.
  * @param {number} min The starting integer value.
  * @param {number} max The ending integer value.
- * @returns {number} Random integer value between min and max both inclusive.
+ * @returns {number} Random integer value between min and max, both inclusive.
  */
 export function randomInteger(min: number, max: number): number {
   return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
@@ -14,7 +14,7 @@ export function randomInteger(min: number, max: number): number {
  * @returns {number}
  */
 export function sumOf(values: number[]): number {
-  return values.reduce((sum, size) => sum + size, 0);
+  return values.reduce((sum, size) => sum + size);
 }
 
 /**
@@ -23,7 +23,7 @@ export function sumOf(values: number[]): number {
  * @returns {function(string): string}
  */
 export function attachPrefix(prefix = '') {
-  return function (coupon: string): string {
+  return function attachPrefixFn(coupon: string): string {
     return `${prefix}${coupon}`;
   };
 }
@@ -34,7 +34,7 @@ export function attachPrefix(prefix = '') {
  * @returns {function(string): string}
  */
 export function attachSuffix(suffix = '') {
-  return function (coupon: string): string {
+  return function attachSuffixFn(coupon: string): string {
     return `${coupon}${suffix}`;
   };
 }

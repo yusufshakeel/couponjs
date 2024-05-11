@@ -1,4 +1,5 @@
 import { PerformanceType } from './performance-type';
+import { ErrorType } from './error-type';
 
 export type VerboseResponseType = {
   numberOfCoupons: number,
@@ -12,10 +13,5 @@ export type CouponResponseType = string | string[];
 export type ErrorResponseType = {
   performance?: PerformanceType,
   status: string,
-  error: {
-    message: string,
-    type: string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    errors: any
-  }
+  error: ErrorType
 };
