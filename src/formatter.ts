@@ -1,4 +1,4 @@
-import { ERROR_CONSTANTS } from './constants';
+import { ERROR_CONSTANTS } from './constants/error-constants';
 import ValidationError from './error/validation-error';
 import { isObject, isString, isUndefined } from './validators';
 import {
