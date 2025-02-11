@@ -1,6 +1,6 @@
 {
   "name": "couponjs",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "Generate coupons.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
